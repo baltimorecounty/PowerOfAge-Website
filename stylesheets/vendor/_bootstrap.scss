@@ -1,7 +1,14 @@
 @import "bootstrap/mixins/grid";
 @import "bootstrap/mixins/grid-framework";
 @import "bootstrap/mixins/clearfix";
+@import "bootstrap/mixins/vendor-prefixes";
+@import "bootstrap/mixins/tab-focus";
+@import "bootstrap/mixins/forms";
+@import "bootstrap/mixins/image";
 
 @import "bootstrap/variables";
+@import "bootstrap/normalize";
+@import "bootstrap/scaffolding";
 
+@import "bootstrap/forms";
 @import "bootstrap/grid";
