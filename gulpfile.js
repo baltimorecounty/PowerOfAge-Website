@@ -24,7 +24,7 @@ gulp.task('process-scss', () => {
 });
 
 gulp.task('process-js', () => {
-	return gulp.src('js/**/*')
+	return gulp.src(['js/**/*.js', '!js/vendor/bootstrap/**/*.js'])
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish))
 		.pipe(stripCode({
