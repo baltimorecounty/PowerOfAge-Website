@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en-us">
+<head>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+	<script src="/js/vendor/snap/snap.svg-min.js"></script>
+	<script src="/dist/js/master.min.js"></script>
+	<script src="/dist/js/page-specific/senior-expo-booths.min.js"></script>
+
+	<title>Aging Expo Booth Tool</title>
+
+	<style>
+		body > svg {
+			margin: 0 auto;
+			display: block;
+		}
+
+		#aging-expo-north-hall * {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: bold;
+		}
+
+		g.highlight .booth-label {
+			fill: black;
+		}
+
+		g.highlight .booth-background {
+			fill: rgb(254, 209, 67);
+		}
+	</style>
+
+</head>
+<body>
+
+	<script>
+		baltimoreCounty.pageSpecific.seniorExpoBooths.display('../dist/images/aging-expo-north-hall.svg', 'north', 800, 700);
+	</script>
+
+</body>
+</html>

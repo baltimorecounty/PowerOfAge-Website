@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en-us">
+<head>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+	<link href="/dist/css/inside-responsive.min.css" rel="stylesheet" />
+	<script src="/dist/js/templateinside.min.js"></script>
+
+	<script src="/js/lib/snap.svg-min.js"></script>
+	<script src="/js/page-specific/senior-expo-booths.js"></script>
+
+	<title>Aging Expo Booth Tool</title>
+
+	<style>
+		body > svg {
+			margin: 0 auto;
+			display: block;
+		}
+
+		#aging-expo-south-hall * {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: bold;
+		}
+
+		g.highlight .booth-label {
+			fill: black;
+		}
+
+		g.highlight .booth-background {
+			fill: rgb(254, 209, 67);
+		}
+	</style>
+
+</head>
+<body>
+
+	<script>
+		baltimoreCounty.pageSpecific.seniorExpoBooths.display('aging-expo-south-hall.svg', 'south', 800, 1000);
+	</script>
+
+</body>
+</html>

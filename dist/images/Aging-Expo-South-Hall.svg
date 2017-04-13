@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="aging-expo-south-hall" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 790 728.9" style="enable-background:new 0 0 790 728.9;" xml:space="preserve">
+	<style type="text/css">
+		text {
+			font-family: 'Arial';
+		}
+
+		.booth-large-text {
+			font-size: 16px;
+		}
+
+		.booth-background {
+			fill: #04549B;
+		}
+
+		.booth-label {
+			fill: #FFFFFF;
+		}
+
+		.booth-small-text {
+			font-size: 11px;
+		}
+	</style>
+	<desc>Senior Expo/Baby Boomer Expo Floor Plans</desc>
+	<g>
+		<g id="3010">
+			<text transform="matrix(1 0 0 1 409.5 29)" class="st0 booth-large-text">Entrance</text>
+		</g>
+		<g id="800">
+			<path vector-effect="none" class="booth-background" d="M441,109h40v28h-40V109" />
+			<text transform="matrix(1 0 0 1 452 126)" class="booth-label st0 booth-small-text">800</text>
+		</g>
+		<g id="801">
+			<path vector-effect="none" class="booth-background" d="M514,109h32v28h-32V109" />
+			<text transform="matrix(1 0 0 1 521 126)" class="booth-label st0 booth-small-text">801</text>
+		</g>
+		<g id="802">
+			<path vector-effect="none" class="booth-background" d="M549.5,109h32v28h-32V109" />
+			<text transform="matrix(1 0 0 1 555.5 126)" class="booth-label st0 booth-small-text">802</text>
+		</g>
+		<g id="803">
+			<path vector-effect="none" class="booth-background" d="M585,109h32v28h-32V109" />
+			<text transform="matrix(1 0 0 1 591 126)" class="booth-label st0 booth-small-text">803</text>
+		</g>
+		<g id="804">
+			<path vector-effect="none" class="booth-background" d="M620.5,109h32v28h-32V109" />
+			<text transform="matrix(1 0 0 1 627.5 126)" class="booth-label st0 booth-small-text">804</text>
+		</g>
+		<g id="805">
+			<path vector-effect="none" class="booth-background" d="M656,109h32v28h-32V109" />
+			<text transform="matrix(1 0 0 1 663 126)" class="booth-label st0 booth-small-text">805</text>
+		</g>
+		<g id="806">
+			<path vector-effect="none" class="booth-background" d="M691.5,109h32v28h-32V109" />
+			<text transform="matrix(1 0 0 1 698.5 126)" class="booth-label st0 booth-small-text">806</text>
+		</g>
+		<g id="807">
+			<path vector-effect="none" class="booth-background" d="M727,109h32v28h-32V109" />
+			<text transform="matrix(1 0 0 1 734 126)" class="booth-label st0 booth-small-text">807</text>
+		</g>
+		<g id="700">
+			<path vector-effect="none" class="booth-background" d="M161,177h32v28h-32V177" />
+			<text transform="matrix(1 0 0 1 168 193)" class="booth-label st0 booth-small-text">700</text>
+		</g>
+		<g id="709">
+			<path vector-effect="none" class="booth-background" d="M195,177h32v28h-32V177" />
+			<text transform="matrix(1 0 0 1 201 193)" class="booth-label st0 booth-small-text">709</text>
+		</g>
+		<g id="809">
+			<path vector-effect="none" class="booth-background" d="M445,177h32v28h-32V177" />
+			<text transform="matrix(1 0 0 1 452 196)" class="booth-label st0 booth-small-text">809</text>
+		</g>
+		<g id="826">
+			<path vector-effect="none" class="booth-background" d="M479,177h32v28h-32V177" />
+			<text transform="matrix(1 0 0 1 486 196)" class="booth-label st0 booth-small-text">826</text>
+		</g>
+		<g id="3000">
+			<path vector-effect="none" class="booth-background" d="M545,177h168v177H545V177" />
+			<text transform="matrix(1 0 0 1 572.3867 269.8516)" class="booth-label st0 booth-large-text">Feature Area 1</text>
+		</g>
+		<g id="701">
+			<path vector-effect="none" class="booth-background" d="M161,207h32v28h-32V207" />
+			<text transform="matrix(1 0 0 1 168 223)" class="booth-label st0 booth-small-text">701</text>
+		</g>
+		<g id="710">
+			<path vector-effect="none" class="booth-background" d="M195,207h32v28h-32V207" />
+			<text transform="matrix(1 0 0 1 201 223)" class="booth-label st0 booth-small-text">710</text>
+		</g>
+		<g id="810">
+			<path vector-effect="none" class="booth-background" d="M445,207h32v28h-32V207" />
+			<text transform="matrix(1 0 0 1 452 226)" class="booth-label st0 booth-small-text">810</text>
+		</g>
+		<g id="825">
+			<path vector-effect="none" class="booth-background" d="M479,207h32v28h-32V207" />
+			<text transform="matrix(1 0 0 1 486 226)" class="booth-label st0 booth-small-text">825</text>
+		</g>
+		<g id="702">
+			<path vector-effect="none" class="booth-background" d="M161,237h32v28h-32V237" />
+			<text transform="matrix(1 0 0 1 168 253)" class="booth-label st0 booth-small-text">702</text>
+		</g>
+		<g id="711">
+			<path vector-effect="none" class="booth-background" d="M195,237h32v28h-32V237" />
+			<text transform="matrix(1 0 0 1 201 253)" class="booth-label st0 booth-small-text">711</text>
+		</g>
+		<g id="811">
+			<path vector-effect="none" class="booth-background" d="M445,237h32v28h-32V237" />
+			<text transform="matrix(1 0 0 1 452.5 256)" class="booth-label st0 booth-small-text">811</text>
+		</g>
+		<g id="824">
+			<path vector-effect="none" class="booth-background" d="M479,237h32v28h-32V237" />
+			<text transform="matrix(1 0 0 1 486 256)" class="booth-label st0 booth-small-text">824</text>
+		</g>
+		<g id="703">
+			<path vector-effect="none" class="booth-background" d="M161,267.3h32v28h-32V267.3" />
+			<text transform="matrix(1 0 0 1 168 283.2515)" class="booth-label st0 booth-small-text">703</text>
+		</g>
+		<g id="712">
+			<path vector-effect="none" class="booth-background" d="M195,267.3h32v28h-32V267.3" />
+			<text transform="matrix(1 0 0 1 201 283.2515)" class="booth-label st0 booth-small-text">712</text>
+		</g>
+		<g id="812">
+			<path vector-effect="none" class="booth-background" d="M445,267.3h32v28h-32V267.3" />
+			<text transform="matrix(1 0 0 1 452 286.2515)" class="booth-label st0 booth-small-text">812</text>
+		</g>
+		<g id="823">
+			<path vector-effect="none" class="booth-background" d="M479,267.3h32v28h-32V267.3" />
+			<text transform="matrix(1 0 0 1 486 286.2515)" class="booth-label st0 booth-small-text">823</text>
+		</g>
+		<g id="704">
+			<path vector-effect="none" class="booth-background" d="M161,298h32v28h-32V298" />
+			<text transform="matrix(1 0 0 1 168 314)" class="booth-label st0 booth-small-text">704</text>
+		</g>
+		<g id="713">
+			<path vector-effect="none" class="booth-background" d="M195,298h32v28h-32V298" />
+			<text transform="matrix(1 0 0 1 201 314)" class="booth-label st0 booth-small-text">713</text>
+		</g>
+		<g id="813">
+			<path vector-effect="none" class="booth-background" d="M445,298h32v28h-32V298" />
+			<text transform="matrix(1 0 0 1 452 317)" class="booth-label st0 booth-small-text">813</text>
+		</g>
+		<g id="822">
+			<path vector-effect="none" class="booth-background" d="M479,298h32v28h-32V298" />
+			<text transform="matrix(1 0 0 1 486 317)" class="booth-label st0 booth-small-text">822</text>
+		</g>
+		<g id="828">
+			<path vector-effect="none" class="booth-background" d="M758.5,206.5h32v28h-32V206.5" />
+			<text transform="matrix(1 0 0 1 765.5 223.5)" class="booth-label st0 booth-small-text">828</text>
+		</g>
+		<g id="829">
+			<path vector-effect="none" class="booth-background" d="M758.5,236.5h32v28h-32V236.5" />
+			<text transform="matrix(1 0 0 1 765.5 253.5)" class="booth-label st0 booth-small-text">829</text>
+		</g>
+		<g id="830">
+			<path vector-effect="none" class="booth-background" d="M758.5,266.5h32v28h-32V266.5" />
+			<text transform="matrix(1 0 0 1 765.5 283.5)" class="booth-label st0 booth-small-text">830</text>
+		</g>
+		<g id="831">
+			<path vector-effect="none" class="booth-background" d="M758.5,296.5h32v28h-32V296.5" />
+			<text transform="matrix(1 0 0 1 765.5 313.5)" class="booth-label st0 booth-small-text">831</text>
+		</g>
+		<g id="705">
+			<path vector-effect="none" class="booth-background" d="M161,328h32v28h-32V328" />
+			<text transform="matrix(1 0 0 1 168 344)" class="booth-label st0 booth-small-text">705</text>
+		</g>
+		<g id="714">
+			<path vector-effect="none" class="booth-background" d="M195,328h32v28h-32V328" />
+			<text transform="matrix(1 0 0 1 201 344)" class="booth-label st0 booth-small-text">714</text>
+		</g>
+		<g id="814">
+			<path vector-effect="none" class="booth-background" d="M445,328h32v28h-32V328" />
+			<text transform="matrix(1 0 0 1 452 347)" class="booth-label st0 booth-small-text">814</text>
+		</g>
+		<g id="821">
+			<path vector-effect="none" class="booth-background" d="M479,328h32v28h-32V328" />
+			<text transform="matrix(1 0 0 1 486 347)" class="booth-label st0 booth-small-text">821</text>
+		</g>
+		<g id="706">
+			<path vector-effect="none" class="booth-background" d="M161,358h32v28h-32V358" />
+			<text transform="matrix(1 0 0 1 168 374)" class="booth-label st0 booth-small-text">706</text>
+		</g>
+		<g id="715">
+			<path vector-effect="none" class="booth-background" d="M195,358h32v28h-32V358" />
+			<text transform="matrix(1 0 0 1 201 374)" class="booth-label st0 booth-small-text">715</text>
+		</g>
+		<g id="815">
+			<path vector-effect="none" class="booth-background" d="M445,358h32v28h-32V358" />
+			<text transform="matrix(1 0 0 1 452 377)" class="booth-label st0 booth-small-text">815</text>
+		</g>
+		<g id="820">
+			<path vector-effect="none" class="booth-background" d="M479,358h32v28h-32V358" />
+			<text transform="matrix(1 0 0 1 486 377)" class="booth-label st0 booth-small-text">820</text>
+		</g>
+		<g id="707">
+			<path vector-effect="none" class="booth-background" d="M161,388h32v28h-32V388" />
+			<text transform="matrix(1 0 0 1 168 404)" class="booth-label st0 booth-small-text">707</text>
+		</g>
+		<g id="716">
+			<path vector-effect="none" class="booth-background" d="M195,388h32v28h-32V388" />
+			<text transform="matrix(1 0 0 1 201 404)" class="booth-label st0 booth-small-text">716</text>
+		</g>
+		<g id="816">
+			<path vector-effect="none" class="booth-background" d="M445,388h32v28h-32V388" />
+			<text transform="matrix(1 0 0 1 452 407)" class="booth-label st0 booth-small-text">816</text>
+		</g>
+		<g id="819">
+			<path vector-effect="none" class="booth-background" d="M479,388h32v28h-32V388" />
+			<text transform="matrix(1 0 0 1 486 407)" class="booth-label st0 booth-small-text">819</text>
+		</g>
+		<g id="832">
+			<path vector-effect="none" class="booth-background" d="M545,382h32v28h-32V382" />
+			<text transform="matrix(1 0 0 1 552 401)" class="booth-label st0 booth-small-text">832</text>
+		</g>
+		<g id="833">
+			<path vector-effect="none" class="booth-background" d="M579,382h32v28h-32V382" />
+			<text transform="matrix(1 0 0 1 586 401)" class="booth-label st0 booth-small-text">833</text>
+		</g>
+		<g id="834">
+			<path vector-effect="none" class="booth-background" d="M613,382h32v28h-32V382" />
+			<text transform="matrix(1 0 0 1 620 401)" class="booth-label st0 booth-small-text">834</text>
+		</g>
+		<g id="835">
+			<path vector-effect="none" class="booth-background" d="M647,382h32v28h-32V382" />
+			<text transform="matrix(1 0 0 1 654 401)" class="booth-label st0 booth-small-text">835</text>
+		</g>
+		<g id="836">
+			<path vector-effect="none" class="booth-background" d="M681,382h32v28h-32V382" />
+			<text transform="matrix(1 0 0 1 688 401)" class="booth-label st0 booth-small-text">836</text>
+		</g>
+		<g id="708">
+			<path vector-effect="none" class="booth-background" d="M161,418h32v28h-32V418" />
+			<text transform="matrix(1 0 0 1 168 434)" class="booth-label st0 booth-small-text">708</text>
+		</g>
+		<g id="717">
+			<path vector-effect="none" class="booth-background" d="M195,418h32v28h-32V418" />
+			<text transform="matrix(1 0 0 1 201 434)" class="booth-label st0 booth-small-text">717</text>
+		</g>
+		<g id="817">
+			<path vector-effect="none" class="booth-background" d="M445,418h32v28h-32V418" />
+			<text transform="matrix(1 0 0 1 452 437)" class="booth-label st0 booth-small-text">817</text>
+		</g>
+		<g id="818">
+			<path vector-effect="none" class="booth-background" d="M479,418h32v28h-32V418" />
+			<text transform="matrix(1 0 0 1 486 437)" class="booth-label st0 booth-small-text">818</text>
+		</g>
+		<g id="841">
+			<path vector-effect="none" class="booth-background" d="M545,412h32v28h-32V412" />
+			<text transform="matrix(1 0 0 1 552 428.6484)" class="booth-label st0 booth-small-text">841</text>
+		</g>
+		<g id="840">
+			<path vector-effect="none" class="booth-background" d="M579,412h32v28h-32V412" />
+			<text transform="matrix(1 0 0 1 586 428.6484)" class="booth-label st0 booth-small-text">840</text>
+		</g>
+		<g id="839">
+			<path vector-effect="none" class="booth-background" d="M613,412h32v28h-32V412" />
+			<text transform="matrix(1 0 0 1 620 428.6484)" class="booth-label st0 booth-small-text">839</text>
+		</g>
+		<g id="838">
+			<path vector-effect="none" class="booth-background" d="M647,412h32v28h-32V412" />
+			<text transform="matrix(1 0 0 1 654 428.6484)" class="booth-label st0 booth-small-text">838</text>
+		</g>
+		<g id="837">
+			<path vector-effect="none" class="booth-background" d="M681,412h32v28h-32V412" />
+			<text transform="matrix(1 0 0 1 687.8232 428.6484)" class="booth-label st0 booth-small-text">837</text>
+		</g>
+		<g id="FeatureArea2">
+			<path vector-effect="none" class="booth-background" d="M545,466h168v120H545V466" />
+			<text transform="matrix(1 0 0 1 572.3867 534.8516)" class="booth-label st0 booth-large-text">Feature Area 2</text>
+		</g>
+		<g id="3001">
+			<path vector-effect="none" class="booth-background" d="M160.9,559.4h128v89h-128" />
+			<text transform="matrix(1 0 0 1 188 601)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="0">Senior</tspan>
+				<tspan x="0" y="20">Centers 2</tspan>
+			</text>
+		</g>
+		<g id="3002">
+			<path vector-effect="none" class="booth-background" d="M195,40h210v106H195V40" />
+			<text transform="matrix(1 0 0 1 224.8633 96.8516)" class="booth-label st0 booth-large-text">Senior Craft Gallery</text>
+		</g>
+		<g id="3003">
+			<path vector-effect="none" class="booth-background" d="M0,177h131v110H0V177" />
+			<text transform="matrix(1 0 0 1 8 226.2515)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="0">Flu/Pneumonia</tspan>
+				<tspan x="0" y="20">Shot Clinic</tspan>
+			</text>
+
+		</g>
+		<g id="3004">
+			<path vector-effect="none" class="booth-background" d="M0,290.8h131v184H0V290.8" />
+			<text transform="matrix(1 0 0 1 18 338)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="0">Baltimore</tspan>
+				<tspan x="0" y="20">County</tspan>
+				<tspan x="0" y="40">Department</tspan>
+				<tspan x="0" y="60">of Health</tspan>
+				<tspan x="0" y="80">and Human</tspan>
+				<tspan x="0" y="100">Services</tspan>
+			</text>
+		</g>
+		<g id="3005">
+			<path vector-effect="none" class="booth-background" d="M0,478.9h131v250H0V478.9" />
+			<text transform="matrix(1 0 0 1 20 569.4001)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="0">Senior</tspan>
+				<tspan x="0" y="20">Center</tspan>
+				<tspan x="0" y="40">Fitness</tspan>
+				<tspan x="0" y="60">Demo Stage</tspan>
+			</text>
+		</g>
+		<g id="3006">
+			<path vector-effect="none" class="booth-background" d="M263,287.1h142v205.7H263V287.1" />
+			<text transform="matrix(1 0 0 1 294 370.1035)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="0">Power of</tspan>
+				<tspan x="0" y="20">Age</tspan>
+				<tspan x="0" y="40">Art/Craft</tspan>
+				<tspan x="0" y="60">Show</tspan>
+			</text>
+		</g>
+		<g id="3007">
+			<path vector-effect="none" class="booth-background" d="M263,177h142v94H263V177" />
+			<text transform="matrix(1 0 0 1 295 220)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="0">Senior</tspan>
+				<tspan x="0" y="20">Centers 1</tspan>
+			</text>
+		</g>
+		<g id="3008">
+			<path vector-effect="none" class="booth-background" d="M743,388.5h47v130h-47V388.5" />
+			<text transform="matrix(1 0 0 1 748 423.1484)" class="booth-label st0 booth-small-text">
+				<tspan x="0" y="0">Balt.</tspan>
+				<tspan x="0" y="15">County</tspan>
+				<tspan x="0" y="30">SHIP</tspan>
+				<tspan x="0" y="45">Part D</tspan>
+				<tspan x="0" y="60">Out</tspan>
+				<tspan x="0" y="75">-reach</tspan>
+			</text>
+		</g>
+		<g id="1000">
+			<path vector-effect="none" class="booth-background" d="M331,559.4h40v89h-40V559.4" />
+			<text transform="matrix(1 0 0 1 338.7646 606.5967)" class="booth-label st0 booth-small-text">1000</text>
+		</g>
+		<g id="1003">
+			<path vector-effect="none" class="booth-background" d="M441,559.4h40v89h-40V559.4" />
+			<text transform="matrix(1 0 0 1 448.7646 606.5967)" class="booth-label st0 booth-small-text">1003</text>
+		</g>
+		<g id="3009">
+			<path vector-effect="none" class="booth-background" d="M373,559.4h66v89h-66V559.4" />
+			<text transform="matrix(1 0 0 1 388 588.5998)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="0">Gift</tspan>
+				<tspan x="0" y="20">Pick</tspan>
+				<tspan x="0" y="40">Up</tspan>
+			</text>
+
+		</g>
+	</g>
+</svg>

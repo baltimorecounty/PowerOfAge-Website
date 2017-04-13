@@ -23,8 +23,8 @@ gulp.task('process-scss', () => {
 		.pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('process-js', () => {
-	return gulp.src(['js/**/*.js', '!js/vendor/bootstrap/**/*.js'])
+gulp.task('process-js', ['concat-js', 'move-page-specific-js'], () => {
+	return gulp.src(['dist/js/**/*.js'])
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish))
 		.pipe(stripCode({
@@ -32,10 +32,26 @@ gulp.task('process-js', () => {
 			end_comment: 'end-test-code'
 		}))
 		.pipe(uglify())
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('dist/js'));
 });
 
+gulp.task('concat-js', () => {
+	return gulp.src(['js/utility/*.js', 'js/**/*.js', '!js/vendor/**/*.js', '!js/page-specific/**/*.js'])
+		.pipe(concat('master.js'))
+		.pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('move-page-specific-js', () => {
+	return gulp.src('js/page-specific/**/*.js')
+		.pipe(gulp.dest('dist/js/page-specific'));
+});
+
+gulp.task('move-images',  () => {
+	return gulp.src('images/**.*')
+		.pipe(gulp.dest('dist/images'));
+});
+
 gulp.task('default', ['clean'], (callback) => {
-	return runSequence(['process-scss', 'process-js'], callback);
+	return runSequence(['process-scss', 'process-js', 'move-images'], callback);
 });
