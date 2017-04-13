@@ -9,7 +9,8 @@ const gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	runSequence = require('run-sequence'),
 	stylish = require('jshint-stylish'),
-	pug = require('gulp-pug');
+	pug = require('gulp-pug'),
+	babel = require('gulp-babel');
 
 gulp.task('clean', () => {
 	return gulp.src('dist')
@@ -26,11 +27,16 @@ gulp.task('process-scss', () => {
 
 gulp.task('process-js', ['concat-js', 'move-page-specific-js'], () => {
 	return gulp.src(['dist/js/**/*.js'])
-		.pipe(jshint())
+		.pipe(jshint({
+			esversion: 6
+		}))
 		.pipe(jshint.reporter(stylish))
 		.pipe(stripCode({
 			start_comment: 'test-code',
 			end_comment: 'end-test-code'
+		}))
+		.pipe(babel({
+			presets: ['es2015']
 		}))
 		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))

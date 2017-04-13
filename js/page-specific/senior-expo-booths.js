@@ -1,29 +1,32 @@
 namespacer('baltimoreCounty.pageSpecific');
 
-baltimoreCounty.pageSpecific.seniorExpoBooths = (function($, undefined) {
+baltimoreCounty.pageSpecific.seniorExpoBooths = (($, undefined) => {
 	
-	var displayInteractive = function(svgFilePath, hallId, width, height) {
+	const displayInteractive = (svgFilePath, hallId, width, height) => {
 
 			if (!Snap) {
 				console.log('"Snap" library not loaded.');
 				return;
 			}
 
-			Snap.load(svgFilePath, function(fragment) {
+			Snap.load(svgFilePath, fragment => {
 
-				var snap = Snap(width, height);
-
-				var parentElement = snap.append(fragment),
+				const snap = Snap(width, height),
+					parentElement = snap.append(fragment),
 					booths = parentElement.selectAll('svg > g > g');	
 
-				$.each(booths, function(index, snapElement) {				
-					snapElement.click(function(clickedElement) {
+				$.each(booths, (index, snapElement) => {				
+					snapElement.click(clickedElement => {
 
-						var $active = $(clickedElement.path[0]),
+						const $active = $(clickedElement.path[0]),
 							$target = $active.closest('g'),
 							targetId = $target.attr('id');
 						
-						console.log('Post ' + targetId + ' to something.');
+						$.ajax(`http://localhost:1000/api/aging-expo/booth-assignments/${targetId}`)
+							.done(() => {
+								console.log('The dishes are done, man.');
+							});
+
 
 						$target.toggleClass('highlight');
 						
