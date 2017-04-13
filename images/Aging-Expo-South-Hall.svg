@@ -263,7 +263,7 @@
 			<path vector-effect="none" class="booth-background" d="M681,412h32v28h-32V412" />
 			<text transform="matrix(1 0 0 1 687.8232 428.6484)" class="booth-label st0 booth-small-text">837</text>
 		</g>
-		<g id="FeatureArea2">
+		<g id="3011">
 			<path vector-effect="none" class="booth-background" d="M545,466h168v120H545V466" />
 			<text transform="matrix(1 0 0 1 572.3867 534.8516)" class="booth-label st0 booth-large-text">Feature Area 2</text>
 		</g>
