@@ -1,0 +1,23 @@
+doctype html
+
+html(lang="en-us")
+
+	head
+
+		link(href="/dist/css/master.min.css" rel="stylesheet")
+		
+		script(src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous")
+
+		script(src="/js/vendor/snap/snap.svg-min.js")
+		script(src="/dist/js/master.min.js")
+		script(src="/dist/js/page-specific/senior-expo-booths.min.js")
+
+		title
+			| Aging Expo Booth Tool
+
+	head
+	
+	body
+
+		script
+			| baltimoreCounty.pageSpecific.seniorExpoBooths.displayInteractive('../dist/images/aging-expo-north-hall.svg', 'north', 800, 700);

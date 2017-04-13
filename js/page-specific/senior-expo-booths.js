@@ -2,7 +2,7 @@ namespacer('baltimoreCounty.pageSpecific');
 
 baltimoreCounty.pageSpecific.seniorExpoBooths = (function($, undefined) {
 	
-	var display = function(svgFilePath, hallId, width, height) {
+	var displayInteractive = function(svgFilePath, hallId, width, height) {
 
 			if (!Snap) {
 				console.log('"Snap" library not loaded.');
@@ -21,9 +21,9 @@ baltimoreCounty.pageSpecific.seniorExpoBooths = (function($, undefined) {
 
 						var $active = $(clickedElement.path[0]),
 							$target = $active.closest('g'),
-							targetText = $target.text().trim().replace(/[\r\n\t\s]/g, '');
+							targetId = $target.attr('id');
 						
-						console.log('Post ' + targetText + ' to something.');
+						console.log('Post ' + targetId + ' to something.');
 
 						$target.toggleClass('highlight');
 						
@@ -33,7 +33,7 @@ baltimoreCounty.pageSpecific.seniorExpoBooths = (function($, undefined) {
 		};
 
 	return {
-		display: display
+		displayInteractive: displayInteractive
 	};
 
 })(jQuery);

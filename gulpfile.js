@@ -8,7 +8,8 @@ const gulp = require('gulp'),
 	stripCode = require('gulp-strip-code'),
 	uglify = require('gulp-uglify'),
 	runSequence = require('run-sequence'),
-	stylish = require('jshint-stylish');
+	stylish = require('jshint-stylish'),
+	pug = require('gulp-pug');
 
 gulp.task('clean', () => {
 	return gulp.src('dist')
@@ -52,6 +53,12 @@ gulp.task('move-images',  () => {
 		.pipe(gulp.dest('dist/images'));
 });
 
+gulp.task('process-pug', () => {
+	return gulp.src('mockups/**/*.pug')
+		.pipe(pug())
+		.pipe(gulp.dest('dist'));
+});
+
 gulp.task('default', ['clean'], (callback) => {
-	return runSequence(['process-scss', 'process-js', 'move-images'], callback);
+	return runSequence(['process-pug', 'process-scss', 'process-js', 'move-images'], callback);
 });
