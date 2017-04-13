@@ -2,7 +2,7 @@ namespacer('baltimoreCounty.pageSpecific');
 
 baltimoreCounty.pageSpecific.seniorExpoBooths = (($, undefined) => {
 	
-	const displayInteractive = (svgFilePath, hallId, width, height) => {
+	const display = (svgFilePath, width, height, isInteractive) => {
 
 			if (!Snap) {
 				console.log('"Snap" library not loaded.');
@@ -10,51 +10,59 @@ baltimoreCounty.pageSpecific.seniorExpoBooths = (($, undefined) => {
 			}
 
 			Snap.load(svgFilePath, fragment => {
+				snapLoadHandler(fragment, width, height, isInteractive);
+			});			
+		},
 
-				const snap = Snap(width, height),
-					parentElement = snap.append(fragment),
-					booths = parentElement.selectAll('svg > g > g');	
+		snapLoadHandler = (fragment, width, height, isInteractive) => {
+			const snap = Snap(width, height),
+				parentElement = snap.append(fragment),
+				booths = parentElement.selectAll('svg > g > g');	
 
-				$.ajax('http://localhost:1000/api/aging-expo/booth-assignments').done(boothAssigmentData => {
-					let assgnedBoothIds = [];
+			$.ajax('http://localhost:1000/api/aging-expo/booth-assignments').done((boothAssigmentData) => {
+				highlightAssignedBooths(boothAssigmentData, booths, snapElement => {
+					if (isInteractive)
+						snapElement.click(svgElementClickHandler);
+				});
+			});
+		},
 
-					$.each(boothAssigmentData, (index, booth) => {
-						assgnedBoothIds.push(booth.Booth_Id);
-					});
-	
-					$.each(booths, (index, snapElement) => {				
+		highlightAssignedBooths = (boothAssigmentData, booths, callback) => {
+			console.log(boothAssigmentData);
+			let assgnedBoothIds = [];
 
-						let boothAssignmentIndex = assgnedBoothIds.indexOf(snapElement.node.id * 1);
+			$.each(boothAssigmentData, (index, booth) => {
+				assgnedBoothIds.push(booth.Booth_Id);
+			});
 
-						if (boothAssignmentIndex != -1) {
-							let $snapElementNode = $(snapElement.node);
-							$snapElementNode.addClass('highlight');
-						}
+			$.each(booths, (index, snapElement) => {				
 
-						snapElement.click(clickedElement => {
+				let boothAssignmentIndex = assgnedBoothIds.indexOf(snapElement.node.id * 1);
 
-							const $active = $(clickedElement.path[0]),
-								$target = $active.closest('g'),
-								targetId = $target.attr('id');
-							
-							$.ajax(`http://localhost:1000/api/aging-expo/booth-assignments/${targetId}`)
-								.done(() => {
-									console.log(`Booth number ${targetId} has been updated.`);
-								});
+				if (boothAssignmentIndex != -1) {
+					let $snapElementNode = $(snapElement.node);
+					$snapElementNode.addClass('highlight');
+				}
+				
+				callback(snapElement);
+			});
+		},
 
-							$target.toggleClass('highlight');
-							
-						});
-					});
-
+		svgElementClickHandler = clickedSnapElement => {
+			const $active = $(clickedSnapElement.path[0]),
+				$target = $active.closest('g'),
+				targetId = $target.attr('id');
+			
+			$.ajax(`http://localhost:1000/api/aging-expo/booth-assignments/${targetId}`)
+				.done(() => {
+					console.log(`Booth number ${targetId} has been updated.`);
 				});
 
-			});
-			
+			$target.toggleClass('highlight');
 		};
 
 	return {
-		displayInteractive: displayInteractive
+		display: display
 	};
 
 })(jQuery);
