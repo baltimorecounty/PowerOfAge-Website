@@ -27,7 +27,7 @@ baltimoreCounty.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				$parentElement = $(parentElement.node),
 				booths = parentElement.selectAll('svg > g > g');	
 
-			$.ajax('http://localhost:1300/dist/data.html').done((boothAssigmentData) => {
+			$.ajax('http://ba224964:1300/dist/data.html').done((boothAssigmentData) => {
 				let extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
 
 				highlightAssignedBooths(extractedBoothAssigmentData, booths, (snapElement, boothData) => {
@@ -98,28 +98,25 @@ baltimoreCounty.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				$flyouts.detach();
 			});
 			
-			$.ajax(`http://localhost:1000/api/aging-expo/booth-assignments/${targetId}`)
-				.done(() => {
-					const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.clientY}px; left: ${clickedSnapElement.clientX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p>${boothData.description}</p></div>`);
-					const $body = $('body');
+			const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.clientY}px; left: ${clickedSnapElement.clientX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p>${boothData.description}</p></div>`);
+			const $body = $('body');
 
-					$body.append($div);
+			$body.append($div);
 
-					$div.animate({
-						top: $body.height()/2 - $div.outerHeight()/2,
-						left: $body.width()/2 - $div.outerWidth()/2,
-						opacity: 1
-					}, 250);
+			$div.animate({
+				top: $body.height()/2 - $div.outerHeight()/2,
+				left: $body.width()/2 - $div.outerWidth()/2,
+				opacity: 1
+			}, 250);
 
-					$div.on('click', event => {
-						$div.animate({
-							top: 0,
-							opacity: 0
-						}, 250, () => {
-							$div.detach();
-						});
-					});
+			$div.on('click', event => {
+				$div.animate({
+					top: 0,
+					opacity: 0
+				}, 250, () => {
+					$div.detach();
 				});
+			});
 		};
 
 	return {
