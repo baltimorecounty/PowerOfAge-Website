@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="aging-expo-south-hall" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 790 728.9" style="enable-background:new 0 0 790 728.9;" xml:space="preserve">
+<svg version="1.1" id="aging-expo-south-hall" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px" y="0px" viewBox="0 0 790 728.9" style="enable-background:new 0 0 790 728.9;" xml:space="preserve">
 	<style type="text/css">
 		text {
 			font-family: 'Arial';
@@ -77,7 +78,10 @@
 		</g>
 		<g id="3000">
 			<path vector-effect="none" class="booth-background" d="M545,177h168v177H545V177" />
-			<text transform="matrix(1 0 0 1 572.3867 269.8516)" class="booth-label st0 booth-large-text">Feature Area 1</text>
+			<text transform="matrix(1 0 0 1 572.3867 269.8516)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="-10">Feature Area 1</tspan>
+				<tspan x="30" y="10">(3000)</tspan>
+			</text>
 		</g>
 		<g id="701">
 			<path vector-effect="none" class="booth-background" d="M161,207h32v28h-32V207" />
@@ -265,73 +269,86 @@
 		</g>
 		<g id="3011">
 			<path vector-effect="none" class="booth-background" d="M545,466h168v120H545V466" />
-			<text transform="matrix(1 0 0 1 572.3867 534.8516)" class="booth-label st0 booth-large-text">Feature Area 2</text>
+			<text transform="matrix(1 0 0 1 572.3867 534.8516)" class="booth-label st0 booth-large-text">
+				<tspan x="0" y="-10">Feature Area 2</tspan>
+				<tspan x="30" y="10">(3011)</tspan>
+			</text>
 		</g>
 		<g id="3001">
 			<path vector-effect="none" class="booth-background" d="M160.9,559.4h128v89h-128" />
 			<text transform="matrix(1 0 0 1 188 601)" class="booth-label st0 booth-large-text">
-				<tspan x="0" y="0">Senior</tspan>
-				<tspan x="0" y="20">Centers 2</tspan>
+				<tspan x="10" y="-10">Senior</tspan>
+				<tspan x="0" y="10">Centers 2</tspan>
+				<tspan x="12" y="30">(3001)</tspan>
 			</text>
 		</g>
 		<g id="3002">
 			<path vector-effect="none" class="booth-background" d="M195,40h210v106H195V40" />
-			<text transform="matrix(1 0 0 1 224.8633 96.8516)" class="booth-label st0 booth-large-text">Senior Craft Gallery</text>
+			<text transform="matrix(1 0 0 1 224.8633 96.8516)" class="booth-label st0 booth-large-text">
+				<tspan y="-10">Senior Craft Gallery</tspan>
+				<tspan x="50" y="10">(3002)</tspan>
+			</text>
 		</g>
 		<g id="3003">
 			<path vector-effect="none" class="booth-background" d="M0,177h131v110H0V177" />
 			<text transform="matrix(1 0 0 1 8 226.2515)" class="booth-label st0 booth-large-text">
-				<tspan x="0" y="0">Flu/Pneumonia</tspan>
-				<tspan x="0" y="20">Shot Clinic</tspan>
+				<tspan x="0" y="-10">Flu/Pneumonia</tspan>
+				<tspan x="15" y="10">Shot Clinic</tspan>
+				<tspan x="30" y="30">(3003)</tspan>
 			</text>
 
 		</g>
 		<g id="3004">
 			<path vector-effect="none" class="booth-background" d="M0,290.8h131v184H0V290.8" />
 			<text transform="matrix(1 0 0 1 18 338)" class="booth-label st0 booth-large-text">
-				<tspan x="0" y="0">Baltimore</tspan>
-				<tspan x="0" y="20">County</tspan>
-				<tspan x="0" y="40">Department</tspan>
-				<tspan x="0" y="60">of Health</tspan>
-				<tspan x="0" y="80">and Human</tspan>
-				<tspan x="0" y="100">Services</tspan>
+				<tspan x="7" y="-10">Baltimore</tspan>
+				<tspan x="15" y="10">County</tspan>
+				<tspan x="0" y="30">Department</tspan>
+				<tspan x="10" y="50">of Health</tspan>
+				<tspan x="2" y="70">and Human</tspan>
+				<tspan x="12" y="90">Services</tspan>
+				<tspan x="20" y="110">(3004)</tspan>
 			</text>
 		</g>
 		<g id="3005">
 			<path vector-effect="none" class="booth-background" d="M0,478.9h131v250H0V478.9" />
 			<text transform="matrix(1 0 0 1 20 569.4001)" class="booth-label st0 booth-large-text">
-				<tspan x="0" y="0">Senior</tspan>
-				<tspan x="0" y="20">Center</tspan>
-				<tspan x="0" y="40">Fitness</tspan>
-				<tspan x="0" y="60">Demo Stage</tspan>
+				<tspan x="20" y="-10">Senior</tspan>
+				<tspan x="19" y="10">Center</tspan>
+				<tspan x="17" y="30">Fitness</tspan>
+				<tspan x="0" y="50">Demo Stage</tspan>
+				<tspan x="22" y="70">(3005)</tspan>
 			</text>
 		</g>
 		<g id="3006">
 			<path vector-effect="none" class="booth-background" d="M263,287.1h142v205.7H263V287.1" />
 			<text transform="matrix(1 0 0 1 294 370.1035)" class="booth-label st0 booth-large-text">
-				<tspan x="0" y="0">Power of</tspan>
-				<tspan x="0" y="20">Age</tspan>
-				<tspan x="0" y="40">Art/Craft</tspan>
-				<tspan x="0" y="60">Show</tspan>
+				<tspan x="6" y="-10">Power of</tspan>
+				<tspan x="22" y="10">Age</tspan>
+				<tspan x="5" y="30">Art/Craft</tspan>
+				<tspan x="15" y="50">Show</tspan>
+				<tspan x="13" y="70">(3006)</tspan>
 			</text>
 		</g>
 		<g id="3007">
 			<path vector-effect="none" class="booth-background" d="M263,177h142v94H263V177" />
 			<text transform="matrix(1 0 0 1 295 220)" class="booth-label st0 booth-large-text">
-				<tspan x="0" y="0">Senior</tspan>
-				<tspan x="0" y="20">Centers 1</tspan>
+				<tspan x="10" y="-10">Senior</tspan>
+				<tspan x="0" y="10">Centers 1</tspan>
+				<tspan x="12" y="30">(3007)</tspan>
 			</text>
 		</g>
 		<g id="3008">
 			<path vector-effect="none" class="booth-background" d="M743,388.5h47v130h-47V388.5" />
 			<text transform="matrix(1 0 0 1 748 423.1484)" class="booth-label st0 booth-small-text">
-				<tspan x="0" y="0">Balt.</tspan>
-				<tspan x="0" y="15">County</tspan>
-				<tspan x="0" y="30">SHIP</tspan>
-				<tspan x="0" y="45">Part D</tspan>
-				<tspan x="0" y="60">Out</tspan>
-				<tspan x="0" y="75">-reach</tspan>
-			</text>
+				<tspan x="6" y="-10">Balt.</tspan>
+				<tspan x="0" y="5">County</tspan>
+				<tspan x="6" y="20">SHIP</tspan>
+				<tspan x="2" y="35">Part D</tspan>
+				<tspan x="6" y="50">Out</tspan>
+				<tspan x="2" y="65">-reach</tspan>
+				<tspan x="3" y="80">(3008)</tspan>
+			</text>		
 		</g>
 		<g id="1000">
 			<path vector-effect="none" class="booth-background" d="M331,559.4h40v89h-40V559.4" />
@@ -344,9 +361,10 @@
 		<g id="3009">
 			<path vector-effect="none" class="booth-background" d="M373,559.4h66v89h-66V559.4" />
 			<text transform="matrix(1 0 0 1 388 588.5998)" class="booth-label st0 booth-large-text">
-				<tspan x="0" y="0">Gift</tspan>
-				<tspan x="0" y="20">Pick</tspan>
-				<tspan x="0" y="40">Up</tspan>
+				<tspan x="3" y="-10">Gift</tspan>
+				<tspan x="2" y="10">Pick</tspan>
+				<tspan x="7" y="30">Up</tspan>
+				<tspan x="-5" y="50">(3009)</tspan>
 			</text>
 
 		</g>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="aging-expo-north-hall" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 844 717" style="enable-background:new 0 0 844 717;" xml:space="preserve">
+<svg version="1.1" id="aging-expo-north-hall" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px" y="0px" viewBox="0 0 844 717" style="enable-background:new 0 0 844 717;" xml:space="preserve">
 	<style type="text/css">
 		.booth-background {
 			fill: #04549B;
@@ -126,7 +127,10 @@
 		</g>
 		<g id="2000">
 			<path vector-effect="none" class="booth-background" d="M233,137h169v94H233V137" />
-			<text transform="matrix(1 0 0 1 264.8867 187.8516)" class="booth-label st1 booth-large-text">Feature Area 1</text>
+			<text transform="matrix(1 0 0 1 264.8867 187.8516)" class="booth-label st1 booth-large-text">
+				<tspan x="0" y="-10">Feature Area 1</tspan>
+				<tspan x="30" y="15">(2000)</tspan>
+			</text>
 		</g>
 		<g id="128">
 			<path vector-effect="none" class="booth-background" d="M438,146h32v66h-32V146" />
@@ -229,6 +233,7 @@
 			<text transform="matrix(1 0 0 1 76.8789 337)" class="booth-label st1 booth-large-text">
 				<tspan x="0" y="0">Feature</tspan>
 				<tspan x="5" y="25">Area 2</tspan>
+				<tspan x="6" y="50">(2001)</tspan>
 			</text>
 		</g>
 		<g id="602">
@@ -451,9 +456,12 @@
 			<path vector-effect="none" class="booth-background" d="M812,509h32v28h-32V509" />
 			<text transform="matrix(1 0 0 1 818.8228 528)" class="booth-label st1 booth-small-text">609</text>
 		</g>
-		<g id="2002">
+		<g id="2005">
 			<path vector-effect="none" class="booth-background" d="M63,569h339v88H63V569" />
-			<text transform="matrix(1 0 0 1 125.2566 616.8516)" class="booth-label st1 booth-large-text">Job Fair and Veteran Muster</text>
+			<text transform="matrix(1 0 0 1 125.2566 616.8516)" class="booth-label st1 booth-large-text">
+				<tspan y="-10">Job Fair and Veteran Muster</tspan>
+				<tspan x="80" y="15">(2005)</tspan>
+			</text>
 		</g>
 		<g id="318">
 			<path vector-effect="none" class="booth-background" d="M438,569h32v28h-32V569" />
@@ -539,25 +547,28 @@
 			<path vector-effect="none" class="booth-background" d="M370,689h32v28h-32V689" />
 			<text transform="matrix(1 0 0 1 377 708)" class="booth-label st1 booth-small-text">407</text>
 		</g>
-		<g id="2003">
+		<g id="2002">
 			<path vector-effect="none" class="booth-background" d="M188,263h89v166h-89V263" />
 			<text transform="matrix(1 0 0 1 201.3789 340.2515)" class="booth-label st1 booth-large-text">
-				<tspan x="0" y="0">Feature</tspan>
-				<tspan x="5" y="25">Area 3</tspan>
+				<tspan x="0" y="-10">Feature</tspan>
+				<tspan x="5" y="15">Area 3</tspan>
+				<tspan x="6" y="40">(2002)</tspan>
+			</text>
+		</g>
+		<g id="2003">
+			<path vector-effect="none" class="booth-background" d="M313,263h89v166h-89V263" />
+			<text transform="matrix(1 0 0 1 326.3789 340.2515)" class="booth-label st1 booth-large-text">
+				<tspan x="0" y="-10">Feature</tspan>
+				<tspan x="5" y="15">Area 4</tspan>
+				<tspan x="6" y="40">(2003)</tspan>
 			</text>
 		</g>
 		<g id="2004">
-			<path vector-effect="none" class="booth-background" d="M313,263h89v166h-89V263" />
-			<text transform="matrix(1 0 0 1 326.3789 340.2515)" class="booth-label st1 booth-large-text">
-				<tspan x="0" y="0">Feature</tspan>
-				<tspan x="5" y="25">Area 4</tspan>
-			</text>
-		</g>
-		<g id="2005">
 			<path vector-effect="none" class="booth-background" d="M541,263h134v166H541V263" />
 			<text transform="matrix(1 0 0 1 576.8789 340.2515)" class="booth-label st1 booth-large-text">
-				<tspan x="0" y="0">Feature</tspan>
-				<tspan x="5" y="25">Area 5</tspan>
+				<tspan x="0" y="-10">Feature</tspan>
+				<tspan x="5" y="15">Area 5</tspan>
+				<tspan x="6" y="40">(2004)</tspan>
 			</text>
 		</g>
 	</g>
