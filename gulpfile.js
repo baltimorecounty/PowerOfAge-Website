@@ -18,7 +18,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('process-scss', () => {
-	return gulp.src('stylesheets/master.scss')
+	return gulp.src(['stylesheets/master.scss', 'stylesheets/home.scss'])
 		.pipe(sass())
 		.pipe(cssnano({ autoprefixer: false }))
 		.pipe(rename({ suffix: '.min' }))
@@ -67,4 +67,9 @@ gulp.task('process-pug', () => {
 
 gulp.task('default', ['clean'], (callback) => {
 	return runSequence(['process-pug', 'process-scss', 'process-js', 'move-images'], callback);
+});
+
+gulp.task('watcher', () => {
+	gulp.watch('**/*.pug', ['default']);
+	gulp.watch('**/*.scss', ['default']);
 });

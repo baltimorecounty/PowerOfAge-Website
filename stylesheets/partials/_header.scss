@@ -1,0 +1,72 @@
+header {
+
+	.nav-bar {
+		background: $dark-gray;
+		padding: .5em 1em;
+
+		nav {
+			font-weight: 900;
+			position: relative;
+
+			ul {
+				display: inline-block;
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+
+				li {
+					display: inline-block;
+					line-height: 2em;
+					margin: 0 1em;
+					text-transform: uppercase;
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					&:last-child {
+						margin-right: 0;
+					}
+
+					a {
+						color: white;
+						text-decoration: none;
+
+						&:hover {
+							color: $tan;
+						}
+					}
+
+				}
+
+			}
+		}
+
+		.search {
+			position: relative;
+
+			input {
+				padding: .25em;
+				width: 100%;
+				border: none;
+			}
+
+			.search-icon {
+				position: absolute;
+				right: 5px;
+				top: 4px;
+				color: #999;
+			}
+		}
+
+	}
+
+	.social {
+
+		div {
+			text-align: right;
+			margin: .5em;
+		}		
+	}
+
+}

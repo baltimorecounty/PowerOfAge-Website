@@ -1,0 +1,13 @@
+body {
+	font-family: $main-font;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+p {
+	margin-top: 0;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
