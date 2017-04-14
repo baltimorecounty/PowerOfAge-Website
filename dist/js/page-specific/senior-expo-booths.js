@@ -2,65 +2,124 @@ namespacer('baltimoreCounty.pageSpecific');
 
 baltimoreCounty.pageSpecific.seniorExpoBooths = (($, undefined) => {
 	
-	const display = (svgFilePath, width, height, isInteractive) => {
+	const 
+		
+		/**
+		 * Load everything up and display the SVG.
+		 */
+		display = (svgFilePath, width, height) => {
 			if (!Snap) {
 				console.log('"Snap" library not loaded.');
 				return;
 			}
 
 			Snap.load(svgFilePath, fragment => {
-				snapLoadHandler(fragment, width, height, isInteractive);
+				snapLoadHandler(fragment, width, height);
 			});			
 		},
 
-		snapLoadHandler = (fragment, width, height, isInteractive) => {
+		/**
+		 * Load up the SVG, highlight the booths, and attach the click handler
+		 */
+		snapLoadHandler = (fragment, width, height) => {
 			const snap = Snap(width, height),
 				parentElement = snap.append(fragment),
 				$parentElement = $(parentElement.node),
 				booths = parentElement.selectAll('svg > g > g');	
 
-			if (isInteractive)
-				$parentElement.addClass('interactive');
+			$.ajax('http://localhost:1300/dist/data.html').done((boothAssigmentData) => {
+				let extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
 
-			$.ajax('http://localhost:1000/api/aging-expo/booth-assignments').done((boothAssigmentData) => {
-				highlightAssignedBooths(boothAssigmentData, booths, snapElement => {
-					if (isInteractive)
-						snapElement.click(svgElementClickHandler);
+				highlightAssignedBooths(extractedBoothAssigmentData, booths, (snapElement, boothData) => {
+					snapElement.click((clickEvent) => {
+						svgElementClickHandler(clickEvent, boothData);
+					});
 				});
 			});
 		},
 
-		highlightAssignedBooths = (boothAssigmentData, booths, callback) => {
-			let assgnedBoothIds = [];
+		/**
+		 * Extract data from the HTML table 
+		 */
+		extractDataFromHtml = htmlData => {
+			const $html = $(htmlData),
+				$tableRows = $html.find('tr'),
+				data = [];
 
-			$.each(boothAssigmentData, (index, booth) => {
-				assgnedBoothIds.push(booth.Booth_Id);
+			$.each($tableRows, (index, row) => {
+				const $cols = $(row).find('td'),
+					rowData = {
+						id: $cols.eq(0).text(),
+						name: $cols.eq(1).text(),
+						description: $cols.eq(2).text()
+					};
+				
+				data.push(rowData);
 			});
-			
+
+			return data;
+		},
+
+		/**
+		 * Highlight all of the booths indicated on the HTML page
+		 */
+		highlightAssignedBooths = (boothAssigmentData, booths, callback) => {
+			let assignedBoothIds = [];
+
+			$.each(boothAssigmentData, (index, boothDataItem) => {
+				assignedBoothIds.push(boothDataItem.id);
+			});
+
 			$.each(booths, (index, snapElement) => {				
 
-				let boothAssignmentIndex = assgnedBoothIds.indexOf(snapElement.node.id * 1);
+				let boothAssignmentIndex = assignedBoothIds.indexOf(snapElement.node.id);
 
 				if (boothAssignmentIndex != -1) {
 					let $snapElementNode = $(snapElement.node);
 					$snapElementNode.addClass('highlight');
-				}
-				
-				callback(snapElement);
+					callback(snapElement, boothAssigmentData[boothAssignmentIndex]);
+				}				
 			});
 		},
 
-		svgElementClickHandler = clickedSnapElement => {
+		/**
+		 * Click handler for the selected booths. 
+		 */
+		svgElementClickHandler = (clickedSnapElement, boothData) => {
 			const $active = $(clickedSnapElement.path[0]),
 				$target = $active.closest('g'),
-				targetId = $target.attr('id');
+				targetId = $target.attr('id'),
+				$flyouts = $('.flyout');
+
+			$flyouts.animate({
+				top: 0,
+				opacity: 0
+			}, 250, () => {
+				$flyouts.detach();
+			});
 			
 			$.ajax(`http://localhost:1000/api/aging-expo/booth-assignments/${targetId}`)
 				.done(() => {
-					console.log(`Booth number ${targetId} has been updated.`);
-				});
+					const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.clientY}px; left: ${clickedSnapElement.clientX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p>${boothData.description}</p></div>`);
+					const $body = $('body');
 
-			$target.toggleClass('highlight');
+					$body.append($div);
+
+					$div.animate({
+						top: $body.height()/2 - $div.outerHeight()/2,
+						left: $body.width()/2 - $div.outerWidth()/2,
+						opacity: 1
+					}, 250);
+
+					$div.on('click', event => {
+						$div.animate({
+							top: 0,
+							opacity: 0
+						}, 250, () => {
+							$div.detach();
+						});
+					});
+				});
 		};
 
 	return {
