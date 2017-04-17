@@ -1,0 +1,99 @@
+.nav-bar {
+	background: $green;
+
+	nav {
+		font-weight: 900;
+		position: relative;
+
+		ul {
+			display: inline-block;
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			li.has-dropdown {
+				display: inline-block;
+				margin: 0 1em;
+				padding: 0;
+				text-transform: uppercase;
+				position: relative;
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				a {
+					color: white;
+					text-decoration: none;
+					display: inline-block;
+					padding: .75em;
+					
+					&:hover {
+						color: $tan;
+					}
+				}
+
+				.dropdown {
+					position: absolute;
+					left:0;
+					top: 46px;
+					z-index: 100;
+					background-color: #ccc;
+					display: none;
+
+					li {
+						display: list-item;
+						margin: 0;
+						border-top: 2px solid white;
+
+						a {
+							display: inline-block;
+							padding: 5px 10px;
+							color: black;
+							font-weight: 700;
+							min-width: 15em;
+
+							&:hover {
+								color: $tan;
+							} 
+						}
+					}
+				}
+
+				&:hover {
+					background-color: #ccc;
+					color: black;
+
+					.dropdown {
+						display: block;
+					}
+				}
+
+			}
+
+		}
+	}
+
+	.search {
+		position: relative;
+
+		input {
+			margin: .5em;
+			padding: .25em;
+			width: 100%;
+			border: none;
+		}
+
+		.search-icon {
+			position: absolute;
+			right: 5px;
+			top: 13px;
+			color: #999;
+		}
+	}
+
+}
