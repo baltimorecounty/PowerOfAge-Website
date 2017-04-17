@@ -1,9 +1,15 @@
+.hero-image {
+	background: url(/dist/images/grumpy-cat.jpg);
+	height: 350px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 .hero-caption {
 	background: $tan;
 	padding: 1.5em;
 	color: white;
-	
+
 	.hero-caption-header {
 		text-transform: uppercase;
 		font-weight: 900;

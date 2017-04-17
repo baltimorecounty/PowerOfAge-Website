@@ -60,7 +60,7 @@ gulp.task('move-images',  () => {
 });
 
 gulp.task('process-pug', () => {
-	return gulp.src('mockups/**/*.pug')
+	return gulp.src(['mockups/*.pug', 'mockups/support/*.pug'])
 		.pipe(pug())
 		.pipe(gulp.dest('dist'));
 });
