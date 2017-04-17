@@ -1,6 +1,6 @@
-namespacer('baltimoreCounty.pageSpecific');
+namespacer('seniorExpo.pageSpecific');
 
-baltimoreCounty.pageSpecific.seniorExpoBooths = (($, undefined) => {
+seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 	
 	const 
 		
