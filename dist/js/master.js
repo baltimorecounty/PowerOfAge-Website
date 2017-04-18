@@ -20,3 +20,4 @@ var namespacer = function namespacer(ns) {
 		parent = parent[nsPart];
 	}
 };
+"use strict";

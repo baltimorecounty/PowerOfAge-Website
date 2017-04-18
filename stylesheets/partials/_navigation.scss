@@ -1,9 +1,17 @@
 .nav-bar {
 	background: $green;
 
+	.hamburger-menu {
+		color: white;
+		float: right;
+		padding: .5em;
+		display: none;
+	}
+
 	nav {
 		font-weight: 900;
 		position: relative;
+
 
 		ul {
 			display: inline-block;
@@ -13,10 +21,11 @@
 
 			li.has-dropdown {
 				display: inline-block;
-				margin: 0 1em;
+				margin: 0 .5em;
 				padding: 0;
 				text-transform: uppercase;
 				position: relative;
+				color: white; 
 
 				&:first-child {
 					margin-left: 0;
@@ -30,8 +39,14 @@
 					color: white;
 					text-decoration: none;
 					display: inline-block;
+					padding-right: 5px;
 					padding: .75em;
-					
+
+					i {
+						display: inline-block;
+						margin-left: 5px;
+					}
+
 					&:hover {
 						color: $tan;
 					}
@@ -40,21 +55,21 @@
 				.dropdown {
 					position: absolute;
 					left:0;
-					top: 46px;
+					top: 48px;
 					z-index: 100;
-					background-color: #ccc;
+					background-color: #333;
 					display: none;
-
+										
 					li {
 						display: list-item;
 						margin: 0;
-						border-top: 2px solid white;
+						border-top: 1px solid #666;
 
 						a {
 							display: inline-block;
 							padding: 5px 10px;
-							color: black;
-							font-weight: 700;
+							color: white;
+							font-weight: 100;
 							min-width: 15em;
 
 							&:hover {
@@ -65,8 +80,8 @@
 				}
 
 				&:hover {
-					background-color: #ccc;
-					color: black;
+					background-color: #333;
+					color: $tan;
 
 					.dropdown {
 						display: block;
@@ -96,4 +111,72 @@
 		}
 	}
 
+}
+
+@media (max-width: 1060px) {
+	.nav-bar {
+
+		.container {
+			padding: 0 5px;
+		}
+
+		nav {
+			position: absolute;
+			z-index: 100;
+			background-color: #0f9092;
+			top: 3em;
+			right: 0;
+
+			ul {
+				display: block; 
+
+				li.has-dropdown {
+					display: block;
+					margin: 0;
+
+					&:hover {
+						.dropdown {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+
+		.hamburger-menu {
+			display: block;
+			margin-left: .5em;
+			display: flex;
+			flex: 1 1 auto;
+		}
+
+		.search.pull-right {
+			float: none;
+			/*width: 90%;*/
+			display: flex;
+			flex: 1 1 auto;
+
+			.search-icon {
+				top: 15px;
+				right: 15px;
+			}
+
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.nav-bar {
+		.container {
+			padding: 0;
+
+			nav {
+				width: 100%;
+			}
+
+			.search.pull-right {
+
+			}
+		}
+	}
 }

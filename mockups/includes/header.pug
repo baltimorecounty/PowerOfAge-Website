@@ -23,28 +23,25 @@ html
 
 					.container
 
-						.row
+						.row.masthead
 
-							.col-md-3.col-xs-12
+							.col-sm-12
 
-								img(src="/dist/images/grumpy-cat.jpg" width=250 height=80)
+								.logo
+									img(src="/dist/images/logo-header.png")
 
-							.col-md-8.col-xs-10
+								.date 
+									| OCTOBER 26 AND 27
+									br
+									span MARYLAND STATE FAIRGROUNDS
 
-								div BALTIMORE COUNTY SENIOR EXPO
-								div OCTOBER 26 AND 27 | MARYLAND STATE FAIRGROUNDS
-
-							.col-md-1.col-xs-2.social
-
-								div
-
-									a(href='#')
-										img(src="/dist/images/grumpy-cat.jpg" width=32 height=32)
-
-								div
-
-									a(href='#')
-										img(src="/dist/images/grumpy-cat.jpg" width=32 height=32)
+								.social
+									div
+										a(href='#')
+											img(src="/dist/images/social-facebook.png")
+									div
+										a(href='#')
+											img(src="/dist/images/social-email.png")
 
 					.row
 
@@ -52,10 +49,16 @@ html
 							
 							.container
 
+								.hamburger-menu
+									i.fa.fa-bars.fa-2x
+
 								nav.pull-left
+										
 									ul
 										li.has-dropdown
-											a(href="#") Music and Fitness
+											a(href="#") 
+												| Music and Fitness
+												i.fa.fa-caret-right
 											ul.dropdown
 												li
 													a(href="#") Menu Option 1
@@ -67,7 +70,9 @@ html
 													a(href="#") Menu Option 4
 
 										li.has-dropdown
-											a(href="#") Events and Services
+											a(href="#") 
+												| Events and Services
+												i.fa.fa-caret-right
 											ul.dropdown
 												li
 													a(href="#") Menu Option 1
@@ -79,7 +84,9 @@ html
 													a(href="#") Menu Option 4
 
 										li.has-dropdown
-											a(href="#") Admission and Travel
+											a(href="#") 
+												| Admission and Travel
+												i.fa.fa-caret-right
 											ul.dropdown
 												li
 													a(href="#") Menu Option 1
@@ -91,7 +98,9 @@ html
 													a(href="#") Menu Option 4
 
 										li.has-dropdown
-											a(href="#") Exhibitors
+											a(href="#") 
+												| Exhibitors
+												i.fa.fa-caret-right
 											ul.dropdown
 												li
 													a(href="#") Menu Option 1
