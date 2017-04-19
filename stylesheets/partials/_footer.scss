@@ -27,10 +27,11 @@ footer {
 				font-size: .6em;
 
 				a {
+					&:link, &:visited {
 					color: white;
-					text-decoration: none;
+					}
 
-					&:hover {
+					&:hover, &:active {
 						color: $tan;
 					}
 				}

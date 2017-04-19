@@ -1,0 +1,25 @@
+button, input[type="button"], input[type="submit"] {
+	display: block;
+	margin-bottom: 20px;
+	border: none;
+	background: $green;
+	color: white;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: .5em 1em;
+
+	&:after {
+		font-family: 'FontAwesome';
+		content: "\f0da";
+		color: $tan;
+		margin-left: .5em;
+	}
+
+	&:hover {
+		background: $tan;
+	}
+
+	&:hover:after {
+		color: white;
+	}
+}

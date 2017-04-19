@@ -36,7 +36,7 @@ gulp.task('minify-js', ['process-js', 'move-page-specific-js'], () => {
 });
 
 gulp.task('process-js', () => {
-	return gulp.src(['js/utility/*.js', 'js/**/*.js', '!js/vendor/**/*.js', '!js/page-specific/**/*.js'])
+	return gulp.src(['js/utility/namespacer.js', 'js/utility/*.js', 'js/**/*.js', '!js/vendor/**/*.js', '!js/page-specific/**/*.js'])
 		.pipe(jshint({
 			esversion: 6
 		}))

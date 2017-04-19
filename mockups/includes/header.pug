@@ -1,116 +1,98 @@
-doctype html
+header.row
 
-html
+	.col-md-12
 
-	head
+		.container
 
-		meta(name='viewport' content='width=device-width, initial-scale=1')
-		link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
-		link(href="https://fonts.googleapis.com/css?family=Raleway:400,600,600i,900" rel="stylesheet")
-		link(href='/dist/css/master.min.css' rel='stylesheet')
-		link(href='/dist/css/home.min.css' rel='stylesheet')
+			.row.masthead
 
-		script(src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous")
-		script(src="/dist/js/master.min.js")
+				.col-sm-12
 
-	body
+					.logo
+						a(href="/dist/index.html")
+							img(src="/dist/images/logo-header.png") 
 
-		.container-fluid
+					.date 
+						| OCTOBER 26 AND 27
+						br
+						span MARYLAND STATE FAIRGROUNDS
 
-			header.row
+					.social
+						div
+							a(href='#')
+								img(src="/dist/images/social-facebook.png")
+						div
+							a(href='#')
+								img(src="/dist/images/social-email.png")
 
-				.col-md-12
+		.row
 
-					.container
+			.col-md-12.nav-bar
+				
+				.container
 
-						.row.masthead
+					.hamburger-menu
+						i.fa.fa-bars.fa-2x
 
-							.col-sm-12
-
-								.logo
-									img(src="/dist/images/logo-header.png")
-
-								.date 
-									| OCTOBER 26 AND 27
-									br
-									span MARYLAND STATE FAIRGROUNDS
-
-								.social
-									div
-										a(href='#')
-											img(src="/dist/images/social-facebook.png")
-									div
-										a(href='#')
-											img(src="/dist/images/social-email.png")
-
-					.row
-
-						.col-md-12.nav-bar
+					nav.pull-left
 							
-							.container
+						ul
+							li.has-dropdown
+								a(href="#") 
+									| Something
+									i.fa.fa-caret-right
+								ul.dropdown
+									li
+										a(href="#") Menu Option 1
+									li
+										a(href="#") Menu Option 2
+									li
+										a(href="#") Menu Option 3
+									li
+										a(href="#") Menu Option 4
 
-								.hamburger-menu
-									i.fa.fa-bars.fa-2x
+							li.has-dropdown
+								a(href="#") 
+									| Something
+									i.fa.fa-caret-right
+								ul.dropdown
+									li
+										a(href="#") Menu Option 1
+									li
+										a(href="#") Menu Option 2
+									li
+										a(href="#") Menu Option 3
+									li
+										a(href="#") Menu Option 4
 
-								nav.pull-left
-										
-									ul
-										li.has-dropdown
-											a(href="#") 
-												| Something
-												i.fa.fa-caret-right
-											ul.dropdown
-												li
-													a(href="#") Menu Option 1
-												li
-													a(href="#") Menu Option 2
-												li
-													a(href="#") Menu Option 3
-												li
-													a(href="#") Menu Option 4
+							li.has-dropdown
+								a(href="#") 
+									| Something
+									i.fa.fa-caret-right
+								ul.dropdown
+									li
+										a(href="#") Menu Option 1
+									li
+										a(href="#") Menu Option 2
+									li
+										a(href="#") Menu Option 3
+									li
+										a(href="#") Menu Option 4
 
-										li.has-dropdown
-											a(href="#") 
-												| Something
-												i.fa.fa-caret-right
-											ul.dropdown
-												li
-													a(href="#") Menu Option 1
-												li
-													a(href="#") Menu Option 2
-												li
-													a(href="#") Menu Option 3
-												li
-													a(href="#") Menu Option 4
+							li.has-dropdown
+								a(href="#") 
+									| Something
+									i.fa.fa-caret-right
+								ul.dropdown
+									li
+										a(href="#") Menu Option 1
+									li
+										a(href="#") Menu Option 2
+									li
+										a(href="#") Menu Option 3
+									li
+										a(href="#") Menu Option 4
 
-										li.has-dropdown
-											a(href="#") 
-												| Something
-												i.fa.fa-caret-right
-											ul.dropdown
-												li
-													a(href="#") Menu Option 1
-												li
-													a(href="#") Menu Option 2
-												li
-													a(href="#") Menu Option 3
-												li
-													a(href="#") Menu Option 4
-
-										li.has-dropdown
-											a(href="#") 
-												| Something
-												i.fa.fa-caret-right
-											ul.dropdown
-												li
-													a(href="#") Menu Option 1
-												li
-													a(href="#") Menu Option 2
-												li
-													a(href="#") Menu Option 3
-												li
-													a(href="#") Menu Option 4
-
-								.search.pull-right
-									input(type="text" id="search-box" aria-label="Search" placeholder="Search")
-									i(class="fa fa-search search-icon")
+					.search.pull-right
+						input(type="text" id="search-box" aria-label="Search" placeholder="Search")
+						i(class="fa fa-search search-icon")

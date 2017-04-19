@@ -1,9 +1,20 @@
 @import "vendor/bootstrap.scss";
 
+/* Atoms */
 @import "partials/variables";
+@import "partials/flexbox";
 @import "partials/body";
+
+/* Molecules */
+@import "partials/buttons";
+@import "partials/lists";
+@import "partials/links";
+@import "partials/tables";
 @import "partials/headings";
+
+/* Cells */
 @import "partials/header";
 @import "partials/navigation";
 @import "partials/reservationator";
+@import "partials/feature";
 @import "partials/footer";

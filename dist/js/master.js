@@ -22,6 +22,26 @@ var namespacer = function namespacer(ns) {
 };
 'use strict';
 
+namespacer('seniorExpo.utility');
+
+seniorExpo.utility.flexDetect = function (document, $, undefined) {
+
+	var init = function init() {
+		var hasFlex = document.createElement('div').style.flex !== undefined;
+
+		if (!hasFlex) {
+			$('body').addClass('no-flex');
+		}
+	};
+
+	return { init: init };
+}(document, jQuery);
+
+$(function () {
+	seniorExpo.utility.flexDetect.init();
+});
+'use strict';
+
 namespacer('seniorExpo');
 
 seniorExpo.nav = function ($, undefined) {
