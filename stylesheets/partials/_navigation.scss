@@ -113,7 +113,7 @@
 
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 875px) {
 	.nav-bar {
 
 		.container {
@@ -128,7 +128,7 @@
 			right: 0;
 
 			ul {
-				display: block; 
+				display: none; 
 
 				li.has-dropdown {
 					display: block;
@@ -141,7 +141,23 @@
 					}
 				}
 			}
+
+			&.active {
+				ul {
+					display: block;
+
+					li.has-dropdown {
+						
+						.dropdown.active {
+							display: block;
+							position: static;
+						}
+					}
+				}
+			}
 		}
+
+
 
 		.hamburger-menu {
 			display: block;

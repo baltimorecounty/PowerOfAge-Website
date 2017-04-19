@@ -29,7 +29,8 @@ seniorExpo.nav = function ($, undefined) {
 	var dropdownDisplayHandler = function dropdownDisplayHandler(event) {
 		var $target = $(event.currentTarget),
 		    $dropdown = $target.find('.dropdown'),
-		    isActive = $dropdown.is('.active');
+		    isActive = $dropdown.is('.active'),
+		    isNavActive = $target.closest('nav').is('.active');
 
 		if (isActive) {
 			if (event.type === 'click' || event.type === 'mouseout') {
@@ -43,11 +44,20 @@ seniorExpo.nav = function ($, undefined) {
 			}
 		}
 	},
+	    menuDisplayHandler = function menuDisplayHandler(event) {
+		var $target = $(event.currentTarget),
+		    $menu = $target.siblings('nav'),
+		    $menuItems = $menu.find('.has-dropdown');
+
+		$menu.toggleClass('active');
+	},
 	    init = function init() {
 		var $menuItems = $('nav .has-dropdown'),
-		    $dropdowns = $menuItems.find('.dropdown');
+		    $dropdowns = $menuItems.find('.dropdown'),
+		    $hamburgerMenu = $('.hamburger-menu');
 
 		$menuItems.on('click mouseover mouseout', dropdownDisplayHandler);
+		$hamburgerMenu.on('click', menuDisplayHandler);
 	};
 
 	return { init: init };
