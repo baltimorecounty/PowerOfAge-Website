@@ -77,15 +77,15 @@
 							} 
 						}
 					}
+
+					&.active {
+						display: block;
+					}
 				}
 
 				&:hover {
 					background-color: #333;
-					color: $tan;
-
-					.dropdown {
-						display: block;
-					}
+					color: $tan;					
 				}
 
 			}
