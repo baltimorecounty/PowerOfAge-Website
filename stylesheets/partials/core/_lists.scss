@@ -1,15 +1,17 @@
-ul {
-	list-style-type: none;
-	padding-left: 15px;
+#main {
+	ul {
+		list-style-type: none;
+		padding-left: 15px;
 
-	li:before {
-		content: "";
-		line-height: 1em;
-		width: .4em;
-		height: .4em;
-		background-color: $green;
-		float: left;
-		margin: .5em .5em 0;
-		border-radius: 50%;
+		li:before {
+			content: "";
+			line-height: 1em;
+			width: .4em;
+			height: .4em;
+			background-color: $green;
+			float: left;
+			margin: .5em .5em 0;
+			border-radius: 50%;
+		}
 	}
 }

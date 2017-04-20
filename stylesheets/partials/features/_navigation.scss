@@ -99,6 +99,7 @@
 		input {
 			margin: .5em;
 			padding: .25em;
+			padding-right: 2em;
 			width: 100%;
 			border: none;
 		}
@@ -106,14 +107,14 @@
 		.search-icon {
 			position: absolute;
 			right: 5px;
-			top: 13px;
+			top: 15px;
 			color: #999;
 		}
 	}
 
 }
 
-@media (max-width: 875px) {
+@media (max-width: 975px) {
 	.nav-bar {
 
 		.container {
