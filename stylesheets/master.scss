@@ -1,20 +1,20 @@
-@import "vendor/bootstrap.scss";
 
 /* Atoms */
-@import "partials/variables";
-@import "partials/flexbox";
-@import "partials/body";
+@import "vendor/bootstrap";
+@import "partials/core/variables";
+@import "partials/core/flexbox";
 
 /* Molecules */
-@import "partials/buttons";
-@import "partials/lists";
-@import "partials/links";
-@import "partials/tables";
-@import "partials/headings";
+@import "partials/core/body";
+@import "partials/core/buttons";
+@import "partials/core/lists";
+@import "partials/core/links";
+@import "partials/core/tables";
+@import "partials/core/headings";
 
 /* Cells */
-@import "partials/header";
-@import "partials/navigation";
-@import "partials/reservationator";
-@import "partials/feature";
-@import "partials/footer";
+@import "partials/features/header";
+@import "partials/features/navigation";
+@import "partials/features/reservationator";
+@import "partials/features/feature";
+@import "partials/features/footer";
