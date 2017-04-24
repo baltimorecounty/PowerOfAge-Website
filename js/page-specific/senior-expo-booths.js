@@ -27,7 +27,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				$parentElement = $(parentElement.node),
 				booths = parentElement.selectAll('svg > g > g');	
 
-			$.ajax('http://ba224964:1300/dist/data.html').done((boothAssigmentData) => {
+			$.ajax('http://ba224964:1000/api/aging-expo/booth-assignments').done((boothAssigmentData) => {
 				let extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
 
 				highlightAssignedBooths(extractedBoothAssigmentData, booths, (snapElement, boothData) => {
@@ -42,9 +42,17 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 		 * Extract data from the HTML table 
 		 */
 		extractDataFromHtml = htmlData => {
-			const $html = $(htmlData),
-				$tableRows = $html.find('tr'),
+			const htmlArray = Array.prototype.slice.call($(htmlData)),
 				data = [];
+
+			let $tableRows;
+
+			for (let i = 0; i < htmlArray.length; i++) {
+				if (htmlArray[i].id === "SEContentResults") {
+					$tableRows = $(htmlArray[i]).find('tbody tr');
+					break;
+				}
+			}
 
 			$.each($tableRows, (index, row) => {
 				const $cols = $(row).find('td'),
