@@ -15,8 +15,10 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 			return;
 		}
 
+		var floorplan = Snap('.floorplan');
+
 		Snap.load(svgFilePath, function (fragment) {
-			snapLoadHandler(fragment, width, height);
+			snapLoadHandler(fragment, floorplan, width, height);
 		});
 	},
 
@@ -24,9 +26,8 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 	/**
   * Load up the SVG, highlight the booths, and attach the click handler
   */
-	snapLoadHandler = function snapLoadHandler(fragment, width, height) {
-		var snap = Snap(width, height),
-		    parentElement = snap.append(fragment),
+	snapLoadHandler = function snapLoadHandler(fragment, floorplan, width, height) {
+		var parentElement = floorplan.append(fragment),
 		    $parentElement = $(parentElement.node),
 		    booths = parentElement.selectAll('svg > g > g');
 
@@ -38,6 +39,8 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 					svgElementClickHandler(clickEvent, boothData);
 				});
 			});
+		}).fail(function (errorResponse) {
+			console.log(errorResponse);
 		});
 	},
 
@@ -57,7 +60,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 				break;
 			}
 		}
-		console.log($tableRows);
+
 		$.each($tableRows, function (index, row) {
 			var $cols = $(row).find('td'),
 			    rowData = {

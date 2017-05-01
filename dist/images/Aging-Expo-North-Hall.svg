@@ -4,7 +4,7 @@
     x="0px" y="0px" viewBox="0 0 844 717" style="enable-background:new 0 0 844 717;" xml:space="preserve">
 	<style type="text/css">
 		.booth-background {
-			fill: #04549B;
+			fill: #eee;
 		}
 
 		text {
@@ -16,7 +16,7 @@
 		}
 
 		.booth-label {
-			fill: #FFFFFF;
+			fill: #222222;
 		}
 
 		.booth-small-text {

@@ -13,29 +13,34 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				return;
 			}
 
+			const floorplan = Snap('.floorplan');
+
 			Snap.load(svgFilePath, fragment => {
-				snapLoadHandler(fragment, width, height);
+				snapLoadHandler(fragment, floorplan, width, height);
 			});			
 		},
 
 		/**
 		 * Load up the SVG, highlight the booths, and attach the click handler
 		 */
-		snapLoadHandler = (fragment, width, height) => {
-			const snap = Snap(width, height),
-				parentElement = snap.append(fragment),
+		snapLoadHandler = (fragment, floorplan, width, height) => {
+			const parentElement = floorplan.append(fragment),
 				$parentElement = $(parentElement.node),
 				booths = parentElement.selectAll('svg > g > g');	
 
-			$.ajax('http://ba224964:1000/api/aging-expo/booth-assignments').done((boothAssigmentData) => {
-				let extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
+			$.ajax('http://ba224964:1000/api/aging-expo/booth-assignments')
+				.done(boothAssigmentData => {
+					let extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
 
-				highlightAssignedBooths(extractedBoothAssigmentData, booths, (snapElement, boothData) => {
-					snapElement.click((clickEvent) => {
-						svgElementClickHandler(clickEvent, boothData);
+					highlightAssignedBooths(extractedBoothAssigmentData, booths, (snapElement, boothData) => {
+						snapElement.click((clickEvent) => {
+							svgElementClickHandler(clickEvent, boothData);
+						});
 					});
+				})
+				.fail(errorResponse => {
+					console.log(errorResponse);
 				});
-			});
 		},
 
 		/**

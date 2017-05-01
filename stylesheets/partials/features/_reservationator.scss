@@ -1,8 +1,8 @@
-body > svg {
+.floorplan > svg {
 	margin: 0 auto;
 	display: block;
 		
-	#aging-expo-north-hall, #aging-expo-south-hall {
+	&#aging-expo-north-hall, &#aging-expo-south-hall {
 		font-family: Arial, Helvetica, sans-serif;
 		font-weight: bold;
 		
@@ -10,11 +10,11 @@ body > svg {
 			cursor: pointer;
 
 			.booth-label {
-				fill: black;
+				fill: white;
 			}
 
 			.booth-background {
-				fill: rgb(254, 209, 67);
+				fill: $green;
 			}
 									
 		}

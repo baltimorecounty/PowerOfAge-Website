@@ -12,11 +12,11 @@
 		}
 
 		.booth-background {
-			fill: #04549B;
+			fill: #eee;
 		}
 
 		.booth-label {
-			fill: #FFFFFF;
+			fill: #222222;
 		}
 
 		.booth-small-text {
