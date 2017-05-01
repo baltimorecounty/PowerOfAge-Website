@@ -113,7 +113,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 
 		$flyouts.hide();
 
-		var $div = $('<div class="flyout" style="top: ' + clickedSnapElement.pageY + 'px; left: ' + clickedSnapElement.pageX + 'px"><i class="fa fa-times fa-2x exit"></i><h2>' + boothData.name + '</h2><p>' + boothData.description + '</p></div>');
+		var $div = $('<div class="flyout" style="top: ' + clickedSnapElement.pageY + 'px; left: ' + clickedSnapElement.pageX + 'px"><i class="fa fa-times fa-2x exit"></i><h2>' + boothData.name + '</h2><p><strong>Booth: ' + boothData.id + '</strong></p><p>' + boothData.description + '</p></div>');
 		var $body = $('body');
 
 		$body.append($div);
