@@ -24,14 +24,13 @@
 }
 
 .flyout {
-	position: absolute; 
+	position: absolute;
 	box-shadow: 0 10px 50px #666; 
 	border-radius: 8px; 
 	background: white; 
 	padding: 1em; 
 	z-index: 100; 
 	max-width: 600px;
-	opacity: 0;
 
 	h2 { 
 		margin-bottom: .5em;

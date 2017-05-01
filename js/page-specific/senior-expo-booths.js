@@ -36,6 +36,9 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 						snapElement.click((clickEvent) => {
 							svgElementClickHandler(clickEvent, boothData);
 						});
+						snapElement.hover((clickEvent) => {
+							svgElementClickHandler(clickEvent, boothData);
+						});
 					});
 				})
 				.fail(errorResponse => {
@@ -103,32 +106,18 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				$target = $active.closest('g'),
 				targetId = $target.attr('id'),
 				$flyouts = $('.flyout');
-
-			$flyouts.animate({
-				top: 0,
-				opacity: 0
-			}, 250, () => {
-				$flyouts.detach();
-			});
 			
-			const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.clientY}px; left: ${clickedSnapElement.clientX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p>${boothData.description}</p></div>`);
+			$flyouts.hide();
+
+			const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.pageY}px; left: ${clickedSnapElement.pageX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p>${boothData.description}</p></div>`);
 			const $body = $('body');
 
 			$body.append($div);
 
-			$div.animate({
-				top: $body.height()/2 - $div.outerHeight()/2,
-				left: $body.width()/2 - $div.outerWidth()/2,
-				opacity: 1
-			}, 250);
+			$div.show();
 
 			$div.on('click', event => {
-				$div.animate({
-					top: 0,
-					opacity: 0
-				}, 250, () => {
-					$div.detach();
-				});
+				$div.hide();
 			});
 		};
 
