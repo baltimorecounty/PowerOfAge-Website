@@ -4,25 +4,24 @@ header {
 		
 		font-family: 'Impact', $main-font, Arial, Helvetica, sans-serif;
 		font-weight: 400;
-		font-size: 2em;
-		line-height: .95em;
 		padding: 1em 0;
 
 		.logo {
 			float: left;
-			margin-right: .5em;
+			margin-right: 1em;
 		}
 
-		.date {
+		.date-address {
 			float: left;
 			text-align: left;
 			margin-right: .5em;
-			margin-top: 18px;
 			font-size: 1.3em;
+			line-height: 1em;
+			color: $green;			
 
 			span {
-				color: #999;
-				font-size: .7em;
+				font-size: 1.8em;
+				line-height: 1.1em;
 			}
 		}
 	}
@@ -38,15 +37,15 @@ header {
 	}
 }
 
-@media (max-width: 799px) {
+@media (max-width: 889px) {
 	header {
 		.masthead {
-			padding: .25em 0;
+			padding: .5em 0;
 
-			.date {
+			.date-address {
 				float: none;
 				clear: both;
-				padding-top: 0;
+				padding: .5em 0;
 				text-align: center;
 			}
 

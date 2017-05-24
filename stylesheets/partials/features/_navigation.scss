@@ -94,21 +94,27 @@
 	}
 
 	.search {
-		position: relative;
 
 		input {
-			margin: .5em;
+			margin: .5em 0 .5em .5em;
 			padding: .25em;
-			padding-right: 2em;
-			width: 100%;
 			border: none;
 		}
 
 		.search-icon {
-			position: absolute;
-			right: 5px;
-			top: 15px;
-			color: #999;
+			color: white;
+		}
+
+		button {
+			background-color: $tan;
+			display: inline-block;
+			margin-bottom: 0;
+			padding: .25em .25em .25em .5em;
+			text-align: center;
+
+			&::after {
+				content: '';
+			}
 		}
 	}
 
@@ -169,13 +175,15 @@
 
 		.search.pull-right {
 			float: none;
-			/*width: 90%;*/
 			display: flex;
 			flex: 1 1 auto;
 
-			.search-icon {
-				top: 15px;
-				right: 15px;
+			input {
+				width: 100%;
+			}
+
+			button {
+				margin: .5em 0;
 			}
 
 		}
