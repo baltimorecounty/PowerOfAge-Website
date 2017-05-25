@@ -3,15 +3,22 @@
 
 	.hamburger-menu {
 		color: white;
-		float: right;
+		float: left;
 		padding: .5em;
 		display: none;
+		cursor: pointer;
+
+		span {
+			font-weight: 700;
+			font-size: 1.4em;
+			line-height: 1.4em;
+			padding-right: .5em;		
+		}
 	}
 
 	nav {
 		font-weight: 900;
 		position: relative;
-
 
 		ul {
 			display: inline-block;
@@ -35,17 +42,21 @@
 					margin-right: 0;
 				}
 
+				i {
+					display: inline-block;
+					margin-right: 5px;
+					position: absolute;
+					right: 5px;
+					top: 15px;
+					width: 10px;
+				}
+
 				a {
 					color: white;
 					text-decoration: none;
 					display: inline-block;
-					padding-right: 5px;
-					padding: .75em;
-
-					i {
-						display: inline-block;
-						margin-left: 5px;
-					}
+					padding: .75em 1em .75em .75em;
+					width: 100%;
 
 					&:hover {
 						color: $tan;
@@ -125,7 +136,7 @@
 
 }
 
-@media (max-width: 1179px) {
+@media (max-width: 1154px) {
 	.nav-bar {
 
 		.container {
@@ -133,11 +144,11 @@
 		}
 
 		nav {
-			position: absolute;
-			z-index: 100;
 			background-color: #0f9092;
+			left: 0;
+			position: absolute;
 			top: 3em;
-			right: 0;
+			z-index: 100;
 
 			ul {
 				display: none; 
@@ -145,7 +156,9 @@
 				li.has-dropdown {
 					display: block;
 					margin: 0;
-
+					min-width: 15em;
+					border-top: 1px solid rgba(255, 255, 255, .3);
+					
 					&:hover {
 						.dropdown {
 							display: none;
@@ -155,6 +168,8 @@
 			}
 
 			&.active {
+				padding: 0 .5em .5em;
+
 				ul {
 					display: block;
 
@@ -173,7 +188,6 @@
 
 		.hamburger-menu {
 			display: block;
-			margin-left: .5em;
 			display: flex;
 			flex: 1 1 auto;
 		}
@@ -181,9 +195,7 @@
 		.search {
 
 			&.pull-right {
-				float: none;
 				display: flex;
-				flex: 1 1 auto;
 
 				input {
 					width: 100%;
@@ -207,12 +219,28 @@
 		.container {
 			padding: 0;
 
+			.hamburger-menu {
+				display: block;
+				margin: 0 auto;
+			}
+
 			nav {
+				position: static;
+				width: 100%;
+
+				&.active {
+					padding: 0;
+				}
+			}
+
+			.search.pull-right {				
 				width: 100%;
 			}
 
-			.search.pull-right {
-
+			.search {
+				input {
+					margin-left: 0;
+				}
 			}
 		}
 	}

@@ -33,7 +33,13 @@ header.row
 				
 				.container
 
-					.hamburger-menu
+					.search.pull-right
+						input(type="text" id="search-box" aria-label="Search" placeholder="Search")
+						button
+							i(class="fa fa-search search-icon")
+							
+					.hamburger-menu 
+						span MENU
 						i.fa.fa-bars.fa-2x
 
 					nav.pull-left
@@ -123,7 +129,3 @@ header.row
 									li
 										a(href="#") Menu Option 4
 
-					.search.pull-right
-						input(type="text" id="search-box" aria-label="Search" placeholder="Search")
-						button
-							i(class="fa fa-search search-icon")
