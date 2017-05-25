@@ -22,4 +22,19 @@ button, input[type="button"], input[type="submit"] {
 	&:hover:after {
 		color: white;
 	}
+
+	&.reverse {
+		background: $tan;
+
+		&:hover {
+			background: $green;
+		}
+	}
+
+	&.no-arrow {
+		&:after {
+			content: "";
+			margin-left: 0;
+		}
+	}
 }

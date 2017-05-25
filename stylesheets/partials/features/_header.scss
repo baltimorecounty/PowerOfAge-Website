@@ -33,6 +33,12 @@ header {
 			&:first-child {
 				margin: 7px 0 5px;
 			}
+
+			button {
+				margin-bottom: 0;
+				padding: .25em;
+				width: 40px;
+			}
 		}		
 	}
 }

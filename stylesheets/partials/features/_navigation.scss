@@ -115,6 +115,10 @@
 			&::after {
 				content: '';
 			}
+
+			&:hover {
+				background-color: $dark-gray;
+			}
 		}
 	}
 
