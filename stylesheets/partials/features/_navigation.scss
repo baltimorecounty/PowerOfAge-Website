@@ -109,8 +109,9 @@
 			background-color: $tan;
 			display: inline-block;
 			margin-bottom: 0;
-			padding: .25em .25em .25em .5em;
+			padding: .25em 0 .25em .5em;
 			text-align: center;
+			width: 40px;
 
 			&::after {
 				content: '';
@@ -124,7 +125,7 @@
 
 }
 
-@media (max-width: 975px) {
+@media (max-width: 1179px) {
 	.nav-bar {
 
 		.container {
@@ -177,19 +178,26 @@
 			flex: 1 1 auto;
 		}
 
-		.search.pull-right {
-			float: none;
-			display: flex;
-			flex: 1 1 auto;
+		.search {
 
-			input {
-				width: 100%;
+			&.pull-right {
+				float: none;
+				display: flex;
+				flex: 1 1 auto;
+
+				input {
+					width: 100%;
+				}
+
+				button {
+					margin: .5em 0;
+					padding: .25em 0;
+					
+					&::after {
+						margin: 0;
+					}
+				}
 			}
-
-			button {
-				margin: .5em 0;
-			}
-
 		}
 	}
 }
