@@ -1,5 +1,5 @@
 .hero-image {
-	background: url(/dist/images/grumpy-cat.jpg);
+	background: url(/sebin/d/q/grumpy-cat.jpg);
 	height: 350px;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -20,7 +20,19 @@
 	}
 }
 
+.main-image>img {
+	width: 100%;
+}
+
 hr {
 	margin-top: 2em;
 	margin-bottom: 2em;
+}
+
+.promoted-content {
+	aside {
+		& > img {
+			width: 100%;
+		} 
+	}
 }
