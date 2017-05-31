@@ -69,8 +69,8 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 		$.each($tableRows, function (index, row) {
 			var $cols = $(row).find('td'),
 			    rowData = {
-				id: $cols.eq(0).text(),
-				name: $cols.eq(1).text(),
+				name: $cols.eq(0).text(),
+				id: $cols.eq(1).text(),
 				link: $cols.eq(2).text()
 			};
 
@@ -108,10 +108,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
   * Click handler for the selected booths. 
   */
 	svgElementClickHandler = function svgElementClickHandler(clickedSnapElement, boothData) {
-		var $active = $(clickedSnapElement.path[0]),
-		    $target = $active.closest('g'),
-		    targetId = $target.attr('id'),
-		    $flyouts = $('.flyout');
+		var $flyouts = $('.flyout');
 
 		$flyouts.hide();
 
