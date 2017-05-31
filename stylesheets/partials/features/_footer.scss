@@ -11,7 +11,7 @@ footer {
 	}
 
 	nav {
-		padding: .6em;
+		padding: .6em 0 .6em .6em;
 
 		ul {
 			display: inline-block;
@@ -23,8 +23,7 @@ footer {
 				display: inline-block;
 				line-height: 1.5em;
 				margin: 0 1em;
-				text-transform: uppercase;
-				font-size: .6em;
+				font-size: .8em;
 
 				a {
 					&:link, &:visited {
@@ -35,7 +34,15 @@ footer {
 						color: $tan;
 					}
 				}
+
+				&:last-child {
+					margin-right: 0;
+				}
 			}
 		}
+	}
+
+	.copyright {
+		font-size: .6em;
 	}
 }
