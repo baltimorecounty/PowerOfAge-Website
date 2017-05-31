@@ -58,8 +58,10 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 		var $tableRows = void 0;
 
 		for (var i = 0; i < htmlArray.length; i++) {
-			if (htmlArray[i].id === "SEContentResults") {
-				$tableRows = $(htmlArray[i]).find('tbody tr');
+			var $target = $(htmlArray[i]).find('#SEContentResults');
+
+			if ($target.length) {
+				$tableRows = $target.find('tbody tr');
 				break;
 			}
 		}
