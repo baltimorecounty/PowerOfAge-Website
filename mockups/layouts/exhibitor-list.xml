@@ -1,0 +1,42 @@
+
+
+<seml><h1>Exhibitor List</h1>
+
+<form id="filter-form" class="bc-filter-form">
+    <p><strong>Filter:</strong> Enter topic or keyword to filter content.</p>
+    <input id="filter" value="" type="text" class="bc-filter-form-filter" aria-label="Enter topic or keyword to filter content" />
+    <input type="button" class="clear bc-filter-form-clearButton" value="Clear" />
+</form>
+
+<div class="bc-filter-noResults" style="display: none;">No Search Results...Please Try Another Search</div>       
+
+<div id="SEContentResults">
+<div class="SEContent" setest="NOT arrayLen(attributes.contents)">No articles found.</div>
+
+<table class="table table-striped bc-filter-content nifty-table nifty-table-sortable" style="" bgcolor="" >
+	
+		<tr>
+			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Title</th>
+			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Number</th>
+			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Link</th>
+		</tr>
+		<tr seloop="contents" seloopindex="content">
+			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></td>
+			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.getBooth_Number().value" label="Booth Number" preview="" encode="false" datatype="string"/></td>
+			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><selink linktype="EXTERNAL" externallink="${content.getWebsite().link}" newwindow="Yes" showtoolbar="No" objectid="" class="" popupwidth="" popupheight="" title="" localanchor="" linkanchor=""><secontent  name="content.getWebsite().linktext" label="Website" preview="" encode="false" datatype="string"/></selink></td>
+		</tr>
+	
+</table>
+</div>
+
+<script>
+    baltimoreCounty.contentFilter.init({
+        listWrapper: '.bc-filter-content',
+        searchBox: '.bc-filter-form .bc-filter-form-filter',
+        clearButton: '.bc-filter-form .bc-filter-form-clearButton',
+        errorMessage: '.bc-filter-noResults',
+        contentType: 'table'
+    });     
+</script>   
+
+</seml>
