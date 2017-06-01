@@ -1,0 +1,19 @@
+<seml>
+	<div id="SEContentResults">
+		<div class="SEContent" setest="NOT arrayLen(attributes.contents)">No articles found.</div>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Logo Url</th>
+				<th>Website</th>
+				<th>Tier</th>
+			</tr>
+			<tr seloop="contents" seloopindex="content">
+				<td><secontent name="content.get_title().value" label="Title" /></td>
+				<td><secontent name="content.getLogo().url" label="Logo Url" /></td>
+				<td><secontent name="content.getWebsite().link" label="Website" datatype="string" /></td>
+				<td><secontent name="content.getTier().value" label="Tier" /></td>
+			</tr>
+		</table>
+	</div>
+</seml>
