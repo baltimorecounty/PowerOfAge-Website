@@ -1,26 +1,39 @@
-.floorplan > svg {
-	margin: 0 auto;
-	display: block;
-		
-	&#aging-expo-north-hall, &#aging-expo-south-hall {
-		font-family: Arial, Helvetica, sans-serif;
-		font-weight: bold;
-		
-		g.highlight {
-			cursor: pointer;
+.floorplan {
+	position: relative;
 
-			.booth-label {
-				fill: white;
+	canvas {
+		display: block;
+		visibility: hidden;
+		width: 100%;
+	}
+
+	& > svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0 auto;
+		display: block;
+			
+		&#aging-expo-north-hall, &#aging-expo-south-hall {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: bold;
+			
+			g.highlight {
+				cursor: pointer;
+
+				.booth-label {
+					fill: white;
+				}
+
+				.booth-background {
+					fill: $green;
+				}
+										
 			}
 
-			.booth-background {
-				fill: $green;
-			}
-									
 		}
 
 	}
-
 }
 
 .flyout {
