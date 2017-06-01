@@ -463,3 +463,60 @@ baltimoreCounty.niftyTables = function ($, numericStringTools, undefined) {
 $(document).ready(function () {
     baltimoreCounty.niftyTables.init();
 });
+'use strict';
+
+namespacer('seniorExpo');
+
+seniorExpo.sponsorLister = function ($, undefined) {
+
+	var $target = void 0;
+
+	var htmlLoadedHandler = function htmlLoadedHandler(html, htmlBuiltCallback) {
+		var $table = $(html).find('#SEContentResults table'),
+		    $rows = $table.find('tr').has('td'),
+		    nameIndex = 0,
+		    imageUrlIndex = 1,
+		    websiteUrlIndex = 2,
+		    tierIndex = 3;
+
+		var sponsorData = [];
+
+		$.each($rows, function (index, tableRow) {
+			var dataItem = {
+				name: $(tableRow).find('td').eq(nameIndex).text(),
+				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
+				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
+				tier: $(tableRow).find('td').eq(tierIndex).text()
+			};
+
+			sponsorData.push(dataItem);
+		});
+
+		htmlBuiltCallback(sponsorData);
+	},
+	    getData = function getData() {
+		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(function (data) {
+			htmlLoadedHandler(data, buildHtml);
+		}).fail(function (errorResponse) {
+			console.log(errorResponse);
+		});
+	},
+	    buildHtml = function buildHtml(sponsorData) {
+		$.each(sponsorData, function (index, sponsorItem) {
+			$target.append('<div><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></div>');
+		});
+	},
+	    init = function init() {
+		$target = $('#sponsorship-list');
+
+		if ($target.length) {
+			getData();
+		}
+	};
+
+	return { init: init };
+}(jQuery);
+
+$(function () {
+	seniorExpo.sponsorLister.init();
+});

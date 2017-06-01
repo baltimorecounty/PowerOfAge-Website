@@ -31,7 +31,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 		    $parentElement = $(parentElement.node),
 		    booths = parentElement.selectAll('svg > g > g');
 
-		$.ajax('http://ba224964:1000/api/aging-expo/booth-assignments').done(function (boothAssigmentData) {
+		$.ajax('/PowerOfAge/_data/Power_of_Age_Booth_Assignments').done(function (boothAssigmentData) {
 			var extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
 
 			highlightAssignedBooths(extractedBoothAssigmentData, booths, function (snapElement, boothData) {
