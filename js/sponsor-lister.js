@@ -5,13 +5,14 @@ seniorExpo.sponsorLister = (($, undefined) => {
 	let $target;
 
 	const 
+
 		htmlLoadedHandler = (html, htmlBuiltCallback) => {
 			const $table = $(html).find('#SEContentResults table'),
 				$rows = $table.find('tr').has('td'),
 				nameIndex = 0,
 				imageUrlIndex = 1,
 				websiteUrlIndex = 2,
-				tierIndex = 3;
+				lineIndex = 3;
 			
 			let sponsorData = [];
 
@@ -20,31 +21,72 @@ seniorExpo.sponsorLister = (($, undefined) => {
 					name: $(tableRow).find('td').eq(nameIndex).text(),
 					imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
 					websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
-					tier: $(tableRow).find('td').eq(tierIndex).text()
+					line: $(tableRow).find('td').eq(lineIndex).text()
 				};
 
 				sponsorData.push(dataItem);
 			});
 
-			//sponsorData = sortSponsors(sponsorData);
+			sponsorData = sortSponsors(sponsorData);
 
 			htmlBuiltCallback(sponsorData);
 		},
 	
-		sortSponsors = sponsorData => {},
+		sortSponsors = sponsorData => {
+			sponsorData = sponsorData.sort(nameComparer);
+			sponsorData = sponsorData.sort(lineComparer);
+			return sponsorData;
+		},
+
+		nameComparer = (a, b) => {
+			if (a.name < b.name)
+				return -1;
+
+			if (a.name > b.name)
+				return 1;
+
+			return 0;			
+		},
+
+		lineComparer = (a, b) => {
+			if (a.line < b.line)
+				return -1;
+
+			if (a.line > b.line)
+				return 1;
+
+			return 0;			
+		},
 
 		getData = () => {
-			$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(data => {
-				htmlLoadedHandler(data, buildHtml);
-			})
+			$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors')
+				.done(data => {
+					htmlLoadedHandler(data, buildHtml);
+				})
 				.fail(errorResponse => {
 					console.log(errorResponse);
 				});
 		},
 
 		buildHtml = (sponsorData) => {
+			let lineNumber = 0,
+				wrapperHtml = '<table><tbody><tr></tr></tbody></table>',
+				$wrapper;
+			
 			$.each(sponsorData, (index, sponsorItem) => {
-				$target.append(`<div class="sponsor"><a href="${sponsorItem.websiteUrl}" target="_blank"><img src="${sponsorItem.imageUrl}"/></a></div>`)
+
+				if (sponsorItem.line != lineNumber) {
+					lineNumber = sponsorItem.line;
+					if ($wrapper) 
+						$target.append($wrapper);
+					$wrapper = $(wrapperHtml);
+				}
+
+				$wrapper.find('tr').append(`<td class="sponsor"><a href="${sponsorItem.websiteUrl}" target="_blank"><img src="${sponsorItem.imageUrl}"/></a></td>`);
+
+				if (!sponsorData[index+1]) {
+					$target.append($wrapper);					
+				}
 			});
 		},
 

@@ -477,7 +477,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		    nameIndex = 0,
 		    imageUrlIndex = 1,
 		    websiteUrlIndex = 2,
-		    tierIndex = 3;
+		    lineIndex = 3;
 
 		var sponsorData = [];
 
@@ -486,17 +486,35 @@ seniorExpo.sponsorLister = function ($, undefined) {
 				name: $(tableRow).find('td').eq(nameIndex).text(),
 				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
 				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
-				tier: $(tableRow).find('td').eq(tierIndex).text()
+				line: $(tableRow).find('td').eq(lineIndex).text()
 			};
 
 			sponsorData.push(dataItem);
 		});
 
-		//sponsorData = sortSponsors(sponsorData);
+		sponsorData = sortSponsors(sponsorData);
 
 		htmlBuiltCallback(sponsorData);
 	},
-	    sortSponsors = function sortSponsors(sponsorData) {},
+	    sortSponsors = function sortSponsors(sponsorData) {
+		sponsorData = sponsorData.sort(nameComparer);
+		sponsorData = sponsorData.sort(lineComparer);
+		return sponsorData;
+	},
+	    nameComparer = function nameComparer(a, b) {
+		if (a.name < b.name) return -1;
+
+		if (a.name > b.name) return 1;
+
+		return 0;
+	},
+	    lineComparer = function lineComparer(a, b) {
+		if (a.line < b.line) return -1;
+
+		if (a.line > b.line) return 1;
+
+		return 0;
+	},
 	    getData = function getData() {
 		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(function (data) {
 			htmlLoadedHandler(data, buildHtml);
@@ -505,8 +523,23 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		});
 	},
 	    buildHtml = function buildHtml(sponsorData) {
+		var lineNumber = 0,
+		    wrapperHtml = '<table><tbody><tr></tr></tbody></table>',
+		    $wrapper = void 0;
+
 		$.each(sponsorData, function (index, sponsorItem) {
-			$target.append('<div class="sponsor"><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></div>');
+
+			if (sponsorItem.line != lineNumber) {
+				lineNumber = sponsorItem.line;
+				if ($wrapper) $target.append($wrapper);
+				$wrapper = $(wrapperHtml);
+			}
+
+			$wrapper.find('tr').append('<td class="sponsor"><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></td>');
+
+			if (!sponsorData[index + 1]) {
+				$target.append($wrapper);
+			}
 		});
 	},
 	    init = function init() {

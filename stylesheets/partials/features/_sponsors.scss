@@ -1,0 +1,21 @@
+#sponsorship-list {
+
+	table {
+	
+		table-layout: fixed;
+
+		td {
+			text-align: center;
+
+			&:first-child {
+				text-align: left;
+			}
+
+			&:last-child {
+				text-align: right;
+			}
+		}
+
+	}
+
+}
