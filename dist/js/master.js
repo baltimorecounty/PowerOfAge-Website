@@ -492,8 +492,11 @@ seniorExpo.sponsorLister = function ($, undefined) {
 			sponsorData.push(dataItem);
 		});
 
+		//sponsorData = sortSponsors(sponsorData);
+
 		htmlBuiltCallback(sponsorData);
 	},
+	    sortSponsors = function sortSponsors(sponsorData) {},
 	    getData = function getData() {
 		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(function (data) {
 			htmlLoadedHandler(data, buildHtml);
@@ -503,7 +506,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 	},
 	    buildHtml = function buildHtml(sponsorData) {
 		$.each(sponsorData, function (index, sponsorItem) {
-			$target.append('<div><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></div>');
+			$target.append('<div class="sponsor"><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></div>');
 		});
 	},
 	    init = function init() {
