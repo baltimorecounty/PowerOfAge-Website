@@ -70,7 +70,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 
 		buildHtml = (sponsorData) => {
 			let lineNumber = 0,
-				wrapperHtml = '<table><tbody><tr></tr></tbody></table>',
+				wrapperHtml = '<div class="sponsor-row flex flex-row flex-space-around flex-wrap"></div>',
 				$wrapper;
 			
 			$.each(sponsorData, (index, sponsorItem) => {
@@ -82,7 +82,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 					$wrapper = $(wrapperHtml);
 				}
 
-				$wrapper.find('tr').append(`<td class="sponsor"><a href="${sponsorItem.websiteUrl}" target="_blank"><img src="${sponsorItem.imageUrl}"/></a></td>`);
+				$wrapper.append(`<div class="sponsor"><a href="${sponsorItem.websiteUrl}" target="_blank"><img src="${sponsorItem.imageUrl}"/></a></div>`);
 
 				if (!sponsorData[index+1]) {
 					$target.append($wrapper);					

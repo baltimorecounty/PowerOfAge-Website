@@ -1,28 +1,21 @@
-#sponsorship-list {
+.sponsors {
 
-	h2 { margin-bottom: 1em; }
-
-	table {
-		
-		margin-bottom: 3em;
-		table-layout: fixed;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-
-		td {
-			text-align: center;
-
-			&:first-child {
-				text-align: left;
-			}
-
-			&:last-child {
-				text-align: right;
-			}
-		}
-
+	h2 {
+		margin-bottom: 1em;
 	}
 
+	.sponsor {
+		margin: 0 1em 3em;
+	}
+
+}
+
+.no-flex {
+	.sponsors {
+		.sponsor-row {
+			.sponsor {
+				display: inline-block;
+			}
+		}
+	}
 }

@@ -11,6 +11,14 @@
 	flex-direction: column;
 }
 
+.flex-space-around {
+	justify-content: space-around;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
 .flex-10 { flex-basis: 10%; }
 
 .flex-20 { flex-basis: 20%; }
