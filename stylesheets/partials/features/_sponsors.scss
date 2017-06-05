@@ -1,8 +1,13 @@
 #sponsorship-list {
 
 	table {
-	
+		
+		margin-bottom: 3em;
 		table-layout: fixed;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 
 		td {
 			text-align: center;
