@@ -28,7 +28,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				$parentElement = $(parentElement.node),
 				booths = parentElement.selectAll('svg > g > g');	
 
-			$.ajax('/PowerOfAge/_data/Power_of_Age_Booth_Assignments')
+			$.ajax('/PowerOfAge/exhibitors/2017-exhibitors.html')
 				.done(boothAssigmentData => {
 					let extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
 
