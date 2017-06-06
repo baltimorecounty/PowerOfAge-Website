@@ -7,19 +7,17 @@ seniorExpo.nav = (($, undefined) => {
 		dropdownDisplayHandler = event => {
 			const $target = $(event.currentTarget),
 				$dropdown = $target.find('.dropdown'),
-				isActive = $dropdown.is('.active'),
+				wasActive = $dropdown.is('.active'),
 				isNavActive = $target.closest('nav').is('.active');
 
-			if (isActive) {
-				if (event.type === 'click' || event.type === 'mouseout') {
-					$dropdown.removeClass('active');
-					$target.find('.fa').toggleClass('fa-caret-down').toggleClass('fa-caret-right');
-				}
-			} else {
-				if (event.type != 'mouseout') {
-					$dropdown.addClass('active');
-					$target.find('.fa').toggleClass('fa-caret-right').toggleClass('fa-caret-down');
-				}
+			hideSubmenu($target);
+
+			if (!wasActive) {
+				displaySubmenu($target, $dropdown);
+				
+				setTimeout(() => {
+					hideSubmenu($target, $dropdown);
+				}, 5000);
 			}
 		},
 
@@ -31,12 +29,23 @@ seniorExpo.nav = (($, undefined) => {
 			$menu.toggleClass('active');
 		},
 
+		displaySubmenu = ($target, $dropdown) => {
+			$dropdown.addClass('active');
+			$target.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
+		},
+
+		hideSubmenu = ($target, $dropdown) => {
+			$('nav .dropdown').removeClass('active');
+			$target.find('.fa').addClass('fa-caret-right').removeClass('fa-caret-down');
+		},
+
 		init = () => {
 			const $menuItems = $('nav .has-dropdown'),
 				$dropdowns = $menuItems.find('.dropdown'),
 				$hamburgerMenu = $('.hamburger-menu');
 				
-			$menuItems.on('click mouseover mouseout', dropdownDisplayHandler);
+			$menuItems.on('click', dropdownDisplayHandler);
+				
 			$hamburgerMenu.on('click', menuDisplayHandler);
 		};
 
