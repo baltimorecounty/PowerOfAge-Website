@@ -495,54 +495,50 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		sponsorData = sortSponsors(sponsorData);
 
 		htmlBuiltCallback(sponsorData);
-	},
-	    sortSponsors = function sortSponsors(sponsorData) {
+	};
+
+	var sortSponsors = function sortSponsors(sponsorData) {
 		sponsorData = sponsorData.sort(nameComparer);
 		sponsorData = sponsorData.sort(lineComparer);
 		return sponsorData;
-	},
-	    nameComparer = function nameComparer(a, b) {
+	};
+
+	var nameComparer = function nameComparer(a, b) {
 		if (a.name < b.name) return -1;
 
 		if (a.name > b.name) return 1;
 
 		return 0;
-	},
-	    lineComparer = function lineComparer(a, b) {
+	};
+
+	var lineComparer = function lineComparer(a, b) {
 		if (a.line < b.line) return -1;
 
 		if (a.line > b.line) return 1;
 
 		return 0;
-	},
-	    getData = function getData() {
+	};
+
+	var getData = function getData() {
 		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(function (data) {
 			htmlLoadedHandler(data, buildHtml);
 		}).fail(function (errorResponse) {
 			console.log(errorResponse);
 		});
-	},
-	    buildHtml = function buildHtml(sponsorData) {
-		var lineNumber = 0,
-		    wrapperHtml = '<div class="sponsor-row flex flex-row flex-space-around flex-wrap"></div>',
-		    $wrapper = void 0;
+	};
+
+	var buildHtml = function buildHtml(sponsorData) {
+		var lineNumber = 0;
+		var $wrapper = $('<div class="sponsor-row flex flex-row flex-space-around flex-wrap"></div>');
 
 		$.each(sponsorData, function (index, sponsorItem) {
-
-			if (sponsorItem.line != lineNumber) {
-				lineNumber = sponsorItem.line;
-				if ($wrapper) $target.append($wrapper);
-				$wrapper = $(wrapperHtml);
-			}
-
 			$wrapper.append('<div class="sponsor"><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></div>');
-
-			if (!sponsorData[index + 1]) {
-				$target.append($wrapper);
-			}
 		});
-	},
-	    init = function init() {
+
+		$target.append($wrapper);
+	};
+
+	var init = function init() {
 		$target = $('#sponsorship-list');
 
 		if ($target.length) {
@@ -550,7 +546,9 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		}
 	};
 
-	return { init: init };
+	return {
+		init: init
+	};
 }(jQuery);
 
 $(function () {
