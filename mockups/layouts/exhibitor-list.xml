@@ -17,8 +17,8 @@
 			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Number</th>
 		</tr>
 		<tr seloop="contents" seloopindex="content">
-			<td setest="length(content.getWebsite().value) gt 0" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><selink linktype="EXTERNAL" externallink="${content.getWebsite().link}" newwindow="Yes" showtoolbar="No" objectid="" class="" popupwidth="" popupheight="" title="" localanchor="" linkanchor=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></selink></td>			
-			<td setest="NOT length(content.getWebsite().value) gt 0" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></td>
+			<td setest="len(${content.getWebsite().link})" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><selink linktype="EXTERNAL" externallink="${content.getWebsite().link}" newwindow="Yes" showtoolbar="No" objectid="" class="" popupwidth="" popupheight="" title="" localanchor="" linkanchor=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></selink></td>			
+			<td setest="NOT len(${content.getWebsite().link})" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></td>
 			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.getBooth_Number().value" label="Booth Number" preview="" encode="false" datatype="string"/></td>
 		</tr>
 	</table>

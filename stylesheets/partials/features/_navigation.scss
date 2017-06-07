@@ -61,6 +61,12 @@
 
 					&:hover {
 						color: $tan;
+					}					
+				}
+
+				&:first-child {
+					a, span {
+						padding: .75em;
 					}
 				}
 
