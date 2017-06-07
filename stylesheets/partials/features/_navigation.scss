@@ -84,7 +84,7 @@
 							font-weight: 100;
 							min-width: 15em;
 
-							&:hover {
+							&:hover, &:active {
 								color: $tan;
 							} 
 						}
@@ -92,12 +92,20 @@
 
 					&.active {
 						display: block;
+
+						.dropdown {
+							display: block;
+						}		
 					}
 				}
 
 				&:hover {
 					background-color: #333;
-					color: $tan;			
+					color: $tan;	
+
+					.dropdown {
+						display: block;
+					}		
 				}
 
 			}

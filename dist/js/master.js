@@ -283,37 +283,22 @@ namespacer('seniorExpo');
 
 seniorExpo.nav = function ($, undefined) {
 
-	var dropdownDisplayHandler = function dropdownDisplayHandler(event) {
-		var $target = $(event.currentTarget),
-		    $dropdown = $target.find('.dropdown'),
-		    isActive = $dropdown.is('.active'),
-		    isNavActive = $target.closest('nav').is('.active');
-
-		if (isActive) {
-			if (event.type === 'click' || event.type === 'mouseout') {
-				$dropdown.removeClass('active');
-				$target.find('.fa').toggleClass('fa-caret-down').toggleClass('fa-caret-right');
-			}
-		} else {
-			if (event.type != 'mouseout') {
-				$dropdown.addClass('active');
-				$target.find('.fa').toggleClass('fa-caret-right').toggleClass('fa-caret-down');
-			}
-		}
-	},
-	    menuDisplayHandler = function menuDisplayHandler(event) {
+	var menuDisplayHandler = function menuDisplayHandler(event) {
 		var $target = $(event.currentTarget),
 		    $menu = $target.siblings('nav'),
 		    $menuItems = $menu.find('.has-dropdown');
 
-		$menu.toggleClass('active');
-	},
-	    init = function init() {
-		var $menuItems = $('nav .has-dropdown'),
-		    $dropdowns = $menuItems.find('.dropdown'),
-		    $hamburgerMenu = $('.hamburger-menu');
+		$menuItems.on('click', function (event) {
+			$(event.target).closest('nav').find('.dropdown').removeClass('active');
+			$(event.target).siblings('.dropdown').toggleClass('active');
+		});
 
-		$menuItems.on('click mouseover mouseout', dropdownDisplayHandler);
+		$menu.toggleClass('active');
+	};
+
+	var init = function init() {
+		var $hamburgerMenu = $('.hamburger-menu');
+
 		$hamburgerMenu.on('click', menuDisplayHandler);
 	};
 
