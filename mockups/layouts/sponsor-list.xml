@@ -7,12 +7,14 @@
 				<th>Logo Url</th>
 				<th>Website</th>
 				<th>Line</th>
+				<th>Custom1</th>
 			</tr>
 			<tr seloop="contents" seloopindex="content">
 				<td><secontent name="content.get_title().value" label="Title" /></td>
 				<td><secontent name="content.getLogo().url" label="Logo Url" /></td>
 				<td><secontent name="content.getWebsite().link" label="Website" datatype="string" /></td>
 				<td><secontent name="content.getTier().value" label="Line" /></td>
+				<td><secontent name="content.getIn_Kind().value" label="Custom1" /></td>
 			</tr>
 		</table>
 	</div>

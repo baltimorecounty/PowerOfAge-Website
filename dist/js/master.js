@@ -286,17 +286,19 @@ seniorExpo.nav = function ($, undefined) {
 	var dropdownDisplayHandler = function dropdownDisplayHandler(event) {
 		var $target = $(event.currentTarget),
 		    $dropdown = $target.find('.dropdown'),
-		    wasActive = $dropdown.is('.active'),
+		    isActive = $dropdown.is('.active'),
 		    isNavActive = $target.closest('nav').is('.active');
 
-		hideSubmenu($target);
-
-		if (!wasActive) {
-			displaySubmenu($target, $dropdown);
-
-			setTimeout(function () {
-				hideSubmenu($target, $dropdown);
-			}, 5000);
+		if (isActive) {
+			if (event.type === 'click' || event.type === 'mouseout') {
+				$dropdown.removeClass('active');
+				$target.find('.fa').toggleClass('fa-caret-down').toggleClass('fa-caret-right');
+			}
+		} else {
+			if (event.type != 'mouseout') {
+				$dropdown.addClass('active');
+				$target.find('.fa').toggleClass('fa-caret-right').toggleClass('fa-caret-down');
+			}
 		}
 	},
 	    menuDisplayHandler = function menuDisplayHandler(event) {
@@ -306,21 +308,12 @@ seniorExpo.nav = function ($, undefined) {
 
 		$menu.toggleClass('active');
 	},
-	    displaySubmenu = function displaySubmenu($target, $dropdown) {
-		$dropdown.addClass('active');
-		$target.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
-	},
-	    hideSubmenu = function hideSubmenu($target, $dropdown) {
-		$('nav .dropdown').removeClass('active');
-		$target.find('.fa').addClass('fa-caret-right').removeClass('fa-caret-down');
-	},
 	    init = function init() {
 		var $menuItems = $('nav .has-dropdown'),
 		    $dropdowns = $menuItems.find('.dropdown'),
 		    $hamburgerMenu = $('.hamburger-menu');
 
-		$menuItems.on('click', dropdownDisplayHandler);
-
+		$menuItems.on('click mouseover mouseout', dropdownDisplayHandler);
 		$hamburgerMenu.on('click', menuDisplayHandler);
 	};
 
@@ -484,7 +477,8 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		    nameIndex = 0,
 		    imageUrlIndex = 1,
 		    websiteUrlIndex = 2,
-		    lineIndex = 3;
+		    lineIndex = 3,
+		    inKindIndex = 4;
 
 		var sponsorData = [];
 
@@ -493,7 +487,8 @@ seniorExpo.sponsorLister = function ($, undefined) {
 				name: $(tableRow).find('td').eq(nameIndex).text(),
 				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
 				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
-				line: $(tableRow).find('td').eq(lineIndex).text()
+				line: $(tableRow).find('td').eq(lineIndex).text(),
+				isInKind: $(tableRow).find('td').eq(inKindIndex).text()
 			};
 
 			sponsorData.push(dataItem);
@@ -507,21 +502,39 @@ seniorExpo.sponsorLister = function ($, undefined) {
 	var sortSponsors = function sortSponsors(sponsorData) {
 		sponsorData = sponsorData.sort(nameComparer);
 		sponsorData = sponsorData.sort(lineComparer);
+		sponsorData = sponsorData.sort(inKindComparer);
 		return sponsorData;
 	};
 
 	var nameComparer = function nameComparer(a, b) {
-		if (a.name < b.name) return -1;
+		var aName = a.name.toLowerCase();
+		var bName = b.name.toLowerCase();
 
-		if (a.name > b.name) return 1;
+		if (aName < bName) return -1;
+
+		if (aName > bName) return 1;
 
 		return 0;
 	};
 
 	var lineComparer = function lineComparer(a, b) {
-		if (a.line < b.line) return -1;
+		var aLine = a.line * 1;
+		var bLine = b.line * 1;
 
-		if (a.line > b.line) return 1;
+		if (aLine < bLine) return -1;
+
+		if (aLine > bLine) return 1;
+
+		return 0;
+	};
+
+	var inKindComparer = function inKindComparer(a, b) {
+		var aInKind = a.isInKind.toLowerCase();
+		var bInKind = b.isInKind.toLowerCase();
+
+		if (aInKind === 'no' && bInKind === 'yes') return -1;
+
+		if (aInKind === 'yes' && bInKind === 'no') return 1;
 
 		return 0;
 	};

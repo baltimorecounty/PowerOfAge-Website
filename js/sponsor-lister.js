@@ -10,7 +10,8 @@ seniorExpo.sponsorLister = (($, undefined) => {
 			nameIndex = 0,
 			imageUrlIndex = 1,
 			websiteUrlIndex = 2,
-			lineIndex = 3;
+			lineIndex = 3,
+			inKindIndex = 4;
 
 		let sponsorData = [];
 
@@ -19,7 +20,8 @@ seniorExpo.sponsorLister = (($, undefined) => {
 				name: $(tableRow).find('td').eq(nameIndex).text(),
 				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
 				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
-				line: $(tableRow).find('td').eq(lineIndex).text()
+				line: $(tableRow).find('td').eq(lineIndex).text(),
+				isInKind: $(tableRow).find('td').eq(inKindIndex).text()
 			};
 
 			sponsorData.push(dataItem);
@@ -33,26 +35,46 @@ seniorExpo.sponsorLister = (($, undefined) => {
 	const sortSponsors = sponsorData => {
 		sponsorData = sponsorData.sort(nameComparer);
 		sponsorData = sponsorData.sort(lineComparer);
+		sponsorData = sponsorData.sort(inKindComparer);
 		return sponsorData;
 	};
 
 	const nameComparer = (a, b) => {
-		if (a.name < b.name)
+		const aName = a.name.toLowerCase();
+		const bName = b.name.toLowerCase();
+
+		if (aName < bName)
 			return -1;
 
-		if (a.name > b.name)
+		if (aName > bName)
 			return 1;
 
 		return 0;
 	};
 
 	const lineComparer = (a, b) => {
-		if (a.line < b.line)
+		const aLine = a.line * 1;
+		const bLine = b.line * 1;
+		
+		if (aLine < bLine)
 			return -1;
 
-		if (a.line > b.line)
+		if (aLine > bLine)
 			return 1;
 
+		return 0;
+	};
+
+	const inKindComparer = (a, b) => {
+		const aInKind = a.isInKind.toLowerCase();
+		const bInKind = b.isInKind.toLowerCase();
+		
+		if (aInKind === 'no' && bInKind === 'yes')
+			return -1;
+
+		if (aInKind === 'yes' && bInKind === 'no')
+			return 1;
+			
 		return 0;
 	};
 
