@@ -8,7 +8,7 @@ seniorExpo.nav = (($, undefined) => {
 			$menuItems = $menu.find('.has-dropdown');
 		
 		$menuItems.on('click', event => {
-			$menu.find('.dropdown').removeClass('active');
+			$menu.find('.dropdown').not($(event.target).siblings('.dropdown')).removeClass('active');
 			$(event.target).siblings('.dropdown').toggleClass('active');
 		});
 
