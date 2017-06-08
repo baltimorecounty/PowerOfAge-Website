@@ -68,8 +68,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				const $cols = $(row).find('td'),
 					rowData = {
 						name: $cols.eq(0).text(),
-						id: $cols.eq(1).text(),
-						link: $cols.eq(2).text()
+						id: $cols.eq(1).text()
 					};
 				
 				data.push(rowData);
@@ -108,7 +107,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 			
 			$flyouts.hide();
 
-			const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.pageY}px; left: ${clickedSnapElement.pageX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p><p><a href="${boothData.link}" title="${boothData.name}" target="_blank">${boothData.link}</a></p></div>`);
+			const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.pageY}px; left: ${clickedSnapElement.pageX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p><p>${boothData.name}</p></div>`);
 			const $body = $('body');
 
 			$body.append($div);

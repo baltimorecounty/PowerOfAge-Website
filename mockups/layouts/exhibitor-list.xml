@@ -19,7 +19,10 @@
 		<tr seloop="contents" seloopindex="content">
 			<td setest="len(${content.getWebsite().link})" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><selink linktype="EXTERNAL" externallink="${content.getWebsite().link}" newwindow="Yes" showtoolbar="No" objectid="" class="" popupwidth="" popupheight="" title="" localanchor="" linkanchor=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></selink></td>			
 			<td setest="NOT len(${content.getWebsite().link})" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></td>
-			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.getBooth_Number().value" label="Booth Number" preview="" encode="false" datatype="string"/></td>
+			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background="">
+				<secontent  name="content.getBooth_Number().value" label="Booth Number" preview="" encode="false" datatype="string"/>
+				<span setest="NOT len(${content.getBooth_Number().value})">Center Hall</span>
+			</td>
 		</tr>
 	</table>
 </div>
@@ -32,6 +35,9 @@
         errorMessage: '.bc-filter-noResults',
         contentType: 'table'
     });     
+	$(function() { 
+		$('#SEContentResults table th:first-child a').trigger('click'); 
+	});
 </script>   
 
 </seml>

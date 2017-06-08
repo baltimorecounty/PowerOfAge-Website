@@ -114,6 +114,7 @@ baltimoreCounty.contentFilter = function ($) {
             contentType = options.contentType || DEFAULT_CONTENT_TYPE,
             $wrapper = safeLoad(wrapperSelector),
             $searchBox = safeLoad(searchBoxSelector),
+            $clearButton = safeLoad(clearButtonSelector),
             $errorMessage = safeLoad(errorMessageSelector),
             $clearIcon = $('.icon-clear');
 
@@ -140,6 +141,10 @@ baltimoreCounty.contentFilter = function ($) {
 
         $searchBox.closest('form').on('submit', function (e) {
             return false;
+        });
+
+        $clearButton.on('click', function () {
+            clearFilter($wrapper, $searchBox, $errorMessage);
         });
 
         $clearIcon.on('click', function () {
