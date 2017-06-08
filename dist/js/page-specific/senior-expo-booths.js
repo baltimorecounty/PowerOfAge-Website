@@ -1,5 +1,7 @@
 'use strict';
 
+// "use strict";
+
 namespacer('seniorExpo.pageSpecific');
 
 seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
@@ -95,7 +97,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 
 			var boothAssignmentIndex = assignedBoothIds.indexOf(snapElement.node.id);
 
-			if (boothAssignmentIndex != -1) {
+			if (boothAssignmentIndex !== -1) {
 				var $snapElementNode = $(snapElement.node);
 				$snapElementNode.addClass('highlight');
 				callback(snapElement, boothAssigmentData[boothAssignmentIndex]);

@@ -1,0 +1,20 @@
+{
+    "extends": "airbnb-base",
+    "plugins": [
+        "import"
+    ],
+    "globals": {
+        "namespacer": true,
+        "seniorExpo": true,
+        "jQuery": true,
+        "$": true,
+        "Snap": true
+    },
+    "rules": {
+        "linebreak-style": ["error", "windows"],
+        "comma-dangle": ["error", {
+            "arrays": "never",
+            "objects": "never"
+        }]
+    }
+}
