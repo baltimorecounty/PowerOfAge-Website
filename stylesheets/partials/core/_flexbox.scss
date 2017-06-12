@@ -1,6 +1,6 @@
 .flex {
 	display: flex;
-	flex: 1 1 100%;
+	flex: 1;
 }
 
 .flex-row {
@@ -9,6 +9,14 @@
 
 .flex-column {
 	flex-direction: column;
+}
+
+.flex-space-around {
+	justify-content: space-around;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
 }
 
 .flex-10 { flex-basis: 10%; }

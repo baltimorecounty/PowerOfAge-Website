@@ -1,0 +1,21 @@
+.sponsors {
+
+	p {
+		margin-bottom: 2em;
+	}
+
+	.sponsor {
+		margin: 0 1.2em 3em;
+	}
+
+}
+
+.no-flex {
+	.sponsors {
+		.sponsor-row {
+			.sponsor {
+				display: inline-block;
+			}
+		}
+	}
+}

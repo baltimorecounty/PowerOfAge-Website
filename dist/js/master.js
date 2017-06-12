@@ -114,6 +114,7 @@ baltimoreCounty.contentFilter = function ($) {
             contentType = options.contentType || DEFAULT_CONTENT_TYPE,
             $wrapper = safeLoad(wrapperSelector),
             $searchBox = safeLoad(searchBoxSelector),
+            $clearButton = safeLoad(clearButtonSelector),
             $errorMessage = safeLoad(errorMessageSelector),
             $clearIcon = $('.icon-clear');
 
@@ -140,6 +141,10 @@ baltimoreCounty.contentFilter = function ($) {
 
         $searchBox.closest('form').on('submit', function (e) {
             return false;
+        });
+
+        $clearButton.on('click', function () {
+            clearFilter($wrapper, $searchBox, $errorMessage);
         });
 
         $clearIcon.on('click', function () {
@@ -283,37 +288,22 @@ namespacer('seniorExpo');
 
 seniorExpo.nav = function ($, undefined) {
 
-	var dropdownDisplayHandler = function dropdownDisplayHandler(event) {
-		var $target = $(event.currentTarget),
-		    $dropdown = $target.find('.dropdown'),
-		    isActive = $dropdown.is('.active'),
-		    isNavActive = $target.closest('nav').is('.active');
-
-		if (isActive) {
-			if (event.type === 'click' || event.type === 'mouseout') {
-				$dropdown.removeClass('active');
-				$target.find('.fa').toggleClass('fa-caret-down').toggleClass('fa-caret-right');
-			}
-		} else {
-			if (event.type != 'mouseout') {
-				$dropdown.addClass('active');
-				$target.find('.fa').toggleClass('fa-caret-right').toggleClass('fa-caret-down');
-			}
-		}
-	},
-	    menuDisplayHandler = function menuDisplayHandler(event) {
+	var menuDisplayHandler = function menuDisplayHandler(event) {
 		var $target = $(event.currentTarget),
 		    $menu = $target.siblings('nav'),
 		    $menuItems = $menu.find('.has-dropdown');
 
-		$menu.toggleClass('active');
-	},
-	    init = function init() {
-		var $menuItems = $('nav .has-dropdown'),
-		    $dropdowns = $menuItems.find('.dropdown'),
-		    $hamburgerMenu = $('.hamburger-menu');
+		$menuItems.on('click', function (event) {
+			$menu.find('.dropdown').not($(event.target).siblings('.dropdown')).removeClass('active');
+			$(event.target).siblings('.dropdown').toggleClass('active');
+		});
 
-		$menuItems.on('click mouseover mouseout', dropdownDisplayHandler);
+		$menu.toggleClass('active');
+	};
+
+	var init = function init() {
+		var $hamburgerMenu = $('.hamburger-menu');
+
 		$hamburgerMenu.on('click', menuDisplayHandler);
 	};
 
@@ -462,4 +452,115 @@ baltimoreCounty.niftyTables = function ($, numericStringTools, undefined) {
 
 $(document).ready(function () {
     baltimoreCounty.niftyTables.init();
+});
+'use strict';
+
+namespacer('seniorExpo');
+
+seniorExpo.sponsorLister = function ($, undefined) {
+
+	var $target = void 0;
+
+	var htmlLoadedHandler = function htmlLoadedHandler(html, htmlBuiltCallback) {
+		var $table = $(html).find('#SEContentResults table'),
+		    $rows = $table.find('tr').has('td'),
+		    nameIndex = 0,
+		    imageUrlIndex = 1,
+		    websiteUrlIndex = 2,
+		    lineIndex = 3,
+		    inKindIndex = 4;
+
+		var sponsorData = [];
+
+		$.each($rows, function (index, tableRow) {
+			var dataItem = {
+				name: $(tableRow).find('td').eq(nameIndex).text(),
+				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
+				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
+				line: $(tableRow).find('td').eq(lineIndex).text(),
+				isInKind: $(tableRow).find('td').eq(inKindIndex).text()
+			};
+
+			sponsorData.push(dataItem);
+		});
+
+		sponsorData = sortSponsors(sponsorData);
+
+		htmlBuiltCallback(sponsorData);
+	};
+
+	var sortSponsors = function sortSponsors(sponsorData) {
+		sponsorData = sponsorData.sort(nameComparer);
+		sponsorData = sponsorData.sort(lineComparer);
+		sponsorData = sponsorData.sort(inKindComparer);
+		return sponsorData;
+	};
+
+	var nameComparer = function nameComparer(a, b) {
+		var aName = a.name.toLowerCase();
+		var bName = b.name.toLowerCase();
+
+		if (aName < bName) return -1;
+
+		if (aName > bName) return 1;
+
+		return 0;
+	};
+
+	var lineComparer = function lineComparer(a, b) {
+		var aLine = a.line * 1;
+		var bLine = b.line * 1;
+
+		if (aLine < bLine) return -1;
+
+		if (aLine > bLine) return 1;
+
+		return 0;
+	};
+
+	var inKindComparer = function inKindComparer(a, b) {
+		var aInKind = a.isInKind.toLowerCase();
+		var bInKind = b.isInKind.toLowerCase();
+
+		if (aInKind === 'no' && bInKind === 'yes') return -1;
+
+		if (aInKind === 'yes' && bInKind === 'no') return 1;
+
+		return 0;
+	};
+
+	var getData = function getData() {
+		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(function (data) {
+			htmlLoadedHandler(data, buildHtml);
+		}).fail(function (errorResponse) {
+			console.log(errorResponse);
+		});
+	};
+
+	var buildHtml = function buildHtml(sponsorData) {
+		var lineNumber = 0;
+		var $wrapper = $('<div class="sponsor-row flex flex-row flex-space-around flex-wrap"></div>');
+
+		$.each(sponsorData, function (index, sponsorItem) {
+			$wrapper.append('<div class="sponsor"><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></div>');
+		});
+
+		$target.append($wrapper);
+	};
+
+	var init = function init() {
+		$target = $('#sponsorship-list');
+
+		if ($target.length) {
+			getData();
+		}
+	};
+
+	return {
+		init: init
+	};
+}(jQuery);
+
+$(function () {
+	seniorExpo.sponsorLister.init();
 });

@@ -24,6 +24,21 @@
 
 }
 
+.bc-filter-form {
+	input {
+		height: 41px;
+    	padding: 0 .5em;
+	}
+
+	input[type=text] {
+		width: 50%;
+	}
+
+	button, input[type=button] {
+		display: inline-block;
+	}
+}
+
 @media (max-width: 768px) {
 	#expocontact {
 		input[type=text] {

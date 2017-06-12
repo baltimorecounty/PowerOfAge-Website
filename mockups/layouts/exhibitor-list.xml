@@ -1,5 +1,3 @@
-
-
 <seml><h1>Exhibitor List</h1>
 
 <form id="filter-form" class="bc-filter-form">
@@ -13,20 +11,20 @@
 <div id="SEContentResults">
 <div class="SEContent" setest="NOT arrayLen(attributes.contents)">No articles found.</div>
 
-<table class="table table-striped bc-filter-content nifty-table nifty-table-sortable" style="" bgcolor="" >
-	
+	<table class="table table-striped bc-filter-content nifty-table nifty-table-sortable" style="" bgcolor="" >	
 		<tr>
 			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Title</th>
 			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Number</th>
-			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Link</th>
 		</tr>
 		<tr seloop="contents" seloopindex="content">
-			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></td>
-			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.getBooth_Number().value" label="Booth Number" preview="" encode="false" datatype="string"/></td>
-			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><selink linktype="EXTERNAL" externallink="${content.getWebsite().link}" newwindow="Yes" showtoolbar="No" objectid="" class="" popupwidth="" popupheight="" title="" localanchor="" linkanchor=""><secontent  name="content.getWebsite().linktext" label="Website" preview="" encode="false" datatype="string"/></selink></td>
+			<td setest="len(${content.getWebsite().link})" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><selink linktype="EXTERNAL" externallink="${content.getWebsite().link}" newwindow="Yes" showtoolbar="No" objectid="" class="" popupwidth="" popupheight="" title="" localanchor="" linkanchor=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></selink></td>			
+			<td setest="NOT len(${content.getWebsite().link})" colspan="1" rowspan="1" width="" height="" bgcolor="" background=""><secontent  name="content.get_Title().value" label="Title" preview="" encode="false" datatype="string"/></td>
+			<td colspan="1" rowspan="1" width="" height="" bgcolor="" background="">
+				<secontent  name="content.getBooth_Number().value" label="Booth Number" preview="" encode="false" datatype="string"/>
+				<span setest="NOT len(${content.getBooth_Number().value})">Center Hall</span>
+			</td>
 		</tr>
-	
-</table>
+	</table>
 </div>
 
 <script>
@@ -37,6 +35,9 @@
         errorMessage: '.bc-filter-noResults',
         contentType: 'table'
     });     
+	$(function() { 
+		$('#SEContentResults table th:first-child a').trigger('click'); 
+	});
 </script>   
 
 </seml>
