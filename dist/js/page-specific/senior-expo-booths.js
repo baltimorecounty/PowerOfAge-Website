@@ -61,8 +61,13 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 			var boothAssignmentIndex = assignedBoothIds.indexOf(boothElement.innerText);
 
 			if (boothAssignmentIndex != -1) {
-				var $boothElementNode = $(boothElement);
-				$boothElementNode.addClass('reserved');
+				var $boothElement = $(boothElement);
+				$boothElement.addClass('reserved');
+
+				if ($boothElement.is('.feature')) {
+					$boothElement.text(boothAssigmentData[boothAssignmentIndex].name + ' (' + boothAssigmentData[boothAssignmentIndex].id.trim() + ')');
+				}
+
 				callback(boothElement, boothAssigmentData[boothAssignmentIndex]);
 			}
 		});

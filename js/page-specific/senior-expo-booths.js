@@ -61,8 +61,13 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 			let boothAssignmentIndex = assignedBoothIds.indexOf(boothElement.innerText);
 
 			if (boothAssignmentIndex != -1) {
-				let $boothElementNode = $(boothElement);
-				$boothElementNode.addClass('reserved');
+				let $boothElement = $(boothElement);
+				$boothElement.addClass('reserved');
+
+				if ($boothElement.is('.feature')) {
+					$boothElement.text(boothAssigmentData[boothAssignmentIndex].name + ' (' + boothAssigmentData[boothAssignmentIndex].id.trim() + ')');
+				}
+
 				callback(boothElement, boothAssigmentData[boothAssignmentIndex]);
 			}				
 		});
