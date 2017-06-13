@@ -2,9 +2,11 @@
 
 	table { 
 		width: 100%; 
-		margin: 0; 
+		margin: 5px; 
+		border-color: transparent;
+		border-collapse: separate;
 		border-spacing: 5px; 
-
+		
 		tr { 
 			margin: 0; 
 
@@ -20,7 +22,9 @@
 				}
 
 				&.feature { 
-					padding: 2em .5em; width: auto 
+					border-bottom: 0;
+					padding: 2em .5em; 
+					width: auto 
 				}
 				
 				&.feature.feature-2x { 
@@ -32,6 +36,7 @@
 					
 					&.reserved { 
 						background: #0f9092; 
+						color: white;
 					}
 				}
 			}

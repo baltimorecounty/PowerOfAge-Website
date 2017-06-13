@@ -4,54 +4,21 @@ namespacer('seniorExpo.pageSpecific');
 
 seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 
-	var
-
-	/**
-  * Load everything up and display the SVG.
-  */
-	display = function display(svgFilePath, width, height) {
-		if (!Snap) {
-			console.log('"Snap" library not loaded.');
-			return;
-		}
-
-		var floorplan = Snap('.floorplan');
-
-		Snap.load(svgFilePath, function (fragment) {
-			snapLoadHandler(fragment, floorplan, width, height);
-		});
-	},
-
-
 	/**
   * Load up the SVG, highlight the booths, and attach the click handler
   */
-	snapLoadHandler = function snapLoadHandler(fragment, floorplan, width, height) {
-		var parentElement = floorplan.append(fragment),
-		    $parentElement = $(parentElement.node),
-		    booths = parentElement.selectAll('svg > g > g');
-
+	var loadHtml = function loadHtml(callback) {
 		$.ajax('/PowerOfAge/exhibitors/2017-exhibitors.html').done(function (boothAssigmentData) {
-			var extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
-
-			highlightAssignedBooths(extractedBoothAssigmentData, booths, function (snapElement, boothData) {
-				snapElement.click(function (clickEvent) {
-					svgElementClickHandler(clickEvent, boothData);
-				});
-				snapElement.hover(function (clickEvent) {
-					svgElementClickHandler(clickEvent, boothData);
-				});
-			});
+			callback(boothAssigmentData);
 		}).fail(function (errorResponse) {
 			console.log(errorResponse);
 		});
-	},
-
+	};
 
 	/**
   * Extract data from the HTML table 
   */
-	extractDataFromHtml = function extractDataFromHtml(htmlData) {
+	var extractDataFromHtml = function extractDataFromHtml(htmlData) {
 		var htmlArray = Array.prototype.slice.call($(htmlData)),
 		    data = [];
 
@@ -77,53 +44,61 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 		});
 
 		return data;
-	},
-
+	};
 
 	/**
   * Highlight all of the booths indicated on the HTML page
   */
-	highlightAssignedBooths = function highlightAssignedBooths(boothAssigmentData, booths, callback) {
+	var highlightAssignedBooths = function highlightAssignedBooths(boothAssigmentData, $booths, callback) {
 		var assignedBoothIds = [];
 
 		$.each(boothAssigmentData, function (index, boothDataItem) {
-			assignedBoothIds.push(boothDataItem.id);
+			assignedBoothIds.push(boothDataItem.id.trim());
 		});
 
-		$.each(booths, function (index, snapElement) {
+		$.each($booths, function (index, boothElement) {
 
-			var boothAssignmentIndex = assignedBoothIds.indexOf(snapElement.node.id);
+			var boothAssignmentIndex = assignedBoothIds.indexOf(boothElement.innerText);
 
 			if (boothAssignmentIndex != -1) {
-				var $snapElementNode = $(snapElement.node);
-				$snapElementNode.addClass('highlight');
-				callback(snapElement, boothAssigmentData[boothAssignmentIndex]);
+				var $boothElementNode = $(boothElement);
+				$boothElementNode.addClass('reserved');
+				callback(boothElement, boothAssigmentData[boothAssignmentIndex]);
 			}
 		});
-	},
-
+	};
 
 	/**
   * Click handler for the selected booths. 
   */
-	svgElementClickHandler = function svgElementClickHandler(clickedSnapElement, boothData) {
-		var $flyouts = $('.flyout');
+	/*const svgElementClickHandler = (clickedSnapElement, boothData) => {
+ 	const $flyouts = $('.flyout');
+ 	
+ 	$flyouts.hide();
+ 
+ 	const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.pageY}px; left: ${clickedSnapElement.pageX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p><p>${boothData.name}</p></div>`);
+ 	const $body = $('body');
+ 
+ 	$body.append($div);
+ 
+ 	$div.show();
+ 
+ 	$div.on('click', event => {
+ 		$div.hide();
+ 	});
+ };*/
 
-		$flyouts.hide();
+	/**
+  * Lets get the ball rolling!
+  */
+	$(function () {
+		var $booths = $('.floorplan td.booth');
 
-		var $div = $('<div class="flyout" style="top: ' + clickedSnapElement.pageY + 'px; left: ' + clickedSnapElement.pageX + 'px"><i class="fa fa-times fa-2x exit"></i><h2>' + boothData.name + '</h2><p><strong>Booth: ' + boothData.id + '</strong></p><p>' + boothData.name + '</p></div>');
-		var $body = $('body');
-
-		$body.append($div);
-
-		$div.show();
-
-		$div.on('click', function (event) {
-			$div.hide();
+		loadHtml(function (html) {
+			var extractedData = extractDataFromHtml(html);
+			highlightAssignedBooths(extractedData, $booths, function (boothElement, boothData) {
+				// do something witty
+			});
 		});
-	};
-
-	return {
-		display: display
-	};
+	});
 }(jQuery);
