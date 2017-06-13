@@ -73,25 +73,25 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 		});
 	};
 
-	/**
-	 * Click handler for the selected booths. 
-	 */
-	/*const svgElementClickHandler = (clickedSnapElement, boothData) => {
+	const hoverInfoHandler = (event, boothData) => {
+		const $target = $(event.target);
+		const targetOffset = $target.offset();
 		const $flyouts = $('.flyout');
 		
 		$flyouts.hide();
 
-		const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.pageY}px; left: ${clickedSnapElement.pageX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p><p>${boothData.name}</p></div>`);
+		const $div = $(`<div class="flyout" style="top: ${targetOffset.top}px; left: ${targetOffset.left}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p></div>`);
 		const $body = $('body');
 
 		$body.append($div);
 
 		$div.show();
 
-		$div.on('click', event => {
+		$body.on('click', event => {
 			$div.hide();
 		});
-	};*/
+
+	};
 
 	/**
 	 * Lets get the ball rolling!
@@ -102,7 +102,9 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 		loadHtml(html => {
 			const extractedData = extractDataFromHtml(html);
 			highlightAssignedBooths(extractedData, $booths, (boothElement, boothData) => {
-				// do something witty
+				$(boothElement).on('click mouseover', event => {			
+					hoverInfoHandler(event, boothData);
+				});
 			});
 		});
 	});

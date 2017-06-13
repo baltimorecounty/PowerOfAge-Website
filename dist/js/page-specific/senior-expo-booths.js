@@ -73,25 +73,24 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 		});
 	};
 
-	/**
-  * Click handler for the selected booths. 
-  */
-	/*const svgElementClickHandler = (clickedSnapElement, boothData) => {
- 	const $flyouts = $('.flyout');
- 	
- 	$flyouts.hide();
- 
- 	const $div = $(`<div class="flyout" style="top: ${clickedSnapElement.pageY}px; left: ${clickedSnapElement.pageX}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p><p>${boothData.name}</p></div>`);
- 	const $body = $('body');
- 
- 	$body.append($div);
- 
- 	$div.show();
- 
- 	$div.on('click', event => {
- 		$div.hide();
- 	});
- };*/
+	var hoverInfoHandler = function hoverInfoHandler(event, boothData) {
+		var $target = $(event.target);
+		var targetOffset = $target.offset();
+		var $flyouts = $('.flyout');
+
+		$flyouts.hide();
+
+		var $div = $('<div class="flyout" style="top: ' + targetOffset.top + 'px; left: ' + targetOffset.left + 'px"><i class="fa fa-times fa-2x exit"></i><h2>' + boothData.name + '</h2><p><strong>Booth: ' + boothData.id + '</strong></p></div>');
+		var $body = $('body');
+
+		$body.append($div);
+
+		$div.show();
+
+		$body.on('click', function (event) {
+			$div.hide();
+		});
+	};
 
 	/**
   * Lets get the ball rolling!
@@ -102,7 +101,9 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 		loadHtml(function (html) {
 			var extractedData = extractDataFromHtml(html);
 			highlightAssignedBooths(extractedData, $booths, function (boothElement, boothData) {
-				// do something witty
+				$(boothElement).on('click mouseover', function (event) {
+					hoverInfoHandler(event, boothData);
+				});
 			});
 		});
 	});
