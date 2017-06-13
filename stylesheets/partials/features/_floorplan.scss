@@ -1,0 +1,40 @@
+.floorplan {
+
+	table { 
+		width: 100%; 
+		margin: 0; 
+		border-spacing: 5px; 
+
+		tr { 
+			margin: 0; 
+
+			td { 
+				vertical-align: middle; 
+				margin: 5px; 
+				text-align: center; 
+				height: 1.5em; 
+				width: 3em;
+
+				&.container { 
+					vertical-align: top; 
+				}
+
+				&.feature { 
+					padding: 2em .5em; width: auto 
+				}
+				
+				&.feature.feature-2x { 
+					padding: 4em .5em; 
+				}
+
+				&.booth { 
+					background: #eee; 
+					
+					&.reserved { 
+						background: #0f9092; 
+					}
+				}
+			}
+		}
+	}
+}
