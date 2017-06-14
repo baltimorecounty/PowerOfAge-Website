@@ -1,7 +1,11 @@
 namespacer('seniorExpo.pageSpecific');
 
 seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
-	
+
+	const $floorplan = $('.floorplan');
+
+	let lastBoothId = '';
+
 	/**
 	 * Load up the SVG, highlight the booths, and attach the click handler
 	 */
@@ -37,7 +41,8 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 			const $cols = $(row).find('td'),
 				rowData = {
 					name: $cols.eq(0).text(),
-					id: $cols.eq(1).text()
+					id: $cols.eq(1).text(),
+					link: $cols.eq(0).html()
 				};
 			
 			data.push(rowData);
@@ -77,19 +82,42 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 		const $target = $(event.target);
 		const targetOffset = $target.offset();
 		const $flyouts = $('.flyout');
-		
-		$flyouts.hide();
-
-		const $div = $(`<div class="flyout" style="top: ${targetOffset.top}px; left: ${targetOffset.left}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p></div>`);
 		const $body = $('body');
 
-		$body.append($div);
+		$flyouts.remove();
 
-		$div.show();
-
-		$body.on('click', event => {
-			$div.hide();
+		$target.on('mouseleave mouseenter', event => {
+			lastBoothId = '';
 		});
+
+		if (lastBoothId != boothData.id) {
+
+			const $div = $(`<div class="flyout" style="top: ${targetOffset.top}px; left: ${targetOffset.left}px; display: none; min-width: ${$target.outerWidth()}px"><i class="fa fa-times fa-2x exit"></i><h2>${boothData.name}</h2><p><strong>Booth: ${boothData.id}</strong></p></div>`);
+			const link = boothData.link.indexOf('<a') === -1 ? '' : $(boothData.link).attr('href');
+
+			if (link) {
+				$div.append(`<p><a href="${link}" target="_blank" title="Visit ${boothData.name}">Visit us online!</a></p>`);
+			}
+
+			$body.append($div);
+
+			$div.slideDown(250, () => {
+				lastBoothId = boothData.id;
+			});		
+
+			$div.on('mouseleave', event => {
+				$div.slideUp(250, () => {
+					lastBoothId = '';
+				});
+			});
+
+			$div.find('.exit').on('click', event => {
+				$div.slideUp(250, () => {
+					lastBoothId = '';
+					$div.remote();
+				});
+			});
+		}
 
 	};
 
@@ -102,7 +130,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 		loadHtml(html => {
 			const extractedData = extractDataFromHtml(html);
 			highlightAssignedBooths(extractedData, $booths, (boothElement, boothData) => {
-				$(boothElement).on('click mouseover', event => {			
+				$(boothElement).on('click mouseenter', event => {			
 					hoverInfoHandler(event, boothData);
 				});
 			});
