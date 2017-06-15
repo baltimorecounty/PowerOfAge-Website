@@ -1,4 +1,12 @@
-button, input[type="button"], input[type="submit"] {
+header {
+	button, input[type="button"], input[type="submit"], a.button {
+		margin-bottom: 0;
+		text-align: center;		
+		padding: .25em .75em;
+	}
+}
+
+button, input[type="button"], input[type="submit"], a.button {
 	display: block;
 	margin-bottom: 20px;
 	border: none;
@@ -17,6 +25,7 @@ button, input[type="button"], input[type="submit"] {
 
 	&:hover {
 		background: $tan;
+		color: white;
 	}
 
 	&:hover:after {
@@ -25,9 +34,11 @@ button, input[type="button"], input[type="submit"] {
 
 	&.reverse {
 		background: $tan;
+		color: white;
 
 		&:hover {
 			background: $green;
+			color: white;
 		}
 	}
 
