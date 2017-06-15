@@ -93,7 +93,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 		let $wrapper = $('<div class="sponsor-row flex flex-row flex-space-around flex-wrap"></div>');
 
 		$.each(sponsorData, (index, sponsorItem) => {
-			$wrapper.append(`<div class="sponsor"><a href="${sponsorItem.websiteUrl}" target="_blank"><img src="${sponsorItem.imageUrl}"/></a></div>`);
+			$wrapper.append(`<div class="sponsor"><a href="${sponsorItem.websiteUrl}" title="Visit ${sponsorItem.name}" target="_blank"><img src="${sponsorItem.imageUrl}" alt="Logo for ${sponsorItem.name}" /></a></div>`);
 		});
 
 		$target.append($wrapper);
