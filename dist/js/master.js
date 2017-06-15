@@ -288,6 +288,11 @@ namespacer('seniorExpo');
 
 seniorExpo.nav = function ($, undefined) {
 
+	var $allDropdowns = void 0;
+
+	/**
+  * Hamburger menu control 
+  */
 	var menuDisplayHandler = function menuDisplayHandler(event) {
 		var $target = $(event.currentTarget),
 		    $menu = $target.siblings('nav'),
@@ -301,10 +306,54 @@ seniorExpo.nav = function ($, undefined) {
 		$menu.toggleClass('active');
 	};
 
+	/**
+  * Make the nav keyboard navigable.
+  */
+	var keyboardNavigationHandler = function keyboardNavigationHandler(event) {
+		var keyCode = event.which || event.keyCode;
+		var $target = $(event.currentTarget);
+		var $closestDropdown = $target.closest('.has-dropdown').find('.dropdown');
+		var enterKeyCode = 13;
+		var tabKeyCode = 9;
+
+		if (keyCode === enterKeyCode) {
+			$allDropdowns.not($closestDropdown).removeClass('active');
+			$closestDropdown.toggleClass('active');
+		}
+
+		if (keyCode === tabKeyCode && $target.is('.has-dropdown > span, .has-dropdown > a')) {
+			$allDropdowns.removeClass('active');
+		}
+	};
+
+	/**
+  * Cancel menus when tabbing off the nav.
+  */
+	var bodyKeyupHandler = function bodyKeyupHandler(event) {
+		var keyCode = event.which || event.keyCode;
+		var tabKeyCode = 9;
+		var $target = $(event.target);
+
+		if (keyCode === tabKeyCode) {
+			if ($target.closest('nav').length === 0) {
+				$allDropdowns.removeClass('active');
+			}
+		}
+	};
+
+	/**
+  * Assign handlers
+  */
 	var init = function init() {
 		var $hamburgerMenu = $('.hamburger-menu');
+		var $mainMenu = $('header nav .has-dropdown span, header nav .has-dropdown a');
+		var $body = $('body');
+
+		$allDropdowns = $('header nav .dropdown');
 
 		$hamburgerMenu.on('click', menuDisplayHandler);
+		$mainMenu.on('keyup', keyboardNavigationHandler);
+		$body.on('keyup', bodyKeyupHandler);
 	};
 
 	return { init: init };
@@ -452,6 +501,33 @@ baltimoreCounty.niftyTables = function ($, numericStringTools, undefined) {
 
 $(document).ready(function () {
     baltimoreCounty.niftyTables.init();
+});
+'use strict';
+
+namespacer('seniorExpo');
+
+seniorExpo.searchBoxer = function ($, window, undefined) {
+
+	var init = function init() {
+		$('#search-button').on('click', function (event) {
+			var searchValue = $('#search-box').val();
+			window.location = '/PowerOfAge/search-results?search=' + searchValue;
+		});
+
+		$('#search-box').on('keyup', function (event) {
+			var keyCode = event.which || event.keyCode;
+
+			if (keyCode === 13) {
+				$('#search-button').trigger('click');
+			}
+		});
+	};
+
+	return { init: init };
+}(jQuery, window);
+
+$(function () {
+	seniorExpo.searchBoxer.init();
 });
 'use strict';
 

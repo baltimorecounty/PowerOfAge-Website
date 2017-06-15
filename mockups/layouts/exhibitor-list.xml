@@ -13,7 +13,7 @@
 
 	<table class="table table-striped bc-filter-content nifty-table nifty-table-sortable" style="" bgcolor="" >	
 		<tr>
-			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Title</th>
+			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Exhibitor Name</th>
 			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Number</th>
 		</tr>
 		<tr seloop="contents" seloopindex="content">

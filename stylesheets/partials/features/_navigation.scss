@@ -58,8 +58,12 @@
 					display: inline-block;
 					padding: .75em 1.5em .75em .75em;
 					width: 100%;
+					
+					&:focus {
+						outline-color: black;
+					}
 
-					&:hover {
+					&:hover, &:focus {
 						color: $tan;
 					}					
 				}
@@ -90,7 +94,11 @@
 							font-weight: 100;
 							min-width: 15em;
 
-							&:hover, &:active {
+							&:focus {
+								outline-color: $green;
+							}
+
+							&:hover, &:active, &:focus {
 								color: $tan;
 							} 
 						}
@@ -105,7 +113,7 @@
 					}
 				}
 
-				&:hover {
+				&:hover, &:focus {
 					background-color: #333;
 					color: $tan;	
 
@@ -130,6 +138,10 @@
 			margin: .5em 0 .5em .5em;
 			padding: .45em;
 			border: none;
+
+			&:focus {
+				outline-color: black;
+			}
 		}
 
 		.search-icon {
@@ -150,6 +162,10 @@
 
 			&:hover {
 				background-color: $dark-gray;
+			}
+
+			&:focus {
+				outline-color: black;
 			}
 		}
 	}
