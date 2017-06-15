@@ -4,6 +4,7 @@
 		<table>
 			<tr>
 				<th>Name</th>
+				<th>Booth</th>
 				<th>Logo Url</th>
 				<th>Website</th>
 				<th>Line</th>
@@ -11,6 +12,7 @@
 			</tr>
 			<tr seloop="contents" seloopindex="content">
 				<td><secontent name="content.get_title().value" label="Title" /></td>
+				<td><secontent name="content.getBooth_Number().value" label="Booth Number" /></td>
 				<td><secontent name="content.getLogo().url" label="Logo Url" /></td>
 				<td><secontent name="content.getWebsite().link" label="Website" datatype="string" /></td>
 				<td><secontent name="content.getTier().value" label="Line" /></td>
