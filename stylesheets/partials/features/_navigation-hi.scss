@@ -1,0 +1,53 @@
+$tan-hi: #e28700;
+
+.nav-bar {
+	background: $green;
+
+	.hamburger-menu {
+		color: white;
+	}
+
+	nav {
+		ul {
+
+			li.has-dropdown {
+				a, span {
+					color: white;
+
+					&:focus {
+						outline-color: black;
+					}
+
+					&:hover, &:focus {
+						color: $tan-hi;
+					}					
+				}
+
+				.dropdown {
+										
+					li {
+
+						a {
+							&:focus {
+								outline-color: $green;
+							}
+
+							&:hover, &:active, &:focus {
+								color: $tan-hi;
+							} 
+						}
+					}
+
+				}
+
+				&:hover, &:focus {
+					background-color: #333;
+					color: $tan-hi;					
+				}
+
+			}
+
+		}
+	}
+
+}
