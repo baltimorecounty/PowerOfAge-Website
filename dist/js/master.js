@@ -589,8 +589,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		    nameIndex = 0,
 		    imageUrlIndex = 1,
 		    websiteUrlIndex = 2,
-		    lineIndex = 3,
-		    inKindIndex = 4;
+		    orderIndex = 3;
 
 		var sponsorData = [];
 
@@ -599,8 +598,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 				name: $(tableRow).find('td').eq(nameIndex).text(),
 				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
 				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
-				line: $(tableRow).find('td').eq(lineIndex).text(),
-				isInKind: $(tableRow).find('td').eq(inKindIndex).text()
+				order: $(tableRow).find('td').eq(orderIndex).text()
 			};
 
 			sponsorData.push(dataItem);
@@ -613,8 +611,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 
 	var sortSponsors = function sortSponsors(sponsorData) {
 		sponsorData = sponsorData.sort(nameComparer);
-		sponsorData = sponsorData.sort(lineComparer);
-		sponsorData = sponsorData.sort(inKindComparer);
+		sponsorData = sponsorData.sort(orderComparer);
 		return sponsorData;
 	};
 
@@ -629,24 +626,13 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		return 0;
 	};
 
-	var lineComparer = function lineComparer(a, b) {
-		var aLine = a.line * 1;
-		var bLine = b.line * 1;
+	var orderComparer = function orderComparer(a, b) {
+		var aOrder = a.order * 1;
+		var bOrder = b.order * 1;
 
-		if (aLine < bLine) return -1;
+		if (aOrder < bOrder) return -1;
 
-		if (aLine > bLine) return 1;
-
-		return 0;
-	};
-
-	var inKindComparer = function inKindComparer(a, b) {
-		var aInKind = a.isInKind.toLowerCase();
-		var bInKind = b.isInKind.toLowerCase();
-
-		if (aInKind === 'no' && bInKind === 'yes') return -1;
-
-		if (aInKind === 'yes' && bInKind === 'no') return 1;
+		if (aOrder > bOrder) return 1;
 
 		return 0;
 	};
