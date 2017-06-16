@@ -286,6 +286,52 @@ baltimoreCounty.contentFilter = function ($) {
 
 namespacer('seniorExpo');
 
+seniorExpo.contraster = function ($, undefined) {
+
+	var stylesheets = {
+		master: {
+			normal: '/sebin/h/e/master.min.css',
+			high: '/sebin/x/u/master-high-contrast.min.css'
+		},
+		home: {
+			normal: '/sebin/r/d/home.min.css',
+			high: '/sebin/f/p/home-high-contrast.min.css'
+		}
+	};
+
+	var contrastButtonClickHandler = function contrastButtonClickHandler(event) {
+		var $stylesheetMaster = $('#stylesheet-master');
+		var $stylesheetHome = $('#stylesheet-home');
+
+		if ($stylesheetMaster.length) {
+			var masterHref = $stylesheetMaster.attr('href');
+			$stylesheetMaster.attr('href', masterHref === stylesheets.master.normal ? stylesheets.master.high : stylesheets.master.normal);
+		}
+
+		if ($stylesheetHome.length) {
+			var homeHref = $stylesheetHome.attr('href');
+			$stylesheetHome.attr('href', homeHref === stylesheets.home.normal ? stylesheets.home.high : stylesheets.home.normal);
+		}
+	};
+
+	var init = function init() {
+		var $contrastButton = $('#contrastButton');
+
+		if ($contrastButton.length) {
+			$contrastButton.on('click', contrastButtonClickHandler);
+		}
+	};
+
+	return { init: init };
+}(jQuery);
+
+$(function () {
+	seniorExpo.contraster.init();
+});
+'use strict';
+
+namespacer('seniorExpo');
+
 seniorExpo.nav = function ($, undefined) {
 
 	var $allDropdowns = void 0;
