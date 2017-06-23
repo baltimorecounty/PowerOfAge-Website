@@ -1,5 +1,9 @@
 #sponsorship-list {
 
+	.sponsor-row.flex {
+		flex-basis: auto;
+	}
+
 	p {
 		margin-bottom: 2em;
 	}
@@ -12,7 +16,7 @@
 
 .no-flex {
 	#sponsorship-list {
-		.sponsor-row {
+		.sponsor-row {			
 			.sponsor {
 				display: inline-block;
 			}
