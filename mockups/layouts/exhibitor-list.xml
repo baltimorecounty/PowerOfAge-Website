@@ -11,7 +11,7 @@
 <div id="SEContentResults">
 <div class="SEContent" setest="NOT arrayLen(attributes.contents)">No articles found.</div>
 
-	<table class="table table-striped bc-filter-content nifty-table nifty-table-sortable" style="" bgcolor="" >	
+	<table id="exhibitor-table" class="table table-striped bc-filter-content nifty-table nifty-table-sortable" style="" bgcolor="" >	
 		<tr>
 			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Exhibitor Name</th>
 			<th colspan="1" rowspan="1" width="" height="" bgcolor="" background="">Booth Number</th>
@@ -36,6 +36,7 @@
         contentType: 'table'
     });     
 	$(function() { 
+		$('#exhibitor-table tr td:nth-child(2)').each(function(index, element) { if (element.innerText === '0') { element.innerText = 'TBD' } });
 		$('#SEContentResults table th:first-child a').trigger('click'); 
 	});
 </script>   
