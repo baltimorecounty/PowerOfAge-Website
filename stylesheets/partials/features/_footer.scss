@@ -11,7 +11,7 @@ footer {
 	}
 
 	nav {
-		padding: .6em;
+		padding: .6em 0 .6em .6em;
 
 		ul {
 			display: inline-block;
@@ -23,8 +23,7 @@ footer {
 				display: inline-block;
 				line-height: 1.5em;
 				margin: 0 1em;
-				text-transform: uppercase;
-				font-size: .6em;
+				font-size: .8em;
 
 				a {
 					&:link, &:visited {
@@ -32,10 +31,91 @@ footer {
 					}
 
 					&:hover, &:active {
-						color: $tan;
+						color: white;
 					}
+				}
+
+				&:last-child {
+					margin-right: 0;
 				}
 			}
 		}
 	}
+
+	.copyright {
+		font-size: .6em;
+	}
+
+	
+	.contraster {
+			
+		clear: both;
+		font-size: .8em;
+		position: relative;
+
+		.toggle-text {
+			position: relative;
+			top: -10px;
+			margin-right: 1em;
+		}
+
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 36px;
+			height: 18px;
+
+			input { display: none; }
+		}
+
+		/* The slider */
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: .4s;
+			transition: .4s;
+
+			&:before {
+				position: absolute;
+				content: "";
+				height: 12px;
+				width: 12px;
+				left: 4px;
+				bottom: 3px;
+				background-color: white;
+				-webkit-transition: .4s;
+				transition: .4s;
+				box-shadow: 1px 1px 2px #333;
+			}
+
+			&.round {
+				border-radius: 18px;
+			}
+
+			&.round:before {
+				border-radius: 50%;
+			}
+		}
+
+		input:checked + .slider {
+			background-color: $tan-hi;
+		}
+
+		input:focus + .slider {
+			box-shadow: 0 0 1px $tan-hi;
+		}
+
+		input:checked + .slider:before {
+			-webkit-transform: translateX(16px);
+			-ms-transform: translateX(16px);
+			transform: translateX(16px);
+		}
+
+	}
+
 }

@@ -1,7 +1,7 @@
 
 /* Atoms */
 @import "vendor/bootstrap";
-@import "partials/core/variables";
+@import "partials/core/variables-high-contrast";
 @import "partials/core/flexbox";
 
 /* Molecules */
@@ -24,3 +24,5 @@
 @import "partials/features/callouts";
 @import "partials/features/floorplan";
 @import "partials/features/search";
+
+@import "partials/features/navigation-hi";

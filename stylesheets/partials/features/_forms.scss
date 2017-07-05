@@ -1,0 +1,48 @@
+#expocontact {
+
+	.SEAFWrapper {
+		margin-bottom: 1em;
+	}
+
+	.seRequiredMarker {
+		color: $tan;
+		display: inline-block;
+		padding: 0 .25em;
+	}
+
+	input[type=text] {
+		width: 50%;
+	}
+
+	label {
+		font-weight: 600;
+	}
+
+	select, textarea {
+		width: 100%;
+	}
+
+}
+
+.bc-filter-form {
+	input {
+		height: 41px;
+    	padding: 0 .5em;
+	}
+
+	input[type=text] {
+		width: 50%;
+	}
+
+	button, input[type=button] {
+		display: inline-block;
+	}
+}
+
+@media (max-width: 768px) {
+	#expocontact {
+		input[type=text] {
+			width: 100%;
+		}
+	}
+}

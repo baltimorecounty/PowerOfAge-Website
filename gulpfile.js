@@ -20,7 +20,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('process-scss', () => {
-	return gulp.src(['stylesheets/master.scss', 'stylesheets/home.scss'])
+	return gulp.src(['stylesheets/*.scss'])
 		.pipe(sass())
 		.pipe(cssnano({ autoprefixer: false }))
 		.pipe(rename({ suffix: '.min' }))

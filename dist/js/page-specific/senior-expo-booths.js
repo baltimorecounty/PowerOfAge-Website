@@ -4,62 +4,35 @@ namespacer('seniorExpo.pageSpecific');
 
 seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 
-	var
+	var $floorplan = $('.floorplan');
 
-	/**
-  * Load everything up and display the SVG.
-  */
-	display = function display(svgFilePath, width, height) {
-		if (!Snap) {
-			console.log('"Snap" library not loaded.');
-			return;
-		}
-
-		var floorplan = Snap('.floorplan');
-
-		Snap.load(svgFilePath, function (fragment) {
-			snapLoadHandler(fragment, floorplan, width, height);
-		});
-	},
-
+	var lastBoothId = '';
 
 	/**
   * Load up the SVG, highlight the booths, and attach the click handler
   */
-	snapLoadHandler = function snapLoadHandler(fragment, floorplan, width, height) {
-		var parentElement = floorplan.append(fragment),
-		    $parentElement = $(parentElement.node),
-		    booths = parentElement.selectAll('svg > g > g');
-
-		$.ajax('http://ba224964:1000/api/aging-expo/booth-assignments').done(function (boothAssigmentData) {
-			var extractedBoothAssigmentData = extractDataFromHtml(boothAssigmentData);
-
-			highlightAssignedBooths(extractedBoothAssigmentData, booths, function (snapElement, boothData) {
-				snapElement.click(function (clickEvent) {
-					svgElementClickHandler(clickEvent, boothData);
-				});
-				snapElement.hover(function (clickEvent) {
-					svgElementClickHandler(clickEvent, boothData);
-				});
-			});
+	var loadHtml = function loadHtml(callback) {
+		$.ajax('/exhibitors/2017-exhibitors.html').done(function (boothAssigmentData) {
+			callback(boothAssigmentData);
 		}).fail(function (errorResponse) {
 			console.log(errorResponse);
 		});
-	},
-
+	};
 
 	/**
   * Extract data from the HTML table 
   */
-	extractDataFromHtml = function extractDataFromHtml(htmlData) {
+	var extractDataFromHtml = function extractDataFromHtml(htmlData) {
 		var htmlArray = Array.prototype.slice.call($(htmlData)),
 		    data = [];
 
 		var $tableRows = void 0;
 
 		for (var i = 0; i < htmlArray.length; i++) {
-			if (htmlArray[i].id === "SEContentResults") {
-				$tableRows = $(htmlArray[i]).find('tbody tr');
+			var $target = $(htmlArray[i]).find('#SEContentResults');
+
+			if ($target.length) {
+				$tableRows = $target.find('tbody tr');
 				break;
 			}
 		}
@@ -67,65 +40,99 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 		$.each($tableRows, function (index, row) {
 			var $cols = $(row).find('td'),
 			    rowData = {
-				id: $cols.eq(0).text(),
-				name: $cols.eq(1).text(),
-				description: $cols.eq(2).text()
+				name: $cols.eq(0).text(),
+				id: $cols.eq(1).text(),
+				link: $cols.eq(0).html()
 			};
 
 			data.push(rowData);
 		});
 
 		return data;
-	},
-
+	};
 
 	/**
   * Highlight all of the booths indicated on the HTML page
   */
-	highlightAssignedBooths = function highlightAssignedBooths(boothAssigmentData, booths, callback) {
+	var highlightAssignedBooths = function highlightAssignedBooths(boothAssigmentData, $booths, callback) {
 		var assignedBoothIds = [];
 
 		$.each(boothAssigmentData, function (index, boothDataItem) {
-			assignedBoothIds.push(boothDataItem.id);
+			assignedBoothIds.push(boothDataItem.id.trim());
 		});
 
-		$.each(booths, function (index, snapElement) {
+		$.each($booths, function (index, boothElement) {
 
-			var boothAssignmentIndex = assignedBoothIds.indexOf(snapElement.node.id);
+			var boothAssignmentIndex = assignedBoothIds.indexOf(boothElement.innerText);
 
 			if (boothAssignmentIndex != -1) {
-				var $snapElementNode = $(snapElement.node);
-				$snapElementNode.addClass('highlight');
-				callback(snapElement, boothAssigmentData[boothAssignmentIndex]);
+				var $boothElement = $(boothElement);
+				$boothElement.addClass('reserved');
+
+				if ($boothElement.is('.feature')) {
+					$boothElement.text(boothAssigmentData[boothAssignmentIndex].name + ' (' + boothAssigmentData[boothAssignmentIndex].id.trim() + ')');
+				}
+
+				callback(boothElement, boothAssigmentData[boothAssignmentIndex]);
 			}
 		});
-	},
+	};
 
-
-	/**
-  * Click handler for the selected booths. 
-  */
-	svgElementClickHandler = function svgElementClickHandler(clickedSnapElement, boothData) {
-		var $active = $(clickedSnapElement.path[0]),
-		    $target = $active.closest('g'),
-		    targetId = $target.attr('id'),
-		    $flyouts = $('.flyout');
-
-		$flyouts.hide();
-
-		var $div = $('<div class="flyout" style="top: ' + clickedSnapElement.pageY + 'px; left: ' + clickedSnapElement.pageX + 'px"><i class="fa fa-times fa-2x exit"></i><h2>' + boothData.name + '</h2><p><strong>Booth: ' + boothData.id + '</strong></p><p>' + boothData.description + '</p></div>');
+	var hoverInfoHandler = function hoverInfoHandler(event, boothData) {
+		var $target = $(event.target);
+		var targetOffset = $target.offset();
+		var $flyouts = $('.flyout');
 		var $body = $('body');
 
-		$body.append($div);
+		$flyouts.remove();
 
-		$div.show();
-
-		$div.on('click', function (event) {
-			$div.hide();
+		$target.on('mouseleave mouseenter', function (event) {
+			lastBoothId = '';
 		});
+
+		if (lastBoothId != boothData.id) {
+
+			var $div = $('<div class="flyout" style="top: ' + targetOffset.top + 'px; left: ' + targetOffset.left + 'px; display: none; min-width: ' + $target.outerWidth() + 'px"><i class="fa fa-times fa-2x exit"></i><h2>' + boothData.name + '</h2><p><strong>Booth: ' + boothData.id + '</strong></p></div>');
+			var link = boothData.link.indexOf('<a') === -1 ? '' : $(boothData.link).attr('href');
+
+			if (link) {
+				$div.append('<p><a href="' + link + '" target="_blank" title="Visit ' + boothData.name + '">Visit us online!</a></p>');
+			}
+
+			$body.append($div);
+
+			$div.slideDown(250, function () {
+				lastBoothId = boothData.id;
+			});
+
+			$div.on('mouseleave', function (event) {
+				$div.slideUp(250, function () {
+					lastBoothId = '';
+				});
+			});
+
+			$div.find('.exit').on('click', function (event) {
+				$div.slideUp(250, function () {
+					lastBoothId = '';
+					$div.remote();
+				});
+			});
+		}
 	};
 
-	return {
-		display: display
-	};
+	/**
+  * Lets get the ball rolling!
+  */
+	$(function () {
+		var $booths = $('.floorplan td.booth');
+
+		loadHtml(function (html) {
+			var extractedData = extractDataFromHtml(html);
+			highlightAssignedBooths(extractedData, $booths, function (boothElement, boothData) {
+				$(boothElement).on('click mouseenter', function (event) {
+					hoverInfoHandler(event, boothData);
+				});
+			});
+		});
+	});
 }(jQuery);

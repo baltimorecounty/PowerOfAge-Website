@@ -1,46 +1,78 @@
 namespacer('seniorExpo');
 
 seniorExpo.nav = (($, undefined) => {
-
-	const 
 	
-		dropdownDisplayHandler = event => {
-			const $target = $(event.currentTarget),
-				$dropdown = $target.find('.dropdown'),
-				isActive = $dropdown.is('.active'),
-				isNavActive = $target.closest('nav').is('.active');
+	let $allDropdowns;
 
-			if (isActive) {
-				if (event.type === 'click' || event.type === 'mouseout') {
-					$dropdown.removeClass('active');
-					$target.find('.fa').toggleClass('fa-caret-down').toggleClass('fa-caret-right');
-				}
-			} else {
-				if (event.type != 'mouseout') {
-					$dropdown.addClass('active');
-					$target.find('.fa').toggleClass('fa-caret-right').toggleClass('fa-caret-down');
-				}
+	/**
+	 * Hamburger menu control 
+	 */
+	const menuDisplayHandler = (event) => {
+		const $target = $(event.currentTarget),
+			$menu = $target.siblings('nav'),
+			$menuItems = $menu.find('.has-dropdown');
+		
+		$menuItems.on('click', event => {
+			$menu.find('.dropdown').not($(event.target).siblings('.dropdown')).removeClass('active');
+			$(event.target).siblings('.dropdown').toggleClass('active');
+		});
+
+		$menu.toggleClass('active');
+	};
+
+	/**
+	 * Make the nav keyboard navigable.
+	 */
+	const keyboardNavigationHandler = event => {
+		const keyCode = event.which || event.keyCode;
+		const $target = $(event.currentTarget);
+		const $closestDropdown = $target.closest('.has-dropdown').find('.dropdown');
+		const enterKeyCode = 13;
+		const tabKeyCode = 9;
+
+		if (keyCode === enterKeyCode) {
+			$allDropdowns.not($closestDropdown).removeClass('active');
+			$closestDropdown.toggleClass('active');
+		}
+
+		if (keyCode === tabKeyCode && $target.is('.has-dropdown > span, .has-dropdown > a')) {
+			$allDropdowns.removeClass('active');
+		}
+
+	};
+
+	/**
+	 * Cancel menus when tabbing off the nav.
+	 */
+	const bodyKeyupHandler = event => {
+		const keyCode = event.which || event.keyCode;
+		const tabKeyCode = 9;
+		const $target = $(event.target);
+
+		if (keyCode === tabKeyCode) {
+			if ($target.closest('nav').length === 0) {
+				$allDropdowns.removeClass('active');
 			}
-		},
+		}
+	};
 
-		menuDisplayHandler = (event) => {
-			const $target = $(event.currentTarget),
-				$menu = $target.siblings('nav'),
-				$menuItems = $menu.find('.has-dropdown');
-			
-			$menu.toggleClass('active');
-		},
+	/**
+	 * Assign handlers
+	 */
+	const init = () => {
+		const $hamburgerMenu = $('.hamburger-menu');
+		const $mainMenu = $('header nav .has-dropdown span, header nav .has-dropdown a');
+		const $body = $('body');
 
-		init = () => {
-			const $menuItems = $('nav .has-dropdown'),
-				$dropdowns = $menuItems.find('.dropdown'),
-				$hamburgerMenu = $('.hamburger-menu');
-				
-			$menuItems.on('click mouseover mouseout', dropdownDisplayHandler);
-			$hamburgerMenu.on('click', menuDisplayHandler);
-		};
+		$allDropdowns = $('header nav .dropdown');
+
+		$hamburgerMenu.on('click', menuDisplayHandler);
+		$mainMenu.on('keyup', keyboardNavigationHandler);
+		$body.on('keyup', bodyKeyupHandler);
+	};
 
 	return { init };
+
 })(jQuery);
 
 $(() => { 

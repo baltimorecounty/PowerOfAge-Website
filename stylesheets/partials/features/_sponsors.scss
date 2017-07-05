@@ -1,0 +1,25 @@
+#sponsorship-list {
+
+	.sponsor-row.flex {
+		flex-basis: auto;
+	}
+
+	p {
+		margin-bottom: 2em;
+	}
+
+	.sponsor {
+		margin: 0 1.2em 3em;
+	}
+
+}
+
+.no-flex {
+	#sponsorship-list {
+		.sponsor-row {			
+			.sponsor {
+				display: inline-block;
+			}
+		}
+	}
+}

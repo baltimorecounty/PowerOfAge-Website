@@ -1,0 +1,26 @@
+.callout {
+	img {
+		display: block;
+		float: left;
+		margin: 0 1em;
+	}
+}
+
+.callout-exhibitor-list {
+	margin-top: 4.5em;
+}
+
+.callout-become-sponsor {
+	margin-top: 6em;
+}
+
+@media (max-width: 991px) {
+	.callout-exhibitor-list, .callout-become-sponsor {
+
+		margin-top: 2em;
+
+		img {
+			display: none;
+		}
+	}
+}
