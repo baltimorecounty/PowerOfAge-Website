@@ -560,7 +560,7 @@ seniorExpo.searchBoxer = function ($, window, undefined) {
 	var init = function init() {
 		$('#search-button').on('click', function (event) {
 			var searchValue = $('#search-box').val();
-			window.location = '/PowerOfAge/search-results?search=' + searchValue;
+			window.location = '/search-results?search=' + searchValue;
 		});
 
 		$('#search-box').on('keyup', function (event) {
@@ -641,7 +641,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 	};
 
 	var getData = function getData() {
-		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(function (data) {
+		$.ajax('/_data/Power_of_Age_Sponsors').done(function (data) {
 			htmlLoadedHandler(data, buildHtml);
 		}).fail(function (errorResponse) {
 			console.log(errorResponse);

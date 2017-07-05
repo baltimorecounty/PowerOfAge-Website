@@ -63,7 +63,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 	};
 
 	const getData = () => {
-		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors')
+		$.ajax('/_data/Power_of_Age_Sponsors')
 			.done(data => {
 				htmlLoadedHandler(data, buildHtml);
 			})

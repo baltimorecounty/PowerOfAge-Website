@@ -5,7 +5,7 @@ seniorExpo.searchBoxer = (($, window, undefined) => {
 	const init = () => {
 		$('#search-button').on('click', event => {
 			const searchValue = $('#search-box').val();
-			window.location = '/PowerOfAge/search-results?search=' + searchValue;
+			window.location = '/search-results?search=' + searchValue;
 		});
 
 		$('#search-box').on('keyup', event => {

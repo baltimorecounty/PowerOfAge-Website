@@ -10,7 +10,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 	 * Load up the SVG, highlight the booths, and attach the click handler
 	 */
 	const loadHtml = (callback) => {
-		$.ajax('/PowerOfAge/exhibitors/2017-exhibitors.html')
+		$.ajax('/exhibitors/2017-exhibitors.html')
 			.done(boothAssigmentData => {
 				callback(boothAssigmentData);
 			})
