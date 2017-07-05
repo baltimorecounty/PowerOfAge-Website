@@ -22,6 +22,9 @@
 
 		ul {
 			display: inline-block;
+			display: flex;
+			flex: 1;
+			justify-content: space-between;
 			list-style-type: none;
 			padding: 0;
 			margin: 0;
@@ -58,8 +61,12 @@
 					display: inline-block;
 					padding: .75em 1.5em .75em .75em;
 					width: 100%;
+					
+					&:focus {
+						outline-color: black;
+					}
 
-					&:hover {
+					&:hover, &:focus {
 						color: $tan;
 					}					
 				}
@@ -90,7 +97,11 @@
 							font-weight: 100;
 							min-width: 15em;
 
-							&:hover, &:active {
+							&:focus {
+								outline-color: $green;
+							}
+
+							&:hover, &:active, &:focus {
 								color: $tan;
 							} 
 						}
@@ -102,10 +113,10 @@
 						.dropdown {
 							display: block;
 						}		
-					}
+					}					
 				}
 
-				&:hover {
+				&:hover, &:focus {
 					background-color: #333;
 					color: $tan;	
 
@@ -116,6 +127,13 @@
 					.fa-caret-right::before {
 						content: '\f0d7';
 					}	
+				}
+
+				&:last-child {
+					.dropdown {
+						right: 0;
+						left: auto;
+					}
 				}
 
 			}
@@ -130,6 +148,10 @@
 			margin: .5em 0 .5em .5em;
 			padding: .45em;
 			border: none;
+
+			&:focus {
+				outline-color: black;
+			}
 		}
 
 		.search-icon {
@@ -151,6 +173,10 @@
 			&:hover {
 				background-color: $dark-gray;
 			}
+
+			&:focus {
+				outline-color: black;
+			}
 		}
 	}
 
@@ -164,7 +190,7 @@
 		}
 
 		nav {
-			background-color: #0f9092;
+			background-color: $green;
 			left: 0;
 			position: absolute;
 			top: 3em;

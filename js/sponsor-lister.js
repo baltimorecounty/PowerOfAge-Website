@@ -10,8 +10,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 			nameIndex = 0,
 			imageUrlIndex = 1,
 			websiteUrlIndex = 2,
-			lineIndex = 3,
-			inKindIndex = 4;
+			orderIndex = 3;
 
 		let sponsorData = [];
 
@@ -20,8 +19,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 				name: $(tableRow).find('td').eq(nameIndex).text(),
 				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
 				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
-				line: $(tableRow).find('td').eq(lineIndex).text(),
-				isInKind: $(tableRow).find('td').eq(inKindIndex).text()
+				order: $(tableRow).find('td').eq(orderIndex).text(),
 			};
 
 			sponsorData.push(dataItem);
@@ -34,8 +32,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 
 	const sortSponsors = sponsorData => {
 		sponsorData = sponsorData.sort(nameComparer);
-		sponsorData = sponsorData.sort(lineComparer);
-		sponsorData = sponsorData.sort(inKindComparer);
+		sponsorData = sponsorData.sort(orderComparer);
 		return sponsorData;
 	};
 
@@ -52,34 +49,21 @@ seniorExpo.sponsorLister = (($, undefined) => {
 		return 0;
 	};
 
-	const lineComparer = (a, b) => {
-		const aLine = a.line * 1;
-		const bLine = b.line * 1;
+	const orderComparer = (a, b) => {
+		const aOrder = a.order * 1;
+		const bOrder = b.order * 1;
 		
-		if (aLine < bLine)
+		if (aOrder < bOrder)
 			return -1;
 
-		if (aLine > bLine)
+		if (aOrder > bOrder)
 			return 1;
 
-		return 0;
-	};
-
-	const inKindComparer = (a, b) => {
-		const aInKind = a.isInKind.toLowerCase();
-		const bInKind = b.isInKind.toLowerCase();
-		
-		if (aInKind === 'no' && bInKind === 'yes')
-			return -1;
-
-		if (aInKind === 'yes' && bInKind === 'no')
-			return 1;
-			
 		return 0;
 	};
 
 	const getData = () => {
-		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors')
+		$.ajax('/_data/Power_of_Age_Sponsors')
 			.done(data => {
 				htmlLoadedHandler(data, buildHtml);
 			})
@@ -93,7 +77,7 @@ seniorExpo.sponsorLister = (($, undefined) => {
 		let $wrapper = $('<div class="sponsor-row flex flex-row flex-space-around flex-wrap"></div>');
 
 		$.each(sponsorData, (index, sponsorItem) => {
-			$wrapper.append(`<div class="sponsor"><a href="${sponsorItem.websiteUrl}" target="_blank"><img src="${sponsorItem.imageUrl}"/></a></div>`);
+			$wrapper.append(`<div class="sponsor"><a href="${sponsorItem.websiteUrl}" title="Visit ${sponsorItem.name}" target="_blank"><img src="${sponsorItem.imageUrl}" alt="Logo for ${sponsorItem.name}" /></a></div>`);
 		});
 
 		$target.append($wrapper);

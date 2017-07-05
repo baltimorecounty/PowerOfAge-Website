@@ -286,8 +286,62 @@ baltimoreCounty.contentFilter = function ($) {
 
 namespacer('seniorExpo');
 
+seniorExpo.contraster = function ($, localStorage, undefined) {
+
+	var stylesheets = {
+		master: {
+			normal: '/sebin/h/e/master.min.css',
+			high: '/sebin/x/u/master-high-contrast.min.css'
+		},
+		home: {
+			normal: '/sebin/r/d/home.min.css',
+			high: '/sebin/f/p/home-high-contrast.min.css'
+		}
+	};
+
+	var contrastButtonClickHandler = function contrastButtonClickHandler(event) {
+		var $stylesheetMaster = $('#stylesheet-master');
+		var $stylesheetHome = $('#stylesheet-home');
+
+		if ($stylesheetMaster.length) {
+			var masterHref = $stylesheetMaster.attr('href');
+			$stylesheetMaster.attr('href', masterHref === stylesheets.master.normal ? stylesheets.master.high : stylesheets.master.normal);
+			localStorage.setItem('isHighContrast', masterHref === stylesheets.master.normal);
+		}
+
+		if ($stylesheetHome.length) {
+			var homeHref = $stylesheetHome.attr('href');
+			$stylesheetHome.attr('href', homeHref === stylesheets.home.normal ? stylesheets.home.high : stylesheets.home.normal);
+		}
+	};
+
+	var init = function init() {
+		var $contrastButton = $('#contrastButton');
+
+		if ($contrastButton.length) {
+			$contrastButton.on('click', contrastButtonClickHandler);
+		}
+
+		if (localStorage.getItem('isHighContrast') === 'true') $contrastButton.trigger('click');else localStorage.setItem('isHighContrast', 'false');
+	};
+
+	return { init: init };
+}(jQuery, localStorage);
+
+$(function () {
+	seniorExpo.contraster.init();
+});
+'use strict';
+
+namespacer('seniorExpo');
+
 seniorExpo.nav = function ($, undefined) {
 
+	var $allDropdowns = void 0;
+
+	/**
+  * Hamburger menu control 
+  */
 	var menuDisplayHandler = function menuDisplayHandler(event) {
 		var $target = $(event.currentTarget),
 		    $menu = $target.siblings('nav'),
@@ -301,10 +355,54 @@ seniorExpo.nav = function ($, undefined) {
 		$menu.toggleClass('active');
 	};
 
+	/**
+  * Make the nav keyboard navigable.
+  */
+	var keyboardNavigationHandler = function keyboardNavigationHandler(event) {
+		var keyCode = event.which || event.keyCode;
+		var $target = $(event.currentTarget);
+		var $closestDropdown = $target.closest('.has-dropdown').find('.dropdown');
+		var enterKeyCode = 13;
+		var tabKeyCode = 9;
+
+		if (keyCode === enterKeyCode) {
+			$allDropdowns.not($closestDropdown).removeClass('active');
+			$closestDropdown.toggleClass('active');
+		}
+
+		if (keyCode === tabKeyCode && $target.is('.has-dropdown > span, .has-dropdown > a')) {
+			$allDropdowns.removeClass('active');
+		}
+	};
+
+	/**
+  * Cancel menus when tabbing off the nav.
+  */
+	var bodyKeyupHandler = function bodyKeyupHandler(event) {
+		var keyCode = event.which || event.keyCode;
+		var tabKeyCode = 9;
+		var $target = $(event.target);
+
+		if (keyCode === tabKeyCode) {
+			if ($target.closest('nav').length === 0) {
+				$allDropdowns.removeClass('active');
+			}
+		}
+	};
+
+	/**
+  * Assign handlers
+  */
 	var init = function init() {
 		var $hamburgerMenu = $('.hamburger-menu');
+		var $mainMenu = $('header nav .has-dropdown span, header nav .has-dropdown a');
+		var $body = $('body');
+
+		$allDropdowns = $('header nav .dropdown');
 
 		$hamburgerMenu.on('click', menuDisplayHandler);
+		$mainMenu.on('keyup', keyboardNavigationHandler);
+		$body.on('keyup', bodyKeyupHandler);
 	};
 
 	return { init: init };
@@ -457,6 +555,33 @@ $(document).ready(function () {
 
 namespacer('seniorExpo');
 
+seniorExpo.searchBoxer = function ($, window, undefined) {
+
+	var init = function init() {
+		$('#search-button').on('click', function (event) {
+			var searchValue = $('#search-box').val();
+			window.location = '/search-results?search=' + searchValue;
+		});
+
+		$('#search-box').on('keyup', function (event) {
+			var keyCode = event.which || event.keyCode;
+
+			if (keyCode === 13) {
+				$('#search-button').trigger('click');
+			}
+		});
+	};
+
+	return { init: init };
+}(jQuery, window);
+
+$(function () {
+	seniorExpo.searchBoxer.init();
+});
+'use strict';
+
+namespacer('seniorExpo');
+
 seniorExpo.sponsorLister = function ($, undefined) {
 
 	var $target = void 0;
@@ -467,8 +592,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		    nameIndex = 0,
 		    imageUrlIndex = 1,
 		    websiteUrlIndex = 2,
-		    lineIndex = 3,
-		    inKindIndex = 4;
+		    orderIndex = 3;
 
 		var sponsorData = [];
 
@@ -477,8 +601,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 				name: $(tableRow).find('td').eq(nameIndex).text(),
 				imageUrl: $(tableRow).find('td').eq(imageUrlIndex).text(),
 				websiteUrl: $(tableRow).find('td').eq(websiteUrlIndex).text(),
-				line: $(tableRow).find('td').eq(lineIndex).text(),
-				isInKind: $(tableRow).find('td').eq(inKindIndex).text()
+				order: $(tableRow).find('td').eq(orderIndex).text()
 			};
 
 			sponsorData.push(dataItem);
@@ -491,8 +614,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 
 	var sortSponsors = function sortSponsors(sponsorData) {
 		sponsorData = sponsorData.sort(nameComparer);
-		sponsorData = sponsorData.sort(lineComparer);
-		sponsorData = sponsorData.sort(inKindComparer);
+		sponsorData = sponsorData.sort(orderComparer);
 		return sponsorData;
 	};
 
@@ -507,30 +629,19 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		return 0;
 	};
 
-	var lineComparer = function lineComparer(a, b) {
-		var aLine = a.line * 1;
-		var bLine = b.line * 1;
+	var orderComparer = function orderComparer(a, b) {
+		var aOrder = a.order * 1;
+		var bOrder = b.order * 1;
 
-		if (aLine < bLine) return -1;
+		if (aOrder < bOrder) return -1;
 
-		if (aLine > bLine) return 1;
-
-		return 0;
-	};
-
-	var inKindComparer = function inKindComparer(a, b) {
-		var aInKind = a.isInKind.toLowerCase();
-		var bInKind = b.isInKind.toLowerCase();
-
-		if (aInKind === 'no' && bInKind === 'yes') return -1;
-
-		if (aInKind === 'yes' && bInKind === 'no') return 1;
+		if (aOrder > bOrder) return 1;
 
 		return 0;
 	};
 
 	var getData = function getData() {
-		$.ajax('/PowerOfAge/_data/Power_of_Age_Sponsors').done(function (data) {
+		$.ajax('/_data/Power_of_Age_Sponsors').done(function (data) {
 			htmlLoadedHandler(data, buildHtml);
 		}).fail(function (errorResponse) {
 			console.log(errorResponse);
@@ -542,7 +653,7 @@ seniorExpo.sponsorLister = function ($, undefined) {
 		var $wrapper = $('<div class="sponsor-row flex flex-row flex-space-around flex-wrap"></div>');
 
 		$.each(sponsorData, function (index, sponsorItem) {
-			$wrapper.append('<div class="sponsor"><a href="' + sponsorItem.websiteUrl + '" target="_blank"><img src="' + sponsorItem.imageUrl + '"/></a></div>');
+			$wrapper.append('<div class="sponsor"><a href="' + sponsorItem.websiteUrl + '" title="Visit ' + sponsorItem.name + '" target="_blank"><img src="' + sponsorItem.imageUrl + '" alt="Logo for ' + sponsorItem.name + '" /></a></div>');
 		});
 
 		$target.append($wrapper);
