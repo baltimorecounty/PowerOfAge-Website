@@ -114,7 +114,6 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 			$div.find('.exit').on('click', event => {
 				$div.slideUp(250, () => {
 					lastBoothId = '';
-					$div.remote();
 				});
 			});
 		}
