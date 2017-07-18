@@ -2,9 +2,7 @@
 
 namespacer('seniorExpo.pageSpecific');
 
-seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
-
-	var $floorplan = $('.floorplan');
+seniorExpo.pageSpecific.seniorExpoBooths = function ($) {
 
 	var lastBoothId = '';
 
@@ -86,7 +84,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 
 		$flyouts.remove();
 
-		$target.on('mouseleave mouseenter', function (event) {
+		$target.on('mouseleave mouseenter', function () {
 			lastBoothId = '';
 		});
 
@@ -105,25 +103,21 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 				lastBoothId = boothData.id;
 			});
 
-			$div.on('mouseleave', function (event) {
+			$div.on('mouseleave', function () {
 				$div.slideUp(250, function () {
 					lastBoothId = '';
 				});
 			});
 
-			$div.find('.exit').on('click', function (event) {
+			$div.find('.exit').on('click', function () {
 				$div.slideUp(250, function () {
 					lastBoothId = '';
-					$div.remote();
 				});
 			});
 		}
 	};
 
-	/**
-  * Lets get the ball rolling!
-  */
-	$(function () {
+	var init = function init() {
 		var $booths = $('.floorplan td.booth');
 
 		loadHtml(function (html) {
@@ -134,5 +128,12 @@ seniorExpo.pageSpecific.seniorExpoBooths = function ($, undefined) {
 				});
 			});
 		});
+	};
+
+	/**
+  * Lets get the ball rolling!
+  */
+	$(function () {
+		init();
 	});
 }(jQuery);
