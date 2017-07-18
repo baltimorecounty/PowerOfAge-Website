@@ -1,8 +1,6 @@
 namespacer('seniorExpo.pageSpecific');
 
-seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
-
-	const $floorplan = $('.floorplan');
+seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 
 	let lastBoothId = '';
 
@@ -86,7 +84,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 
 		$flyouts.remove();
 
-		$target.on('mouseleave mouseenter', event => {
+		$target.on('mouseleave mouseenter', () => {
 			lastBoothId = '';
 		});
 
@@ -105,13 +103,13 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				lastBoothId = boothData.id;
 			});		
 
-			$div.on('mouseleave', event => {
+			$div.on('mouseleave', () => {
 				$div.slideUp(250, () => {
 					lastBoothId = '';
 				});
 			});
 
-			$div.find('.exit').on('click', event => {
+			$div.find('.exit').on('click', () => {
 				$div.slideUp(250, () => {
 					lastBoothId = '';
 				});
@@ -120,10 +118,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 
 	};
 
-	/**
-	 * Lets get the ball rolling!
-	 */
-	$(() => {
+	const init = () => {
 		const $booths = $('.floorplan td.booth');
 
 		loadHtml(html => {
@@ -134,6 +129,13 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($, undefined) => {
 				});
 			});
 		});
+	};
+
+	/**
+	 * Lets get the ball rolling!
+	 */
+	$(() => { 
+		init(); 
 	});
 
 })(jQuery);
