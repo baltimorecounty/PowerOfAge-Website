@@ -1,14 +1,13 @@
 namespacer('seniorExpo.pageSpecific');
 
 seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
-
 	let lastBoothId = '';
 
 	/**
 	 * Load up the SVG, highlight the booths, and attach the click handler
 	 */
-	const loadHtml = (callback) => {
-		$.ajax('/exhibitors/2017-exhibitors.html')
+	const loadHtml = (year, callback) => {
+		$.ajax(`/exhibitors/${year}-exhibitors.html`)
 			.done(boothAssigmentData => {
 				callback(boothAssigmentData);
 			})
@@ -118,10 +117,11 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 
 	};
 
-	const init = () => {
+	const init = (yearToDisplay) => {
+        yearToDisplay = yearToDisplay || new Date().getFullYear();
 		const $booths = $('.floorplan td.booth');
 
-		loadHtml(html => {
+		loadHtml(yearToDisplay, html => {
 			const extractedData = extractDataFromHtml(html);
 			highlightAssignedBooths(extractedData, $booths, (boothElement, boothData) => {
 				$(boothElement).on('click mouseenter', event => {			
@@ -129,13 +129,9 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 				});
 			});
 		});
-	};
-
-	/**
-	 * Lets get the ball rolling!
-	 */
-	$(() => { 
-		init(); 
-	});
-
+    };
+    
+    return {
+        init
+    };
 })(jQuery);
