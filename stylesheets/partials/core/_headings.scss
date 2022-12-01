@@ -4,19 +4,26 @@ h1, h2, h3, h4 {
 	margin-bottom: .25em;
 }
 
-h1 {
+h1,
+.h1 {
 	font-size: 2.5em;
 	font-weight: 900;
 	color: $dark-gray;
 }
 
-h2 {
+h2,
+.h2 {
 	font-size: 1.8em;
 	font-weight: 900;
 	color: $tan;
+
+	&.h3 {
+		margin-top: 1em; //23111-header-class - overwrite bootstrap style
+	}
 }
 
-h3 {
+h3,
+.h3 {
 	font-size: 1.2em;
 	font-weight: 900;
 	color: $tan;
