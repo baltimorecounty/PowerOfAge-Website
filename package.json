@@ -13,7 +13,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
@@ -43,6 +43,9 @@
   "author": "Baltimore County Government",
   "license": "ISC",
   "dependencies": {
-    "node-gyp": "^9.3.0"
+    "gulp-git": "^2.10.1",
+    "gulp4-run-sequence": "^1.0.1",
+    "node-gyp": "^9.3.0",
+    "sass": "^1.56.1"
   }
 }
