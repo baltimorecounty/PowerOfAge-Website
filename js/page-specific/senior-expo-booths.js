@@ -93,7 +93,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 			const link = boothData.link.indexOf('<a') === -1 ? '' : $(boothData.link).attr('href');
 
 			if (link) {
-				$div.append(`<p><a href="${link}" target="_blank" title="Visit ${boothData.name}">Visit us online!</a></p>`);
+				$div.append(`<p><a href="${link}" target="_blank">Visit us online!</a></p>`);
 			}
 
 			$body.append($div);
