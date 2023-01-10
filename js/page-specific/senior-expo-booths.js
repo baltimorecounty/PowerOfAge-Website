@@ -17,7 +17,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 	};
 
 	/**
-	 * Extract data from the HTML table 
+	 * Extract data from the HTML table
 	 */
 	const extractDataFromHtml = htmlData => {
 		const htmlArray = Array.prototype.slice.call($(htmlData)),
@@ -41,7 +41,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 					id: $cols.eq(1).text(),
 					link: $cols.eq(0).html()
 				};
-			
+
 			data.push(rowData);
 		});
 
@@ -58,7 +58,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 			assignedBoothIds.push(boothDataItem.id.trim());
 		});
 
-		$.each($booths, (index, boothElement) => {				
+		$.each($booths, (index, boothElement) => {
 
 			let boothAssignmentIndex = assignedBoothIds.indexOf(boothElement.innerText);
 
@@ -71,7 +71,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 				}
 
 				callback(boothElement, boothAssigmentData[boothAssignmentIndex]);
-			}				
+			}
 		});
 	};
 
@@ -80,10 +80,12 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 		const targetOffset = $target.offset();
 		const $flyouts = $('.flyout');
 		const $body = $('body');
+		const $document = $(document);
+		const escKeyCode = 27;
 
 		$flyouts.remove();
 
-		$target.on('mouseleave mouseenter', () => {
+		$target.on('mouseleave mouseenter keydown', () => {
 			lastBoothId = '';
 		});
 
@@ -100,7 +102,7 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 
 			$div.slideDown(250, () => {
 				lastBoothId = boothData.id;
-			});		
+			});
 
 			$div.on('mouseleave', () => {
 				$div.slideUp(250, () => {
@@ -113,6 +115,15 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 					lastBoothId = '';
 				});
 			});
+
+			$document.on('keydown', (keyPress) => {
+				const keyCode = keyPress.which || keyPress.keyCode;
+				if (keyCode === escKeyCode) {
+					$div.slideUp(250);
+				}
+				return;
+			});
+
 		}
 
 	};
@@ -124,13 +135,13 @@ seniorExpo.pageSpecific.seniorExpoBooths = (($) => {
 		loadHtml(yearToDisplay, html => {
 			const extractedData = extractDataFromHtml(html);
 			highlightAssignedBooths(extractedData, $booths, (boothElement, boothData) => {
-				$(boothElement).on('click mouseenter', event => {			
+				$(boothElement).on('click mouseenter', event => {
 					hoverInfoHandler(event, boothData);
 				});
 			});
 		});
     };
-    
+
     return {
         init
     };
